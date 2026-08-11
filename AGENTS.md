@@ -4,7 +4,7 @@
 
 ### Issue tracker
 
-Issues and PRDs live as GitHub issues on `TraegerRuhter/poppies`, driven via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+Issues and PRDs live as markdown files under `.scratch/<feature>/`, committed alongside the code. See `docs/agents/issue-tracker.md`.
 
 ### Domain docs
 
