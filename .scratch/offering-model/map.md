@@ -45,15 +45,20 @@ should this look like" is the question, `/grilling` for the rest.
 
 <!-- one line per closed ticket -->
 
-_None yet._
+- [Pricing benchmarks for balloon installation work](issues/01-pricing-benchmarks.md)
+  — per-linear-foot is the national standard (organic $25–$42/ft, classic $5–$10/ft)
+  but **quote-only dominates Oregon**; minimums cluster at $500; sculpture is two
+  different markets (live twisting ~$150/hr vs commissioned pieces $250+); **no
+  coastal vendor publishes anything**, so there is no local anchor to be dragged
+  down by. Snippet-sourced — the proxy blocked every direct fetch.
+- [How comparable businesses package their offerings](issues/02-packaging-patterns.md)
+  — **two tracks divided by a stated minimum**, figure work outside both; no
+  example found of a balloon business splitting brands for weddings; occasion pages
+  are navigation, not packaging, which **validates the website's doorway split as
+  register-only**; the real bifurcation is buy-it-now vs commission-it.
 
 ## Not yet specified
 
-- **How the offering model maps onto the website's two doorway paths.** The
-  Celebrations/Weddings split was chosen as a *register* split; whether it
-  survives as an *offering* split depends on how packaging lands.
-- **Whether prices appear on the site at all**, or whether everything routes to a
-  quote. Hangs on the pricing basis.
 - **Capacity and seasonality** — how many installations she can physically deliver
   in a month, and how coast wedding season concentrates demand. Needs her, and
   shapes whether growth means more offerings or higher prices.

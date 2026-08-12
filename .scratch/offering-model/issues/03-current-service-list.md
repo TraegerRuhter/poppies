@@ -27,14 +27,20 @@ out; it is a checklist to put in front of her whenever she is next available.
 6. **How many installations could you deliver in a busy month** without help?
 7. **Do you want to hire or work with a helper**, or stay a one-person business?
    This one silently determines the ceiling on every growth plan.
-8. **The tent** — where did it come from, what condition is it in, what does it
+8. **The figure work — is it commissioned display sculpture, or live twisting at
+   the party?** Added after the pricing research: these are two different markets
+   that price completely differently (roughly $150/hr for twisting versus $250+ per
+   commissioned piece, by build hours). The caterpillar suggests commissioned work,
+   but that is an inference, and the pricing basis cannot be settled until she
+   confirms which she does — or whether she does both.
+9. **The tent** — where did it come from, what condition is it in, what does it
    take to transport and put up, and has it ever been used for a paying job?
 
 ## Why this blocks
 
 Almost everything. The proposal can *draft* a service menu from balloon-industry
 conventions and the known portfolio (arches, garlands, a sculptural caterpillar),
-but a draft written without answers 2, 3 and 7 will encode assumptions she never
+but a draft written without answers 2, 3, 7 and 8 will encode assumptions she never
 made — and those are precisely the assumptions that make an offering model wrong
 in a way that is expensive to unwind.
 
