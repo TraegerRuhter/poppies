@@ -9,7 +9,7 @@ The tokens encode the design decisions in `.scratch/website/decisions.md` §8: a
 **Status:** ready-for-agent
 
 - [x] Astro project at the repo root builds cleanly
-- [ ] Deploys to a Vercel preview URL — **needs a human**: import the repo in Vercel
+- [x] Deploys to a Vercel preview URL
 - [x] The business name is a single config value; changing it in one place changes every page (the name is unsettled — see `.scratch/naming/poppies-name-collision.md`)
 - [x] Content is set up as structured content collections, not hardcoded in components (decisions §4)
 - [x] Shared layout with design tokens for colour, type and spacing; a per-route temperature override exists and is exercised by a throwaway check
@@ -40,3 +40,8 @@ then gets a preview URL. No environment variables are needed yet.
 `engines.node` to `24.x` for Vercel. Local builds need Node 24.
 
 **TypeScript is pinned to 6.** `astro check` doesn't support TypeScript 7 yet.
+
+**2026-10-30 — deployed.** The repo is imported to Vercel as project `poppies`.
+The build for `936cd2e` reports "Deployment has completed", and the Vercel bot
+links `poppies.vercel.app` on PR #6. The session's network proxy blocks
+`*.vercel.app`, so a person still has to confirm the live page by eye.
