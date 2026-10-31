@@ -1,0 +1,487 @@
+<!doctype html>
+<!--
+  PROTOTYPE — throwaway. Ticket 07 (.scratch/offering-model/issues/07-tent-role.md).
+
+  Question: how does the 20×40 tent show up in what Poppies sells?
+  Four variants of a Poppies page, one per remaining option, switchable via
+  ?variant=A|B|C|D, the bottom bar, or ← / →. Press "i" to toggle highlighting of
+  invented content (things the owner never said — each is a question for her).
+
+  Facts this rests on (from grilling): 20×40 non-inflatable frame tent, 1–2 people
+  to erect, no trailer, no venue site of her own. Venue-on-her-land is out; the
+  "backyard venue" (tent + decor on the customer's land) replaced it.
+
+  Run: open this file in a browser, or
+       python3 -m http.server -d .scratch/offering-model/prototypes/tent-role 8000
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tent Role Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #f6f2ec;
+    --surface: #fffdf9;
+    --ink: #2a2622;
+    --muted: #6f675e;
+    --line: #e2dbd1;
+    --accent: #d2452f;       /* poppy, used sparingly */
+    --coast: #47646b;        /* wedding-path cool */
+    --photo: #ddd5ca;
+    --invented: #f3d36b;
+    --proto-bg: #1d1b19;
+    --proto-ink: #f6f2ec;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #1a1816; --surface: #23201d; --ink: #efe9e1; --muted: #a59c91;
+      --line: #3a352f; --photo: #3a352f; --coast: #8fb0b7; --invented: #8a6d12;
+      --proto-bg: #f6f2ec; --proto-ink: #1d1b19;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #1a1816; --surface: #23201d; --ink: #efe9e1; --muted: #a59c91;
+    --line: #3a352f; --photo: #3a352f; --coast: #8fb0b7; --invented: #8a6d12;
+    --proto-bg: #f6f2ec; --proto-ink: #1d1b19;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.6 Inter, system-ui, sans-serif; padding-bottom: 120px;
+  }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; font-weight: 400; line-height: 1.15; margin: 0 0 .5em; }
+  h1 { font-size: clamp(2rem, 5vw, 3.4rem); }
+  h2 { font-size: clamp(1.5rem, 3.4vw, 2.2rem); }
+  h3 { font-size: 1.25rem; }
+  p { margin: 0 0 1em; }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  .eyebrow { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: .8em; }
+  .muted { color: var(--muted); }
+  .small { font-size: .88rem; }
+
+  /* site chrome (shared header is fine; layouts are not shared) */
+  .proto-banner { background: var(--proto-bg); color: var(--proto-ink); font: 600 12px/1 Inter, sans-serif; letter-spacing: .08em; text-align: center; padding: 8px 16px; }
+  header.site { border-bottom: 1px solid var(--line); }
+  header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap; }
+  .logo { font-family: Fraunces, serif; font-size: 1.5rem; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .logo i { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); display: inline-block; }
+  nav.site { display: flex; gap: 20px; font-size: .92rem; flex-wrap: wrap; }
+  nav.site a { text-decoration: none; color: var(--muted); }
+  nav.site a.on { color: var(--ink); border-bottom: 1px solid var(--ink); }
+
+  .photo { background: var(--photo); border-radius: 2px; display: flex; align-items: flex-end; padding: 12px; color: var(--muted); font-size: .78rem; min-height: 180px; }
+  .btn { display: inline-block; border: 1px solid var(--ink); padding: 12px 22px; text-decoration: none; font-weight: 500; font-size: .95rem; background: transparent; color: var(--ink); cursor: pointer; }
+  .btn.solid { background: var(--ink); color: var(--ground); }
+  section { padding: 64px 0; }
+  section + section { border-top: 1px solid var(--line); }
+
+  /* invented-content marking */
+  .inv { transition: background .2s; }
+  body.show-inv .inv { background: var(--invented); box-shadow: 0 0 0 2px var(--invented); border-radius: 2px; cursor: help; }
+
+  /* A — tier comparison */
+  .tiers { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); background: var(--surface); }
+  .tier { padding: 28px 24px; border-right: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+  .tier:last-child { border-right: 0; }
+  .tier.grand { background: color-mix(in srgb, var(--coast) 8%, var(--surface)); }
+  .tier .price { font-family: Fraunces, serif; font-size: 1.6rem; }
+  .tier ul { margin: 0; padding-left: 18px; }
+  .tier li { margin-bottom: 4px; }
+  .tier .tentline { border-top: 1px solid var(--line); padding-top: 12px; margin-top: auto; font-size: .92rem; }
+  @media (max-width: 760px) { .tiers { grid-template-columns: 1fr; } .tier { border-right: 0; border-bottom: 1px solid var(--line); } }
+
+  /* B — long-form product page */
+  .b-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+  .b-hero .photo { min-height: 380px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .ledger { border-top: 1px solid var(--ink); }
+  .ledger div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .timeline { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .timeline li { border-left: 1px solid var(--line); padding: 0 18px 0 16px; }
+  .timeline b { display: block; font-family: Fraunces, serif; font-weight: 400; font-size: 1.15rem; margin-bottom: 4px; }
+  .site-check { background: var(--surface); border: 1px solid var(--line); padding: 28px; display: grid; gap: 14px; max-width: 560px; }
+  .site-check label { display: grid; gap: 4px; font-size: .9rem; }
+  .site-check input, .site-check select, .c-form input, .c-form select, .c-form textarea { font: inherit; padding: 10px 12px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); }
+  @media (max-width: 760px) { .b-hero, .split { grid-template-columns: 1fr; } .timeline { grid-template-columns: 1fr 1fr; row-gap: 20px; } }
+
+  /* C — service list + enquiry form sidebar */
+  .c-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: start; }
+  .svc { display: grid; grid-template-columns: 140px 1fr auto; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: center; }
+  .svc .photo { min-height: 100px; }
+  .svc .from { font-family: Fraunces, serif; white-space: nowrap; }
+  .addon { margin-top: 28px; border: 1px dashed var(--coast); padding: 20px; display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+  .c-form { position: sticky; top: 16px; background: var(--surface); border: 1px solid var(--line); padding: 24px; display: grid; gap: 12px; }
+  .c-form label { display: grid; gap: 4px; font-size: .9rem; }
+  .c-form .check { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid var(--coast); }
+  .c-form .check input { margin-top: 4px; }
+  @media (max-width: 760px) { .c-layout { grid-template-columns: 1fr; } .c-form { position: static; } .svc { grid-template-columns: 90px 1fr; } .svc .from { grid-column: 2; } }
+
+  /* D — gallery-first, tent only in FAQ */
+  .wall { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+  .wall .photo:nth-child(1) { grid-column: span 4; min-height: 360px; }
+  .wall .photo:nth-child(2) { grid-column: span 2; }
+  .wall .photo:nth-child(n+3) { grid-column: span 2; }
+  .faq details { border-bottom: 1px solid var(--line); padding: 16px 0; }
+  .faq summary { cursor: pointer; font-family: Fraunces, serif; font-size: 1.15rem; list-style: none; }
+  .faq summary::after { content: "+"; float: right; color: var(--muted); }
+  .faq details[open] summary::after { content: "–"; }
+  .faq details p { margin-top: 10px; color: var(--muted); }
+  @media (max-width: 760px) { .wall { grid-template-columns: 1fr 1fr; } .wall .photo { grid-column: span 2 !important; } }
+
+  /* prototype-only panels: obviously not part of the design */
+  .commits { background: var(--proto-bg); color: var(--proto-ink); padding: 24px; font-size: .9rem; margin: 48px 0 0; border-radius: 6px; }
+  .commits h4 { margin: 0 0 8px; font: 600 .78rem/1 Inter, sans-serif; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+  .commits ul { margin: 0; padding-left: 18px; }
+  .commits li { margin-bottom: 6px; }
+
+  .switcher {
+    position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
+    background: var(--proto-bg); color: var(--proto-ink); border-radius: 999px;
+    display: flex; align-items: center; gap: 4px; padding: 6px; z-index: 10;
+    box-shadow: 0 6px 24px rgba(0,0,0,.25); font: 500 14px/1 Inter, sans-serif;
+    max-width: calc(100vw - 32px);
+  }
+  .switcher button { background: transparent; color: inherit; border: 0; font: inherit; padding: 10px 14px; border-radius: 999px; cursor: pointer; }
+  .switcher button:hover { background: rgba(127,127,127,.25); }
+  .switcher .label { padding: 0 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .switcher .inv-toggle { font-size: 12px; opacity: .8; }
+  [data-variant] { display: none; }
+  [data-variant].active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="proto-banner">PROTOTYPE — ticket 07, what the tent is · throwaway · press “i” to highlight invented content</div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#"><i></i>Poppies</a>
+    <nav class="site">
+      <a href="#">Celebrations</a>
+      <a href="#" class="on" id="nav-current">Weddings</a>
+      <a href="#">Gallery</a>
+      <a href="#">About</a>
+      <a href="#">Enquire</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- A — BUNDLED CAPABILITY: the tent lives inside the top tier    -->
+<!-- ============================================================ -->
+<main data-variant="A" data-name="Bundled — tent is the top tier">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Weddings & larger events</div>
+      <h1>Three ways to finish the day.</h1>
+      <p class="muted" style="max-width:600px">Every installation is designed for your colours and your venue. Choose how far it goes. The difference is what's included, not how hard we try.</p>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="tiers">
+        <div class="tier">
+          <div class="eyebrow">Petite</div>
+          <div class="price">from $500</div>
+          <p class="muted small">One focal piece</p>
+          <ul>
+            <li>A garland or half arch</li>
+            <li>Delivered and installed</li>
+            <li>Within <span class="inv" title="Invented: travel radius unknown (checklist Q5)">45 minutes of Lincoln City</span></li>
+          </ul>
+        </div>
+        <div class="tier">
+          <div class="eyebrow">Signature</div>
+          <div class="price inv" title="Invented: no tier pricing exists">from $1,200</div>
+          <p class="muted small">A designed room</p>
+          <ul>
+            <li>Ceremony arch + reception garland</li>
+            <li>Foil, fringe and florals included</li>
+            <li class="inv" title="Invented: does she do teardown?">Teardown the same night</li>
+          </ul>
+        </div>
+        <div class="tier grand">
+          <div class="eyebrow" style="color:var(--coast)">Grand · covered</div>
+          <div class="price inv" title="Invented: no tier pricing exists">from $2,800</div>
+          <p class="muted small">The whole setting, rain or shine</p>
+          <ul>
+            <li>Everything in Signature</li>
+            <li>A statement sculpture or entrance piece</li>
+            <li><strong>Under our 20×40 tent</strong>, dressed in balloons</li>
+          </ul>
+          <div class="tentline muted">The tent comes only with Grand. It <span class="inv" title="Estimated: capacity is a rule-of-thumb for 20×40 at 60-inch rounds, not measured on her tent">seats about 64 at rounds</span> and goes up the morning of, on your lawn or venue grounds.</div>
+        </div>
+      </div>
+      <p class="small muted" style="margin-top:16px">Minimum booking $500. Final quote after a short conversation about your site.</p>
+
+      <div class="commits">
+        <h4>What this variant commits her to</h4>
+        <ul>
+          <li>The tent is never sold on its own; it's the reason Grand exists. Its price is whatever Grand costs over Signature.</li>
+          <li>The menu stays one thing (balloon art) with one more step at the top.</li>
+          <li>To get cover, a customer has to buy the biggest decor job, so smaller jobs can't use the tent even when it's idle.</li>
+          <li>Grand needs at least one photo of the tent dressed. That photo doesn't exist yet.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================ -->
+<!-- B — BACKYARD VENUE: tent + decor is the headline product       -->
+<!-- ============================================================ -->
+<main data-variant="B" data-name="Backyard venue — its own product">
+  <section>
+    <div class="wrap b-hero">
+      <div>
+        <div class="eyebrow">The backyard venue</div>
+        <h1>Your land.<br>Our tent.<br>Finished.</h1>
+        <p class="muted">You have the yard, the family property, the beach house. We bring the cover and the decoration and set them up before you arrive. For gatherings of <span class="inv" title="Estimated: capacity is a rule-of-thumb for 20×40 at 60-inch rounds, not measured on her tent">up to about 64 guests seated</span>.</p>
+        <a class="btn solid" href="#site-check">Check your site</a>
+      </div>
+      <div class="photo">Shot list: tent dressed, golden hour, empty of guests, wide from the house</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2>What we bring</h2>
+        <div class="ledger">
+          <div><span>20×40 frame tent, staked or weighted</span><span class="muted">included</span></div>
+          <div><span>Entrance arch or ceremony piece</span><span class="muted">included</span></div>
+          <div><span>Balloon canopy or garland run inside the tent</span><span class="muted">included</span></div>
+          <div><span class="inv" title="Invented: does she own or source lighting?">String lighting</span><span class="muted">included</span></div>
+          <div><span>Setup the morning of, strike the next day</span><span class="muted">included</span></div>
+        </div>
+      </div>
+      <div>
+        <h2>What you arrange</h2>
+        <div class="ledger">
+          <div><span>Tables and chairs</span><span class="muted inv" title="Invented: a referral partnership">we can refer</span></div>
+          <div><span>Catering and bar</span><span class="muted">yours</span></div>
+          <div><span>Restrooms</span><span class="muted">yours</span></div>
+          <div><span>Any permit your county requires</span><span class="muted">yours</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>How the day goes</h2>
+      <ol class="timeline">
+        <li><b>8 am</b><span class="muted small">Tent goes up and is anchored. Two of us, about two hours.</span></li>
+        <li><b>11 am</b><span class="muted small">Balloon work installed inside and at the entrance.</span></li>
+        <li><b>3 pm</b><span class="muted small">Final walk-through with you. We leave.</span></li>
+        <li><b>Next day</b><span class="muted small">We strike everything and take it away.</span></li>
+      </ol>
+      <p class="small muted inv" title="Invented: real setup time unknown (checklist Q9)" style="margin-top:20px">Times are illustrative. They depend on the ground and the wind.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <h2><span class="inv" title="Estimated: capacity is a rule-of-thumb for 20×40 at 60-inch rounds, not measured on her tent">About 64 seated, 100 standing</span></h2>
+        <p class="muted"><span class="inv" title="Estimated: capacity is a rule-of-thumb for 20×40 at 60-inch rounds, not measured on her tent">Eight 60-inch rounds with room for a buffet line.</span> <span class="inv" title="Estimated: clearance for stakes and guylines depends on her tent's anchoring (checklist Q9)">The tent needs a flat 30×50 ft space so the stakes and guylines clear.</span></p>
+        <p class="price" style="font-family:Fraunces,serif;font-size:1.6rem"><span class="inv" title="Invented: no pricing exists">From $3,200</span> <span class="small muted">· most of the coast, May to September</span></p>
+      </div>
+      <svg viewBox="0 0 440 240" role="img" aria-label="Floor plan: 20 by 40 foot tent with eight round tables" style="width:100%;height:auto">
+        <rect x="10" y="20" width="400" height="200" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <g fill="none" stroke="currentColor" stroke-opacity=".55">
+          <circle cx="60" cy="70" r="26"/><circle cx="160" cy="70" r="26"/><circle cx="260" cy="70" r="26"/><circle cx="360" cy="70" r="26"/>
+          <circle cx="60" cy="170" r="26"/><circle cx="160" cy="170" r="26"/><circle cx="260" cy="170" r="26"/><circle cx="360" cy="170" r="26"/>
+        </g>
+        <text x="210" y="14" text-anchor="middle" font-size="11" fill="currentColor" opacity=".6">40 ft</text>
+        <text x="418" y="124" font-size="11" fill="currentColor" opacity=".6" transform="rotate(90 418 124)" text-anchor="middle">20 ft</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="site-check">
+    <div class="wrap">
+      <h2>Check your site</h2>
+      <form class="site-check" onsubmit="return false">
+        <label>Where is it? <input placeholder="Town, or the property's road"></label>
+        <label>The ground <select><option>Lawn</option><option>Gravel</option><option>Sand / beach</option><option>Deck or paving</option></select></label>
+        <label><span class="inv" title="Estimated: clearance for stakes and guylines depends on her tent's anchoring (checklist Q9)">Is there a flat 30×50 ft area?</span> <select><option>Yes</option><option>Not sure</option><option>No</option></select></label>
+        <label>Guests <input placeholder="Roughly how many"></label>
+        <label>Date <input placeholder="Or a season"></label>
+        <button class="btn solid" type="button">Send</button>
+      </form>
+
+      <div class="commits">
+        <h4>What this variant commits her to</h4>
+        <ul>
+          <li>Poppies sells two things: balloon art, and the backyard venue. The second needs its own page, photos, and a path on the doorway homepage.</li>
+          <li>Every booking is a two-day job (set up, strike the next day) that takes up a whole weekend.</li>
+          <li>She owns the weather risk. One tent on the coast means a wind policy and a cancellation rule.</li>
+          <li>It's the clearest answer to "the cheapest honest route to the first wedding" (ticket 08): the product is the setting, not a portfolio of venue weddings.</li>
+          <li>It takes the most from the 'Poppies' brand, which ticket 09 will need to check.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================ -->
+<!-- C — SEPARATE HIRE: tent is an add-on to any decor job           -->
+<!-- ============================================================ -->
+<main data-variant="C" data-name="Add-on — tent rides with any job">
+  <section>
+    <div class="wrap c-layout">
+      <div>
+        <div class="eyebrow">What we make</div>
+        <h1>Installations, made for your day.</h1>
+
+        <div class="svc">
+          <div class="photo">garland</div>
+          <div><h3>Organic garlands</h3><p class="muted small">Priced by length and finish. Mantels, tables, the long wall behind the cake.</p></div>
+          <div class="from">$25–42 / ft</div>
+        </div>
+        <div class="svc">
+          <div class="photo">arch</div>
+          <div><h3>Arches</h3><p class="muted small">Full or half, for the ceremony, the entrance, or the photo spot.</p></div>
+          <div class="from inv" title="Invented: arch pricing">from $450</div>
+        </div>
+        <div class="svc">
+          <div class="photo">sculpture</div>
+          <div><h3>Sculpture</h3><p class="muted small">One-off figures, commissioned and designed with you.</p></div>
+          <div class="from">from $250</div>
+        </div>
+
+        <div class="addon">
+          <div>
+            <div class="eyebrow" style="color:var(--coast);margin-bottom:4px">Add cover</div>
+            <h3 style="margin:0">Our 20×40 tent, set up with your installation</h3>
+            <p class="muted small" style="margin:6px 0 0"><span class="inv" title="Estimated: capacity is a rule-of-thumb for 20×40 at 60-inch rounds, not measured on her tent">Seats about 64.</span> Only with a Poppies installation, not hired on its own.</p>
+          </div>
+          <div class="from inv" title="Invented: no tent pricing" style="font-family:Fraunces,serif;font-size:1.3rem">+$850</div>
+        </div>
+        <p class="small muted" style="margin-top:12px">Minimum booking $500.</p>
+      </div>
+
+      <form class="c-form" onsubmit="return false">
+        <h3 style="margin:0">Start an enquiry</h3>
+        <label>Event date <input placeholder="dd / mm / yyyy"></label>
+        <label>Town or venue <input></label>
+        <label>Occasion <select><option>Birthday</option><option>Wedding</option><option>Shower</option><option>Other</option></select></label>
+        <label>What you're imagining <textarea rows="3"></textarea></label>
+        <label class="check"><input type="checkbox"> <span><strong>Add the tent</strong><br><span class="muted small">For outdoor events. We'll ask about your ground.</span></span></label>
+        <button class="btn solid" type="button">Send</button>
+      </form>
+    </div>
+  </section>
+  <section style="padding-top:0;border-top:0">
+    <div class="wrap">
+      <div class="commits">
+        <h4>What this variant commits her to</h4>
+        <ul>
+          <li>The tent is a separate line with its own price, attachable to any job, even a $500 garland. "Is it worth it" becomes a yes/no question for the customer.</li>
+          <li>The packaging research's rule holds: only things that are genuinely separate to hire are listed as add-ons, and the tent is the only one.</li>
+          <li>Small jobs can turn into tent jobs with no tier above them, so the tent's labor and wear can land on a job too small to absorb them.</li>
+          <li>It's the variant closest to a rental. The "never alone" line is the only thing keeping it from becoming one.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================ -->
+<!-- D — NOT AN OFFERING: gallery-first, tent only in the FAQ        -->
+<!-- ============================================================ -->
+<main data-variant="D" data-name="Not an offering — weather plan only">
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Weddings</div>
+      <h1 style="max-width:760px">Quiet colour for the coast.</h1>
+      <div class="wall" style="margin-top:32px">
+        <div class="photo">hero: ceremony arch, overcast light</div>
+        <div class="photo">garland detail</div>
+        <div class="photo">table run</div>
+        <div class="photo">entrance</div>
+        <div class="photo">sculpture</div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="wrap faq" style="max-width:760px">
+      <h2>Questions</h2>
+      <details><summary>How far do you travel?</summary><p class="inv" title="Invented: travel radius (checklist Q5)">Most of the central coast. Beyond an hour, we add a travel line to the quote.</p></details>
+      <details open><summary>What if it rains?</summary><p>Balloons and coast weather are old friends. For outdoor installations we plan a covered fallback with you, and in some cases we can bring cover ourselves. Ask us.</p></details>
+      <details><summary>Is there a minimum?</summary><p>$500 for installations.</p></details>
+      <details><summary>Do you do teardown?</summary><p class="inv" title="Invented: teardown policy">Yes, the same night or the next morning.</p></details>
+    </div>
+  </section>
+  <section style="padding-top:0;border-top:0">
+    <div class="wrap">
+      <div class="commits">
+        <h4>What this variant commits her to</h4>
+        <ul>
+          <li>Nothing. The tent is a private weather plan, used only when it saves a booking.</li>
+          <li>The menu, site and brand stay purely balloon art. This is the simplest version to build and the most honest about today's portfolio.</li>
+          <li>An asset that could shelter a whole reception earns nothing, and no customer can ask for it by name.</li>
+          <li>It's easy to reverse later: any of A–C can be added without undoing anything.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="switcher" role="toolbar" aria-label="Prototype variant switcher">
+  <button id="prev" aria-label="Previous variant">←</button>
+  <span class="label" id="label"></span>
+  <button id="next" aria-label="Next variant">→</button>
+  <button class="inv-toggle" id="invToggle" aria-pressed="false">invented: off</button>
+</div>
+
+<script>
+  const views = [...document.querySelectorAll('[data-variant]')];
+  const keys = views.map(v => v.dataset.variant);
+  const label = document.getElementById('label');
+  const invToggle = document.getElementById('invToggle');
+  const nav = document.getElementById('nav-current');
+
+  function current() {
+    const k = new URLSearchParams(location.search).get('variant');
+    return keys.includes(k) ? k : 'A';
+  }
+  function show(k, push) {
+    views.forEach(v => v.classList.toggle('active', v.dataset.variant === k));
+    const v = views.find(v => v.dataset.variant === k);
+    label.textContent = `${k} — ${v.dataset.name}`;
+    nav.textContent = k === 'B' ? 'Backyard venue' : 'Weddings';
+    if (push) {
+      const u = new URL(location.href);
+      u.searchParams.set('variant', k);
+      try { history.replaceState(null, '', u); } catch (e) {}
+    }
+    window.scrollTo(0, 0);
+  }
+  function step(d) {
+    const i = keys.indexOf(current());
+    show(keys[(i + d + keys.length) % keys.length], true);
+  }
+  function toggleInv() {
+    const on = document.body.classList.toggle('show-inv');
+    invToggle.textContent = `invented: ${on ? 'on' : 'off'}`;
+    invToggle.setAttribute('aria-pressed', on);
+  }
+  document.getElementById('prev').onclick = () => step(-1);
+  document.getElementById('next').onclick = () => step(1);
+  invToggle.onclick = toggleInv;
+  document.addEventListener('keydown', e => {
+    if (e.target.closest('input, textarea, select, [contenteditable]')) return;
+    if (e.key === 'ArrowLeft') step(-1);
+    if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'i') toggleInv();
+  });
+  show(current(), false);
+</script>
+</body>
+</html>

@@ -10,7 +10,7 @@ exists yet** — the repo holds skills, agent config, and the planning below.
 
 Two efforts are live.
 
-### 1. The website — direction settled, build not started
+### 1. The website — ticketed, build not started
 
 `website/decisions.md`
 
@@ -19,9 +19,14 @@ Astro on Vercel, static, inquiry form only (no booking calendar), email as the
 source of truth with Airtable as a convenience mirror, a doorway homepage with
 Celebrations and Weddings paths, gallery-wall aesthetic.
 
-**Deliberately not a spec.** The site's *content* decisions — what services
-exist, how they are packaged and priced — are blocked on effort 2. Run
-`/to-spec` once the offering model lands.
+**The content-free shell is ticketed** under `website/issues/` (01–07): skeleton
+on Vercel, the enquiry path, the photo pool and shot list, the doorway, About and
+service area, the two paths, and SEO. Ticketed straight from the decisions record
+with no spec. **Start with 01**; 02–05 open up once it lands.
+
+The site's *content* — what services exist, how they are packaged and priced —
+is still blocked on effort 2. Ticket 05 holds a single placeholder service until
+the offering model lands.
 
 ### 2. The offering model — charted, 2 of 9 tickets resolved
 
@@ -39,6 +44,13 @@ constraint recorded in the map's Notes.
 
 Resolved: both research tickets (pricing benchmarks, packaging patterns). Full
 findings under `offering-model/research/`.
+
+Ticket 07 (the tent) is **in progress, paused**. Facts settled by grilling: a
+20×40 ft frame tent, not inflatable, 1–2 people to erect, no trailer, and no
+venue site of her own. So the venue play became a "backyard venue" on the
+customer's land. A four-variant UI prototype awaits a verdict:
+`offering-model/prototypes/tent-role/index.html`. The open question was whether
+the tent ever goes out without balloons.
 
 **Frontier — takeable now:**
 

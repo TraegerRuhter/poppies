@@ -1,0 +1,31 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { site } from '../site.config';
+
+const home = await getEntry('pages', 'home');
+if (!home) throw new Error('Missing content: src/content/pages/home.md');
+const { Content } = await render(home);
+---
+
+<Base>
+  <section class="hero wrap">
+    {home.data.eyebrow && <p class="eyebrow rise">{home.data.eyebrow}</p>}
+    <h1 class="rise">{site.name}</h1>
+    <p class="lede rise">{home.data.title}</p>
+    <div class="body rise"><Content /></div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: var(--space-5); }
+  .lede {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    margin: 0 0 var(--space-2);
+  }
+  .body { color: var(--ink-muted); max-width: 36rem; }
+  .rise:nth-child(2) { animation-delay: 80ms; }
+  .rise:nth-child(3) { animation-delay: 160ms; }
+  .rise:nth-child(4) { animation-delay: 240ms; }
+</style>

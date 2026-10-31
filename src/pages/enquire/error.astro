@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../site.config';
+---
+
+<Base title="Not sent">
+  <section class="wrap note">
+    <p class="eyebrow">Not sent</p>
+    <h1>Your enquiry didn't go through.</h1>
+    <p>
+      Nothing was sent, so please don't assume we have it.
+      {site.email
+        ? <>Email us directly at <a href={`mailto:${site.email}`}>{site.email}</a>, or try the form again in a little while.</>
+        : <>Please try the form again in a little while.</>}
+    </p>
+    <p><a href="/enquire">Back to the form</a></p>
+  </section>
+</Base>
+
+<style>
+  .note { padding-block: var(--space-5); max-width: 40rem; }
+  .note p { color: var(--ink-muted); }
+</style>

@@ -1,0 +1,49 @@
+@import '@fontsource-variable/fraunces';
+@import '@fontsource-variable/inter';
+@import './tokens.css';
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font: var(--step-0) / 1.6 var(--font-body);
+}
+
+/* No script or handwriting faces anywhere (decisions §8). */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+}
+h1 { font-size: var(--step-3); }
+h2 { font-size: var(--step-2); }
+h3 { font-size: var(--step-1); }
+
+a { color: inherit; }
+
+.wrap {
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* Motion is quiet fades and rises only — nothing bounces, nothing floats. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+.rise { animation: rise var(--rise-duration) var(--ease) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rise { animation: none; }
+}
