@@ -1,4 +1,5 @@
 ---
+description: Who makes these balloon installations, and how each one is designed and built on site on the Oregon coast.
 title: Made by hand, on the coast.
 eyebrow: About
 ---

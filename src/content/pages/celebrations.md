@@ -1,4 +1,5 @@
 ---
+description: Balloon garlands, arches, backdrops and sculpture for birthdays, showers and parties on the Oregon coast.
 title: Colour for the party.
 eyebrow: Celebrations
 lede: Birthdays, showers, graduations — and the backyard party that deserves more than a bunch from the supermarket.

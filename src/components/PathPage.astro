@@ -8,6 +8,7 @@ import Gallery from './Gallery.astro';
 import Services from './Services.astro';
 import { frameFor } from '../lib/photos';
 import { PATHS } from '../lib/paths';
+import { ogImage } from '../lib/og';
 
 interface Props {
   path: keyof typeof PATHS;
@@ -19,13 +20,18 @@ const { path, page } = Astro.props;
 const { temperature, heroSlot } = PATHS[path];
 const entry = await getEntry('pages', page);
 if (!entry) throw new Error(`Missing content: src/content/pages/${page}.md`);
-const { title, eyebrow, lede, cta } = entry.data;
+const { title, eyebrow, lede, cta, description } = entry.data;
 const { Content } = await render(entry);
 const hero = await frameFor(heroSlot);
 const enquire = `/enquire?event=${path}`;
 ---
 
-<Base title={eyebrow ?? title} temperature={temperature}>
+<Base
+  title={eyebrow ?? title}
+  description={description ?? lede ?? title}
+  image={await ogImage(hero)}
+  temperature={temperature}
+>
   <section class="opening wrap">
     <div class="opening-text">
       {eyebrow && <p class="eyebrow rise">{eyebrow}</p>}

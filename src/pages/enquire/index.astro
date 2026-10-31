@@ -25,7 +25,10 @@ const preselected = EVENT_TYPES.some((t) => t.value === event) ? event : null;
 const missing = (params.get('missing') ?? '').split(',').filter((key) => key in LABELS);
 ---
 
-<Base title="Enquire">
+<Base
+  title="Enquire"
+  description="Tell us about your celebration or wedding on the Oregon coast — the date, the place and roughly what you have in mind."
+>
   <section class="wrap enquire">
     <p class="eyebrow">Enquire</p>
     <h1>Tell us about your day.</h1>

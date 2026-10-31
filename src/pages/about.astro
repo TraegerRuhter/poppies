@@ -3,6 +3,7 @@ import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Frame from '../components/Frame.astro';
 import { frameFor } from '../lib/photos';
+import { ogImage } from '../lib/og';
 
 const page = await getEntry('pages', 'about');
 if (!page) throw new Error('Missing content: src/content/pages/about.md');
@@ -12,7 +13,11 @@ const { Content } = await render(page);
 const portrait = await frameFor('about-portrait');
 ---
 
-<Base title={page.data.eyebrow ?? page.data.title}>
+<Base
+  title={page.data.eyebrow ?? page.data.title}
+  description={page.data.description ?? page.data.title}
+  image={await ogImage(portrait)}
+>
   <section class="about wrap">
     <div class="about-frame rise">
       <Frame frame={portrait} sizes="(min-width: 1080px) 440px, 100vw" eager />

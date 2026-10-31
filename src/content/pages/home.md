@@ -1,4 +1,5 @@
 ---
+description: Balloon garlands, arches and sculpture for celebrations and weddings on the Oregon coast, designed for your colours and built on site.
 title: Balloon installations for the Oregon coast
 doorway:
   question: What are you planning?

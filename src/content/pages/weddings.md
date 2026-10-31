@@ -1,4 +1,5 @@
 ---
+description: Ceremony arches, reception garlands and entrances in soft, coastal tones for weddings on the Oregon coast.
 title: Quiet colour for the coast.
 eyebrow: Weddings
 lede: Ceremony arches, reception garlands and entrances, in the softer tones a coastal wedding asks for.

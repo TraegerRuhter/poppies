@@ -10,6 +10,8 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     eyebrow: z.string().optional(),
+    // Search-result and share-preview text for the page (website ticket 07).
+    description: z.string().optional(),
     // Path pages (decisions §7): an opening line under the title and the label
     // on the enquiry button, which carries the path's event type.
     lede: z.string().optional(),

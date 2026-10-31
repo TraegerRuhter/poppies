@@ -5,6 +5,7 @@ import Frame from '../components/Frame.astro';
 import Gallery from '../components/Gallery.astro';
 import { frameFor } from '../lib/photos';
 import { PATHS } from '../lib/paths';
+import { ogImage } from '../lib/og';
 
 const home = await getEntry('pages', 'home');
 if (!home?.data.doorway) throw new Error('Missing doorway content: src/content/pages/home.md');
@@ -19,9 +20,10 @@ const doors = await Promise.all(
   })),
 );
 const homeHero = await frameFor('home-hero');
+const description = home.data.description ?? home.data.title;
 ---
 
-<Base>
+<Base title={home.data.title} description={description} image={await ogImage(homeHero)} localBusiness>
   <!-- The doorway: one question, two paths. -->
   <section class="doorway wrap" aria-labelledby="question">
     <h1 id="question" class="rise">{doorway.question}</h1>
