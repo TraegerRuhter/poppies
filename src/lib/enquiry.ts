@@ -27,6 +27,8 @@ export interface EnquiryDeps {
   mirror: { append(enquiry: Enquiry): Promise<void> };
   log: (message: string) => void;
   limiter: RateLimiter;
+  /** How long the mirror may take before the visitor stops waiting for it. */
+  mirrorTimeoutMs: number;
 }
 
 export const HONEYPOT = 'website';
@@ -75,6 +77,14 @@ function compose(enquiry: Enquiry, to: string[]): EnquiryEmail {
 
 const describe = (error: unknown) => (error instanceof Error ? error.message : String(error));
 
+function withTimeout<T>(work: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error(`timed out after ${ms}ms`)), ms);
+  });
+  return Promise.race([work, timeout]).finally(() => clearTimeout(timer));
+}
+
 const redirect = (location: string) =>
   new Response(null, { status: 303, headers: { location } });
 
@@ -95,19 +105,18 @@ export async function handleEnquiry(request: Request, deps: EnquiryDeps): Promis
   const missing = missingFields(enquiry);
   if (missing.length > 0) return redirect(`/enquire?missing=${missing.join(',')}`);
 
-  try {
-    await deps.mailer.send(compose(enquiry, deps.recipients));
-  } catch (error) {
-    deps.log(`Enquiry email failed: ${describe(error)}`);
+  // The email and the mirror run independently (decisions §6): the mirror still
+  // records an enquiry whose email failed, and a slow or failing mirror is
+  // logged and swallowed, never allowed to block or undo the email.
+  const [sent] = await Promise.allSettled([
+    deps.mailer.send(compose(enquiry, deps.recipients)),
+    withTimeout(deps.mirror.append(enquiry), deps.mirrorTimeoutMs).catch((error) =>
+      deps.log(`Enquiry mirror failed: ${describe(error)}`),
+    ),
+  ]);
+  if (sent.status === 'rejected') {
+    deps.log(`Enquiry email failed: ${describe(sent.reason)}`);
     return redirect('/enquire/error');
-  }
-
-  // The mirror is a convenience: its failure is logged and swallowed, never
-  // allowed to block or undo the email (decisions §6).
-  try {
-    await deps.mirror.append(enquiry);
-  } catch (error) {
-    deps.log(`Enquiry mirror failed: ${describe(error)}`);
   }
 
   return redirect('/enquire/thanks');

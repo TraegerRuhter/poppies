@@ -6,4 +6,4 @@ eyebrow: About
 
 Every installation is designed for the room it goes into and built on site, balloon by balloon — the colours chosen with you, the shape worked out for the space, and everything in place before your guests arrive.
 
-It is careful, physical work, and it is done by the person you speak to when you enquire. No call centre, no hand-off: the conversation about your colours is with the one who will build it.
+It is careful, physical work, and it starts with a conversation: about your colours, the space, and what you would like guests to see when they walk in.

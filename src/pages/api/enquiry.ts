@@ -23,4 +23,5 @@ export const POST: APIRoute = ({ request }) =>
     ),
     log: (message) => console.error(message),
     limiter,
+    mirrorTimeoutMs: 3_000,
   });

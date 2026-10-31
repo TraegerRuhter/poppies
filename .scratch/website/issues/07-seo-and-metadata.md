@@ -49,3 +49,6 @@ to that domain, and uses real 1200×630 crops as share images.
 **Note:** the JSON-LD block is a `<script type="application/ld+json">`. It's
 data and doesn't run, but a naive "no `<script>` tags" check will count it.
 The pages still ship no executable JavaScript.
+
+**2026-10-31 — review fix.** Canonical links always end in `/`, matching the
+sitemap. The on-demand `/enquire` page was producing `/enquire` without one.

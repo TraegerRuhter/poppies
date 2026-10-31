@@ -30,6 +30,7 @@ const aspect = (slot?.data.aspect ?? '4:5').replace(':', ' / ');
     <div class="placeholder" role="img" aria-label="Photograph to come">
       <span class="mark" aria-hidden="true"></span>
       <span class="caption">{slot?.data.title}</span>
+      {slot && <span class="framing">{slot.data.framing}</span>}
     </div>
   )}
 </figure>
@@ -60,5 +61,16 @@ const aspect = (slot?.data.aspect ?? '4:5').replace(':', ' / ');
     font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+  }
+  /* The shot-list note, so an empty slot says what belongs in it. Clamped so
+     it stays quiet in small gallery cells. */
+  .placeholder .framing {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    max-width: 26ch;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 </style>

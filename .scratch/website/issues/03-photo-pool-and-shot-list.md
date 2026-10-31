@@ -55,3 +55,7 @@ To look at a static build locally, serve `.vercel/output/static`.
 **2026-10-31 — phone-layout bug fixed in ticket 06.** The earlier "no collapsed
 cells" check missed a half-row hole on phones (a feature row's second photo sat
 alone). See ticket 06's comments for the fix and the stronger check.
+
+**2026-10-31 — review fix.** Placeholders now show the slot's framing note (the
+ticket asked for it, and only the title was showing), clipped to three lines.
+The phone doorway's compact thumbnails still hide it.

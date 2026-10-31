@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { handleEnquiry, type EnquiryEmail, type Enquiry } from './enquiry';
+import { handleEnquiry, type EnquiryDeps, type EnquiryEmail, type Enquiry } from './enquiry';
 import { createRateLimiter } from './rate-limit';
 
 const OWNER = 'owner@example.com';
@@ -36,12 +36,13 @@ function fakes() {
     sent,
     rows,
     logged,
-    deps: {
+    deps: <EnquiryDeps>{
       recipients: [OWNER, DEVELOPER],
       mailer: { send: async (email: EnquiryEmail) => void sent.push(email) },
       mirror: { append: async (enquiry: Enquiry) => void rows.push(enquiry) },
       log: (message: string) => void logged.push(message),
       limiter: createRateLimiter({ limit: 100, windowMs: 60_000 }),
+      mirrorTimeoutMs: 1_000,
     },
   };
 }
@@ -80,6 +81,30 @@ describe('handleEnquiry', () => {
     expect(response.headers.get('location')).toBe('/enquire/thanks');
     expect(sent).toHaveLength(1);
     expect(logged.join('\n')).toContain('Airtable 503');
+  });
+
+  it('thanks the visitor without waiting on an Airtable that never answers', async () => {
+    const { sent, logged, deps } = fakes();
+    deps.mirrorTimeoutMs = 20;
+    deps.mirror.append = () => new Promise<void>(() => {});
+
+    const response = await handleEnquiry(submission(), deps);
+
+    expect(response.headers.get('location')).toBe('/enquire/thanks');
+    expect(sent).toHaveLength(1);
+    expect(logged.join('\n')).toContain('timed out');
+  });
+
+  it('still records the enquiry in Airtable when the email cannot be sent', async () => {
+    const { rows, deps } = fakes();
+    deps.mailer.send = async () => {
+      throw new Error('Resend 500');
+    };
+
+    const response = await handleEnquiry(submission(), deps);
+
+    expect(response.headers.get('location')).toBe('/enquire/error');
+    expect(rows).toHaveLength(1);
   });
 
   it('sends the visitor to the error page when the email cannot be sent', async () => {

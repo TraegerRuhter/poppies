@@ -29,10 +29,13 @@ const pageTitle = title ? `${title} · ${site.name}` : site.name;
 const area = await getEntry('serviceArea', 'service-area');
 if (!area) throw new Error('Missing content: src/content/service-area.yaml');
 const towns = area.data.towns;
+// A guessed list is flagged while developing, never on the live site.
+const flagProvisional = area.data.provisional && import.meta.env.DEV;
 
 // Absolute URLs come from the configured site, which is set from the
 // environment because the domain is not settled (astro.config.mjs).
-const canonical = new URL(Astro.url.pathname, Astro.site);
+const path = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonical = new URL(path, Astro.site);
 const imageUrl = new URL(image, Astro.site);
 const structuredData = localBusiness && {
   '@context': 'https://schema.org',
@@ -87,6 +90,7 @@ const structuredData = localBusiness && {
       <div class="wrap">
         <p class="area">
           Balloon installations on the Oregon coast — {towns.slice(0, -1).join(', ')}{towns.length > 1 ? ' and ' : ''}{towns.at(-1)}.
+          {flagProvisional && <span class="provisional">provisional — see src/content/service-area.yaml</span>}
         </p>
         <p class="small">
           © {new Date().getFullYear()} {site.name} · <a href="/about">About</a> · <a href="/enquire">Enquire</a>
@@ -133,4 +137,11 @@ const structuredData = localBusiness && {
   .site-footer p { margin: 0; }
   .site-footer .area { color: var(--ink); max-width: 40rem; }
   .site-footer a { color: inherit; }
+  .provisional {
+    margin-left: var(--space-1);
+    padding: 2px 8px;
+    border: 1px dashed var(--support);
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
 </style>

@@ -78,13 +78,7 @@ const missing = (params.get('missing') ?? '').split(',').filter((key) => key in 
       </label>
       <label>
         <span>Budget, if you have one in mind <span class="optional">optional</span></span>
-        <select name="budget">
-          <option value="">Rather not say</option>
-          <option>Under $500</option>
-          <option>$500–$1,000</option>
-          <option>$1,000–$2,500</option>
-          <option>$2,500 or more</option>
-        </select>
+        <input name="budget" placeholder="A rough figure or range is plenty" />
       </label>
 
       <!-- Honeypot: hidden from people and assistive tech; bots fill it. -->

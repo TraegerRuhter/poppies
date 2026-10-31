@@ -36,6 +36,8 @@ export function airtableMirror(token: string | undefined, baseId: string | undef
         {
           method: 'POST',
           headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+          // Abandon the request itself, not just the wait, if Airtable stalls.
+          signal: AbortSignal.timeout(5_000),
           body: JSON.stringify({
             typecast: true,
             records: [

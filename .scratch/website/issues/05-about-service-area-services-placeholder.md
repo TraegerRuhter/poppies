@@ -37,3 +37,13 @@
   `status: live` will appear on the path pages.
 
 Also checked: `/about` has no overflow at 1280px or 390px.
+
+**2026-10-31 — review fixes.**
+
+- **The `provisional` flag is now read.** While developing, the footer shows a
+  dashed "provisional" tag pointing at `service-area.yaml`. Like placeholder
+  services, it never appears on the live site.
+- **The About copy no longer claims she works alone.** The second paragraph
+  now says the work "starts with a conversation" about colours and space.
+- **No invented prices.** The enquiry form's budget bands were removed (see
+  ticket 02).

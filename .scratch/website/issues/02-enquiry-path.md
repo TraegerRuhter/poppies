@@ -61,3 +61,17 @@ up yet.** That's a dashboard step for a person.
 - The budget bands on the form ($500 / $1,000 / $2,500) are invented. Only the
   $500 minimum comes from the pricing research. Revisit when the offering
   model lands.
+
+**2026-10-31 — review fixes.** The spec review found two gaps:
+
+- **A hanging Airtable could still block the visitor.** The handler waited for
+  the mirror and the request had no timeout, so a stalled Airtable would time
+  out the function after the email had gone. The mirror now has a 3-second
+  limit, and the request itself aborts at 5 seconds.
+- **"Independently" was only half true.** The mirror only ran after a
+  successful send. The email and the mirror now run side by side, so a failed
+  email is still recorded in Airtable. The visitor still gets the error page.
+
+Both were fixed test-first; 12 tests now. Also from the review, **the budget
+bands are gone**. They were invented prices (ticket 05 rules those out), so
+budget is now an optional free-text field.
