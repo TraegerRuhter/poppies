@@ -3,7 +3,8 @@
   colour, the poppy accent is used sparingly and never as a large field.
 
   Paths shift temperature within this one palette rather than swapping it:
-  set data-temperature="warm" (celebrations) or "cool" (weddings) on <html>.
+  set data-temperature="warm" (celebrations) or "cool" (weddings) on <html>,
+  or on any element to tint just that part (the doorway cards do this).
   Only the ground, surface and support tones move; ink and accent stay put.
 */
 :root {
@@ -36,14 +37,14 @@
   --rise-duration: 700ms;
 }
 
-:root[data-temperature='warm'] {
+[data-temperature='warm'] {
   --ground: #f8f0e6;
   --surface: #fffaf3;
   --line: #ead9c6;
   --support: #b0713f;
 }
 
-:root[data-temperature='cool'] {
+[data-temperature='cool'] {
   --ground: #f1f2ef;
   --surface: #fbfbf9;
   --line: #d9dedb;

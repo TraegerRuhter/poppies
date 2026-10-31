@@ -1,36 +1,151 @@
 ---
 import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Frame from '../components/Frame.astro';
 import Gallery from '../components/Gallery.astro';
-import { site } from '../site.config';
+import { frameFor } from '../lib/photos';
+import { PATHS } from '../lib/paths';
 
 const home = await getEntry('pages', 'home');
-if (!home) throw new Error('Missing content: src/content/pages/home.md');
+if (!home?.data.doorway) throw new Error('Missing doorway content: src/content/pages/home.md');
+const { doorway } = home.data;
 const { Content } = await render(home);
+
+const doors = await Promise.all(
+  doorway.paths.map(async (path) => ({
+    ...path,
+    ...PATHS[path.key],
+    frame: await frameFor(PATHS[path.key].heroSlot),
+  })),
+);
+const homeHero = await frameFor('home-hero');
 ---
 
 <Base>
-  <section class="hero wrap">
-    {home.data.eyebrow && <p class="eyebrow rise">{home.data.eyebrow}</p>}
-    <h1 class="rise">{site.name}</h1>
-    <p class="lede rise">{home.data.title}</p>
-    <div class="body rise"><Content /></div>
+  <!-- The doorway: one question, two paths. -->
+  <section class="doorway wrap" aria-labelledby="question">
+    <h1 id="question" class="rise">{doorway.question}</h1>
+    <ul class="doors">
+      {doors.map((door) => (
+        <li class="rise">
+          <a class="door" href={door.href} data-temperature={door.temperature}>
+            <Frame frame={door.frame} sizes="(min-width: 1080px) 520px, 100vw" eager />
+            <span class="door-text">
+              <span class="door-label">{door.label}<span class="arrow" aria-hidden="true">→</span></span>
+              <span class="door-blurb">{door.blurb}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <!-- The escape hatch, for anyone who just wants to look or ask. -->
+    <p class="escape rise">
+      {doorway.escape} <a href="#work">See the work</a> or <a href="/enquire">tell us about it</a>.
+    </p>
   </section>
+
+  <!-- An ordinary page underneath, complete on its own. -->
+  <section class="intro wrap" id="work">
+    <div class="intro-frame">
+      <Frame frame={homeHero} sizes="(min-width: 1080px) 640px, 100vw" />
+    </div>
+    <div class="intro-text">
+      <h2>{home.data.title}</h2>
+      <div class="body"><Content /></div>
+    </div>
+  </section>
+
   <section class="wrap work">
     <Gallery />
+  </section>
+
+  <section class="wrap closing">
+    <h2>Planning something?</h2>
+    <p>Tell us the date, the place and roughly what you have in mind.</p>
+    <a class="button" href="/enquire">Start an enquiry</a>
   </section>
 </Base>
 
 <style>
-  .hero { padding-block: var(--space-5); }
-  .work { padding-bottom: var(--space-5); }
-  .lede {
-    font-family: var(--font-display);
-    font-size: var(--step-1);
-    margin: 0 0 var(--space-2);
+  .doorway { padding-block: var(--space-5) var(--space-4); }
+  h1 { margin-bottom: var(--space-4); }
+  .doors {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3);
   }
-  .body { color: var(--ink-muted); max-width: 36rem; }
+  .door {
+    display: grid;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    text-decoration: none;
+    height: 100%;
+    transition: border-color 300ms var(--ease);
+  }
+  .door:hover, .door:focus-visible { border-color: var(--support); }
+  .door:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .door-text { display: grid; gap: 4px; padding: var(--space-3); }
+  .door-label {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .arrow { color: var(--support); transition: transform 300ms var(--ease); }
+  .door:hover .arrow { transform: translateX(4px); }
+  .door-blurb { color: var(--ink-muted); }
+  .escape { margin-top: var(--space-3); color: var(--ink-muted); }
+
+  .intro {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-4);
+    align-items: center;
+    padding-block: var(--space-5);
+  }
+  /* Dividers sit within the content width, not across the side gutters. */
+  .intro, .closing {
+    background: linear-gradient(var(--line), var(--line)) top center / calc(100% - 2 * var(--gutter)) 1px no-repeat;
+  }
+  .body { color: var(--ink-muted); }
+  .work { padding-bottom: var(--space-5); }
+
+  .closing {
+    padding-block: var(--space-5);
+    text-align: center;
+  }
+  .closing p { color: var(--ink-muted); }
+  .button {
+    display: inline-block;
+    margin-top: var(--space-2);
+    padding: 14px 28px;
+    background: var(--ink);
+    color: var(--ground);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 2px;
+  }
+
   .rise:nth-child(2) { animation-delay: 80ms; }
-  .rise:nth-child(3) { animation-delay: 160ms; }
-  .rise:nth-child(4) { animation-delay: 240ms; }
+  .doors .rise:nth-child(2) { animation-delay: 160ms; }
+
+  @media (max-width: 720px) {
+    .doors, .intro { grid-template-columns: 1fr; }
+    /* Both doors must be on screen at once, so they become compact rows. */
+    .doors { gap: var(--space-2); }
+    .door { grid-template-columns: 112px 1fr; }
+    .door :global(.frame) { aspect-ratio: auto !important; height: 100%; min-height: 112px; }
+    .door :global(.placeholder .caption) { display: none; }
+    .door-text { padding: var(--space-2) var(--space-3); align-content: center; }
+    .door-label { font-size: var(--step-1); }
+    .door-blurb { font-size: var(--step--1); line-height: 1.45; }
+    .doorway { padding-top: var(--space-4); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .arrow, .door { transition: none; }
+  }
 </style>

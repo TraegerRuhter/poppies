@@ -10,6 +10,20 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     eyebrow: z.string().optional(),
+    // The homepage doorway (decisions §7): one question, two paths, an escape hatch.
+    doorway: z
+      .object({
+        question: z.string(),
+        paths: z.array(
+          z.object({
+            key: z.enum(['celebration', 'wedding']),
+            label: z.string(),
+            blurb: z.string(),
+          }),
+        ),
+        escape: z.string(),
+      })
+      .optional(),
   }),
 });
 
