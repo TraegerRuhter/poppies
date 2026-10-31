@@ -1,0 +1,52 @@
+/*
+  Design tokens. Decisions §8: warm neutral ground, the photographs supply the
+  colour, the poppy accent is used sparingly and never as a large field.
+
+  Paths shift temperature within this one palette rather than swapping it:
+  set data-temperature="warm" (celebrations) or "cool" (weddings) on <html>,
+  or on any element to tint just that part (the doorway cards do this).
+  Only the ground, surface and support tones move; ink and accent stay put.
+*/
+:root {
+  --ground: #f6f2ec;
+  --surface: #fffdf9;
+  --ink: #2a2622;
+  --ink-muted: #6f675e;
+  --line: #e2dbd1;
+  --support: #8a7d6c;
+  --accent: #d2452f;
+
+  --font-display: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'Inter Variable', system-ui, sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.5rem, 3.4vw, 2.2rem);
+  --step-3: clamp(2rem, 5vw, 3.4rem);
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --gutter: 16px;
+  --measure: 1080px;
+
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --rise-duration: 700ms;
+}
+
+[data-temperature='warm'] {
+  --ground: #f8f0e6;
+  --surface: #fffaf3;
+  --line: #ead9c6;
+  --support: #b0713f;
+}
+
+[data-temperature='cool'] {
+  --ground: #f1f2ef;
+  --surface: #fbfbf9;
+  --line: #d9dedb;
+  --support: #47646b;
+}

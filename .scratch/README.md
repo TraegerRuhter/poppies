@@ -10,18 +10,30 @@ exists yet** — the repo holds skills, agent config, and the planning below.
 
 Two efforts are live.
 
-### 1. The website — direction settled, build not started
+### 1. The website — built, waiting on people and content
 
-`website/decisions.md`
+`website/decisions.md`, `website/issues/` (01–07, **all done**)
 
-Eleven questions of `/grilling` settled the technical and design direction:
-Astro on Vercel, static, inquiry form only (no booking calendar), email as the
-source of truth with Airtable as a convenience mirror, a doorway homepage with
-Celebrations and Weddings paths, gallery-wall aesthetic.
+Astro 7 on Vercel, deployed from this branch (project `poppies`). The site has:
+the doorway homepage, the Celebrations and Weddings paths, About, the enquiry
+form, the photo pool, `/shot-list`, and SEO. Each ticket's `## Comments` records
+what was built and how it was checked. Local builds need **Node 24**.
 
-**Deliberately not a spec.** The site's *content* decisions — what services
-exist, how they are packaged and priced — are blocked on effort 2. Run
-`/to-spec` once the offering model lands.
+**Blocked on people, not code:**
+
+- **Enquiry form:** set `RESEND_API_KEY` and `ENQUIRY_TO` (and the optional
+  Airtable trio) in Vercel, and add a Vercel Firewall rate-limit rule on
+  `/api/enquiry`. Until then every enquiry lands on the error page, by design.
+- **Photos:** none exist. Every slot shows a placeholder. Work from
+  `/shot-list`.
+- **Copy:** all page copy and shot-list framing notes are drafts in her absence.
+  About assumes she works alone (checklist Q7). The footer towns are
+  provisional (Q5).
+- **Domain:** once bought, set `SITE_URL` in Vercel, verify the domain in Resend
+  and set `ENQUIRY_FROM`, and set `site.email`.
+
+The site's *content* — services, packaging, prices — is still blocked on
+effort 2. The services collection holds a dev-only placeholder until then.
 
 ### 2. The offering model — charted, 2 of 9 tickets resolved
 
@@ -39,6 +51,13 @@ constraint recorded in the map's Notes.
 
 Resolved: both research tickets (pricing benchmarks, packaging patterns). Full
 findings under `offering-model/research/`.
+
+Ticket 07 (the tent) is **in progress, paused**. Facts settled by grilling: a
+20×40 ft frame tent, not inflatable, 1–2 people to erect, no trailer, and no
+venue site of her own. So the venue play became a "backyard venue" on the
+customer's land. A four-variant UI prototype awaits a verdict:
+`offering-model/prototypes/tent-role/index.html`. The open question was whether
+the tent ever goes out without balloons.
 
 **Frontier — takeable now:**
 

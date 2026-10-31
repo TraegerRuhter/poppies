@@ -1,0 +1,76 @@
+---
+import { Picture } from 'astro:assets';
+import type { Frame } from '../lib/photos';
+
+interface Props {
+  frame: Frame;
+  /** Fill the parent's box (gallery rows) instead of keeping the slot's aspect. */
+  fill?: boolean;
+  sizes?: string;
+  eager?: boolean;
+}
+
+const { frame, fill = false, sizes = '100vw', eager = false } = Astro.props;
+const { slot, photo } = frame;
+const aspect = (slot?.data.aspect ?? '4:5').replace(':', ' / ');
+---
+
+<figure class:list={['frame', { fill }]} style={fill ? undefined : `aspect-ratio: ${aspect}`}>
+  {photo ? (
+    <Picture
+      src={photo.data.image}
+      alt={photo.data.alt}
+      formats={['avif', 'webp']}
+      widths={[480, 800, 1200, 1600]}
+      sizes={sizes}
+      loading={eager ? 'eager' : 'lazy'}
+    />
+  ) : (
+    /* An unfilled slot: a deliberate quiet panel, never a broken hole. */
+    <div class="placeholder" role="img" aria-label="Photograph to come">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="caption">{slot?.data.title}</span>
+      {slot && <span class="framing">{slot.data.framing}</span>}
+    </div>
+  )}
+</figure>
+
+<style>
+  .frame { margin: 0; overflow: hidden; background: var(--surface); }
+  .frame.fill { height: 100%; }
+  .frame :global(picture), .frame :global(img) { display: block; width: 100%; height: 100%; }
+  .frame :global(img) { object-fit: cover; }
+  .placeholder {
+    height: 100%;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border: 1px solid var(--line);
+    color: var(--ink-muted);
+    text-align: center;
+  }
+  .placeholder .mark {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid var(--support);
+  }
+  .placeholder .caption {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  /* The shot-list note, so an empty slot says what belongs in it. Clamped so
+     it stays quiet in small gallery cells. */
+  .placeholder .framing {
+    font-size: 0.78rem;
+    line-height: 1.45;
+    max-width: 26ch;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

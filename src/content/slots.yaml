@@ -1,0 +1,87 @@
+# The shot list (website ticket 03). Each slot is a photograph the site is
+# designed around. A slot with no photo renders as a quiet placeholder, and
+# /shot-list prints this file as a checklist for the photo session.
+#
+# Framing that applies to every slot (decisions §2): shoot before guests arrive,
+# in daylight, against a clean background. A modern phone is enough.
+#
+# role:     hero | portrait | gallery
+# register: celebration | wedding | both — which doorway path the slot serves
+# aspect:   3:2 | 4:5 | 1:1 | 16:9
+
+- id: home-hero
+  title: Homepage hero
+  role: hero
+  register: both
+  aspect: '3:2'
+  framing: Your single strongest installation, wide, whole piece in frame with room around it. Not character work.
+
+- id: celebrations-hero
+  title: Celebrations hero
+  role: hero
+  register: celebration
+  aspect: '3:2'
+  framing: A colourful party installation — a backdrop or arch — shot straight on, nothing else in the room competing.
+
+- id: weddings-hero
+  title: Weddings hero
+  role: hero
+  register: wedding
+  aspect: '3:2'
+  framing: The calmest, most muted piece you have, outdoors if possible, soft overcast light. It sets the wedding tone even without a wedding.
+
+- id: about-portrait
+  title: About — the person
+  role: portrait
+  register: both
+  aspect: '4:5'
+  framing: You, at work, mid-build, hands in frame. Natural light, face visible, looking at the work rather than the camera.
+
+- id: arch-wide
+  title: An arch, whole
+  role: gallery
+  register: both
+  aspect: '4:5'
+  framing: Full arch from top to floor, step back far enough that nothing is cropped.
+
+- id: garland-detail
+  title: Garland, close
+  role: gallery
+  register: both
+  aspect: '1:1'
+  framing: Fill the frame with the garland's texture — the mix of balloon sizes is the craft. No background.
+
+- id: sculpture
+  title: A sculpture
+  role: gallery
+  register: celebration
+  aspect: '4:5'
+  framing: One figure piece on a plain wall or floor. Character pieces are fine here, never in a hero.
+
+- id: table-run
+  title: A table or mantel run
+  role: gallery
+  register: both
+  aspect: '3:2'
+  framing: A long, low garland along a table or mantel, shot from slightly above, table bare of food.
+
+- id: entrance
+  title: An entrance
+  role: gallery
+  register: both
+  aspect: '4:5'
+  framing: An installation framing a doorway or path, shot from where a guest would arrive.
+
+- id: colour-study
+  title: Colour, close
+  role: gallery
+  register: both
+  aspect: '1:1'
+  framing: A tight crop on a colour palette you are proud of. This is the image that sells the colours.
+
+- id: ceremony-piece
+  title: A ceremony-style piece
+  role: gallery
+  register: wedding
+  aspect: '4:5'
+  framing: Anything that could stand at a ceremony — an arch or column pair in whites, creams or muted tones. A styled setup is fine.

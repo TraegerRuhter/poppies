@@ -1,0 +1,13 @@
+# The towns named in the footer (decisions §7): for local search, and to head off
+# quotes from three hours inland.
+#
+# PROVISIONAL. Her real travel radius is unknown (offering-model ticket 03,
+# question 5). This is a placeholder list for the central coast — replace it
+# with what she actually serves.
+provisional: true
+towns:
+  - Lincoln City
+  - Depoe Bay
+  - Newport
+  - Waldport
+  - Yachats

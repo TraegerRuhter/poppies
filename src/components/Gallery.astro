@@ -1,0 +1,54 @@
+---
+import Frame from './Frame.astro';
+import { galleryFrames, galleryRows } from '../lib/photos';
+import type { PathKey } from '../lib/paths';
+
+interface Props {
+  register?: PathKey;
+}
+
+const frames = await galleryFrames(Astro.props.register);
+const layout = galleryRows(frames);
+---
+
+<div class="gallery">
+  {layout.map((row) => (
+    <div class:list={['row', row.kind]}>
+      {row.items.map((frame, i) => (
+        <div class="cell">
+          <Frame
+            frame={frame}
+            fill
+            sizes={row.kind === 'single' || (row.kind === 'feature' && i === 0)
+              ? '(min-width: 1080px) 720px, 100vw'
+              : '(min-width: 1080px) 360px, 50vw'}
+          />
+        </div>
+      ))}
+    </div>
+  ))}
+</div>
+
+<style>
+  /* Every row fills its width at a fixed proportion, so the wall never shows a
+     gap whatever the photo count; photos crop to the cell. */
+  .gallery { display: grid; gap: 12px; }
+  .row { display: grid; gap: 12px; }
+  .feature { grid-template-columns: 2fr 1fr; aspect-ratio: 2.1; }
+  .pair { grid-template-columns: 1fr 1fr; aspect-ratio: 2; }
+  .trio { grid-template-columns: 1fr 1fr 1fr; aspect-ratio: 2.4; }
+  .single { grid-template-columns: 1fr; aspect-ratio: 16 / 9; }
+  .cell { min-height: 0; }
+
+  @media (max-width: 640px) {
+    .row { aspect-ratio: auto; grid-template-columns: 1fr 1fr; }
+    .cell { aspect-ratio: 4 / 5; }
+    /* Spanning only where the remainder still pairs up: a trio leads with one
+       wide photo then two, a single goes full width. Feature and pair rows
+       are two side by side, so no cell is ever left alone in half a row. */
+    .single .cell, .trio .cell:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 3 / 2;
+    }
+  }
+</style>

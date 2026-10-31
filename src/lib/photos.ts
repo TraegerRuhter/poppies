@@ -1,0 +1,103 @@
+import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
+
+export type Slot = CollectionEntry<'slots'>;
+export type Photo = CollectionEntry<'photos'>;
+import type { PathKey } from './paths';
+
+// A position in a layout: a photo, or the slot it is waiting to be filled for.
+export interface Frame {
+  slot?: Slot;
+  photo?: Photo;
+}
+
+const byOrder = (a: Slot, b: Slot) => a.data.order - b.data.order;
+
+const serves = (entryRegister: string, register?: PathKey) =>
+  !register || entryRegister === 'both' || entryRegister === register;
+
+/**
+ * Content checks that fail the build rather than render something quietly
+ * wrong: a slot must exist, a slot holds one photo, a path-specific slot only
+ * takes photos for that path, and character work never fills a hero.
+ */
+async function checkedPhotos(): Promise<Photo[]> {
+  const photos = await getCollection('photos');
+  const slots = new Map((await getCollection('slots')).map((s) => [s.id, s]));
+  const taken = new Map<string, string>();
+  for (const photo of photos) {
+    const slotId = photo.data.slot?.id;
+    if (!slotId) continue;
+    const slot = slots.get(slotId);
+    if (!slot) throw new Error(`Photo "${photo.id}" names unknown slot "${slotId}" — see src/content/slots.yaml`);
+    const other = taken.get(slotId);
+    if (other) throw new Error(`Photos "${other}" and "${photo.id}" both claim slot "${slotId}".`);
+    taken.set(slotId, photo.id);
+    if (slot.data.register !== 'both' && photo.data.register !== 'both' && photo.data.register !== slot.data.register) {
+      throw new Error(
+        `Photo "${photo.id}" is registered "${photo.data.register}" but slot "${slotId}" is for "${slot.data.register}".`,
+      );
+    }
+    if (slot.data.role === 'hero' && photo.data.licensedCharacter) {
+      throw new Error(
+        `Photo "${photo.id}" is licensed-character work and cannot fill hero slot "${slotId}" (decisions §2).`,
+      );
+    }
+  }
+  return photos;
+}
+
+/** The photo assigned to a slot. */
+export async function frameFor(slotId: string): Promise<Frame> {
+  const slot = await getEntry('slots', slotId);
+  if (!slot) throw new Error(`Unknown slot "${slotId}" — see src/content/slots.yaml`);
+  const photo = (await checkedPhotos()).find((p) => p.data.slot?.id === slotId);
+  return { slot, photo };
+}
+
+/**
+ * A gallery for one register, or for everything. Gallery slots come first, in
+ * shot-list order, as placeholders until filled; then every other photo for the
+ * register that is not already the hero or portrait somewhere.
+ */
+export async function galleryFrames(register?: PathKey): Promise<Frame[]> {
+  const allSlots = await getCollection('slots');
+  const slots = allSlots
+    .filter((s) => s.data.role === 'gallery' && serves(s.data.register, register))
+    .sort(byOrder);
+  const photos = (await checkedPhotos()).filter((p) => serves(p.data.register, register));
+  const slotRoles = new Map(allSlots.map((s) => [s.id, s.data.role]));
+
+  const placed = new Set<string>();
+  const frames: Frame[] = slots.map((slot) => {
+    const photo = photos.find((p) => p.data.slot?.id === slot.id);
+    if (photo) placed.add(photo.id);
+    return { slot, photo };
+  });
+  for (const photo of photos) {
+    const role = photo.data.slot && slotRoles.get(photo.data.slot.id);
+    if (placed.has(photo.id) || role === 'hero' || role === 'portrait') continue;
+    frames.push({ photo });
+  }
+  return frames;
+}
+
+export type RowKind = 'feature' | 'pair' | 'trio' | 'single';
+
+/**
+ * Splits a gallery into rows that always fill: no row is ever left with a gap.
+ * Alternates a feature row (one large, one small) with a row of three; small
+ * remainders become a pair or a closing single.
+ */
+export function galleryRows<T>(items: T[]): { kind: RowKind; items: T[] }[] {
+  const out: { kind: RowKind; items: T[] }[] = [];
+  let i = 0;
+  while (i < items.length) {
+    const left = items.length - i;
+    const even = out.length % 2 === 0;
+    const size = left <= 3 ? left : left === 4 ? 2 : even ? 2 : 3;
+    const kind: RowKind = size === 1 ? 'single' : size === 3 ? 'trio' : even ? 'feature' : 'pair';
+    out.push({ kind, items: items.slice(i, i + size) });
+    i += size;
+  }
+  return out;
+}
