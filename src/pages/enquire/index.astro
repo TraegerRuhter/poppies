@@ -1,0 +1,137 @@
+---
+import Base from '../../layouts/Base.astro';
+import { HONEYPOT } from '../../lib/enquiry';
+
+// On demand, so the paths can link in with ?event= and a bounced submission
+// can say what was missing, with no client-side JavaScript.
+export const prerender = false;
+
+const EVENT_TYPES = [
+  { value: 'celebration', label: 'A birthday or celebration' },
+  { value: 'wedding', label: 'A wedding' },
+  { value: 'other', label: 'Something else' },
+];
+const LABELS: Record<string, string> = {
+  name: 'your name',
+  email: 'an email address we can reply to',
+  date: 'the date',
+  town: 'the town or venue',
+  eventType: 'what you are planning',
+};
+
+const params = Astro.url.searchParams;
+const event = params.get('event');
+const preselected = EVENT_TYPES.some((t) => t.value === event) ? event : null;
+const missing = (params.get('missing') ?? '').split(',').filter((key) => key in LABELS);
+---
+
+<Base title="Enquire">
+  <section class="wrap enquire">
+    <p class="eyebrow">Enquire</p>
+    <h1>Tell us about your day.</h1>
+    <p class="intro">A few details help us come back with something useful. We reply to every enquiry.</p>
+
+    {missing.length > 0 && (
+      <p class="notice" role="alert">
+        We still need {missing.map((key) => LABELS[key]).join(', ')}.
+      </p>
+    )}
+
+    <form method="post" action="/api/enquiry">
+      <label>
+        Your name
+        <input name="name" autocomplete="name" required />
+      </label>
+      <label>
+        Email
+        <input name="email" type="email" autocomplete="email" required />
+      </label>
+      <label>
+        What are you planning?
+        <select name="eventType" required>
+          {!preselected && <option value="">Choose one</option>}
+          {EVENT_TYPES.map((t) => (
+            <option value={t.value} selected={t.value === preselected}>{t.label}</option>
+          ))}
+        </select>
+      </label>
+      <div class="pair">
+        <label>
+          Date
+          <input name="date" type="date" required />
+        </label>
+        <label>
+          Town or venue
+          <input name="town" required />
+        </label>
+      </div>
+      <label>
+        <span>Roughly how big? <span class="optional">optional</span></span>
+        <input name="scale" placeholder="A garland for the cake table, an arch for the ceremony…" />
+      </label>
+      <label>
+        <span>Colours <span class="optional">optional</span></span>
+        <input name="colours" placeholder="Sage and cream, or “not sure yet”" />
+      </label>
+      <label>
+        <span>Budget, if you have one in mind <span class="optional">optional</span></span>
+        <select name="budget">
+          <option value="">Rather not say</option>
+          <option>Under $500</option>
+          <option>$500–$1,000</option>
+          <option>$1,000–$2,500</option>
+          <option>$2,500 or more</option>
+        </select>
+      </label>
+
+      <!-- Honeypot: hidden from people and assistive tech; bots fill it. -->
+      <div class="hp" aria-hidden="true">
+        <label>Leave this empty <input name={HONEYPOT} tabindex="-1" autocomplete="off" /></label>
+      </div>
+
+      <button type="submit">Send enquiry</button>
+    </form>
+  </section>
+</Base>
+
+<style>
+  .enquire { padding-block: var(--space-5); max-width: 40rem; }
+  .intro { color: var(--ink-muted); margin-bottom: var(--space-4); }
+  .notice {
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    padding: var(--space-2) var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+  form { display: grid; gap: var(--space-3); }
+  label { display: grid; gap: 6px; font-size: var(--step--1); font-weight: 500; }
+  .optional { font-weight: 400; color: var(--ink-muted); }
+  input, select {
+    font: inherit;
+    font-size: var(--step-0);
+    font-weight: 400;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink);
+    border-radius: 2px;
+  }
+  input:focus-visible, select:focus-visible, button:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  @media (max-width: 520px) { .pair { grid-template-columns: 1fr; } }
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  button {
+    justify-self: start;
+    font: inherit;
+    font-weight: 500;
+    padding: 14px 28px;
+    background: var(--ink);
+    color: var(--ground);
+    border: 0;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+</style>
