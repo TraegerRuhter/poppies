@@ -1,17 +1,5 @@
 ---
-// Stub until website ticket 06 builds the Weddings path.
-import Base from '../layouts/Base.astro';
+import PathPage from '../components/PathPage.astro';
 ---
 
-<Base title="Weddings" temperature="cool">
-  <section class="wrap stub">
-    <p class="eyebrow">Weddings</p>
-    <h1>More here soon.</h1>
-    <p>In the meantime, <a href="/enquire?event=wedding">tell us what you're planning</a>.</p>
-  </section>
-</Base>
-
-<style>
-  .stub { padding-block: var(--space-5); }
-  .stub p:last-child { color: var(--ink-muted); }
-</style>
+<PathPage path="wedding" page="weddings" />

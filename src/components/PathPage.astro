@@ -1,0 +1,98 @@
+---
+// One doorway path (website ticket 06): its own temperature, hero and copy,
+// with a gallery filtered from the shared photo pool by register.
+import { getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Frame from './Frame.astro';
+import Gallery from './Gallery.astro';
+import { frameFor } from '../lib/photos';
+import { PATHS } from '../lib/paths';
+
+interface Props {
+  path: keyof typeof PATHS;
+  /** Content entry in src/content/pages. */
+  page: string;
+}
+
+const { path, page } = Astro.props;
+const { temperature, heroSlot } = PATHS[path];
+const entry = await getEntry('pages', page);
+if (!entry) throw new Error(`Missing content: src/content/pages/${page}.md`);
+const { title, eyebrow, lede, cta } = entry.data;
+const { Content } = await render(entry);
+const hero = await frameFor(heroSlot);
+const enquire = `/enquire?event=${path}`;
+---
+
+<Base title={eyebrow ?? title} temperature={temperature}>
+  <section class="opening wrap">
+    <div class="opening-text">
+      {eyebrow && <p class="eyebrow rise">{eyebrow}</p>}
+      <h1 class="rise">{title}</h1>
+      {lede && <p class="lede rise">{lede}</p>}
+      <a class="button rise" href={enquire}>{cta ?? 'Start an enquiry'}</a>
+    </div>
+    <div class="opening-frame rise">
+      <Frame frame={hero} sizes="(min-width: 1080px) 560px, 100vw" eager />
+    </div>
+  </section>
+
+  <section class="copy wrap">
+    <div class="prose"><Content /></div>
+  </section>
+
+  <section class="work wrap" aria-labelledby="work-heading">
+    <h2 id="work-heading">Recent work</h2>
+    <Gallery register={path} />
+  </section>
+
+  <section class="closing wrap">
+    <h2>Tell us what you're planning.</h2>
+    <p>The date, the place, and roughly what you have in mind is plenty to start.</p>
+    <a class="button" href={enquire}>{cta ?? 'Start an enquiry'}</a>
+  </section>
+</Base>
+
+<style>
+  .opening {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-4);
+    align-items: center;
+    padding-block: var(--space-5);
+  }
+  .lede { font-size: var(--step-1); color: var(--ink-muted); max-width: 32rem; }
+  .button {
+    display: inline-block;
+    margin-top: var(--space-2);
+    padding: 14px 28px;
+    background: var(--ink);
+    color: var(--ground);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 2px;
+  }
+  .button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  .copy, .work, .closing {
+    padding-block: var(--space-5);
+    background: linear-gradient(var(--line), var(--line)) top center / calc(100% - 2 * var(--gutter)) 1px no-repeat;
+  }
+  .prose { max-width: 38rem; }
+  .prose :global(ul) { padding-left: 1.1em; margin: 0 0 var(--space-3); }
+  .prose :global(li) { margin-bottom: var(--space-1); }
+  .prose :global(li)::marker { color: var(--support); }
+  .prose :global(p) { color: var(--ink-muted); }
+  .work h2 { margin-bottom: var(--space-3); }
+  .closing { text-align: center; }
+  .closing p { color: var(--ink-muted); }
+
+  .opening-text .rise:nth-child(2) { animation-delay: 80ms; }
+  .opening-text .rise:nth-child(3) { animation-delay: 160ms; }
+  .opening-text .rise:nth-child(4) { animation-delay: 240ms; }
+  .opening-frame { animation-delay: 160ms; }
+
+  @media (max-width: 720px) {
+    .opening { grid-template-columns: 1fr; padding-top: var(--space-4); }
+  }
+</style>

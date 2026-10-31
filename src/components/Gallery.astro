@@ -42,7 +42,10 @@ const layout = rows(frames);
   @media (max-width: 640px) {
     .row { aspect-ratio: auto; grid-template-columns: 1fr 1fr; }
     .cell { aspect-ratio: 4 / 5; }
-    .feature .cell:first-child, .single .cell, .trio .cell:first-child {
+    /* Spanning only where the remainder still pairs up: a trio leads with one
+       wide photo then two, a single goes full width. Feature and pair rows
+       are two side by side, so no cell is ever left alone in half a row. */
+    .single .cell, .trio .cell:first-child {
       grid-column: 1 / -1;
       aspect-ratio: 3 / 2;
     }

@@ -10,6 +10,10 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     eyebrow: z.string().optional(),
+    // Path pages (decisions §7): an opening line under the title and the label
+    // on the enquiry button, which carries the path's event type.
+    lede: z.string().optional(),
+    cta: z.string().optional(),
     // The homepage doorway (decisions §7): one question, two paths, an escape hatch.
     doorway: z
       .object({
