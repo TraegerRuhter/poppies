@@ -5,6 +5,7 @@ import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Frame from './Frame.astro';
 import Gallery from './Gallery.astro';
+import Services from './Services.astro';
 import { frameFor } from '../lib/photos';
 import { PATHS } from '../lib/paths';
 
@@ -39,6 +40,7 @@ const enquire = `/enquire?event=${path}`;
 
   <section class="copy wrap">
     <div class="prose"><Content /></div>
+    <Services />
   </section>
 
   <section class="work wrap" aria-labelledby="work-heading">

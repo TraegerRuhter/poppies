@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getEntry } from 'astro:content';
 import { site } from '../site.config';
 
 interface Props {
@@ -11,6 +12,9 @@ interface Props {
 
 const { title, temperature, noindex = false } = Astro.props;
 const pageTitle = title ? `${title} · ${site.name}` : site.name;
+const area = await getEntry('serviceArea', 'service-area');
+if (!area) throw new Error('Missing content: src/content/service-area.yaml');
+const towns = area.data.towns;
 ---
 
 <!doctype html>
@@ -28,6 +32,7 @@ const pageTitle = title ? `${title} · ${site.name}` : site.name;
         <nav aria-label="Main">
           <a href="/celebrations">Celebrations</a>
           <a href="/weddings">Weddings</a>
+          <a href="/about">About</a>
           <a href="/enquire">Enquire</a>
         </nav>
       </div>
@@ -36,7 +41,14 @@ const pageTitle = title ? `${title} · ${site.name}` : site.name;
       <slot />
     </main>
     <footer class="site-footer">
-      <div class="wrap">© {new Date().getFullYear()} {site.name}</div>
+      <div class="wrap">
+        <p class="area">
+          Balloon installations on the Oregon coast — {towns.slice(0, -1).join(', ')}{towns.length > 1 ? ' and ' : ''}{towns.at(-1)}.
+        </p>
+        <p class="small">
+          © {new Date().getFullYear()} {site.name} · <a href="/about">About</a> · <a href="/enquire">Enquire</a>
+        </p>
+      </div>
     </footer>
   </body>
 </html>
@@ -74,5 +86,8 @@ const pageTitle = title ? `${title} · ${site.name}` : site.name;
     color: var(--ink-muted);
     font-size: var(--step--1);
   }
-  .site-footer .wrap { padding-block: var(--space-4); }
+  .site-footer .wrap { padding-block: var(--space-4); display: grid; gap: var(--space-1); }
+  .site-footer p { margin: 0; }
+  .site-footer .area { color: var(--ink); max-width: 40rem; }
+  .site-footer a { color: inherit; }
 </style>

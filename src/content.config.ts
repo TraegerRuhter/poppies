@@ -66,4 +66,27 @@ const photos = defineCollection({
     }),
 });
 
-export const collections = { pages, slots, photos };
+// The service menu. Blocked on the offering model, so it holds one placeholder;
+// placeholders render in development only, never on the live site.
+const services = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    status: z.enum(['placeholder', 'live']),
+  }),
+});
+
+// The footer's service-area towns. Marked provisional until her travel radius
+// is known.
+const serviceArea = defineCollection({
+  loader: file('src/content/service-area.yaml', {
+    parser: (text) => [{ id: 'service-area', ...(parse(text) as object) }],
+  }),
+  schema: z.object({
+    provisional: z.boolean(),
+    towns: z.array(z.string()).min(1),
+  }),
+});
+
+export const collections = { pages, slots, photos, services, serviceArea };
