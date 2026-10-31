@@ -10,23 +10,30 @@ exists yet** — the repo holds skills, agent config, and the planning below.
 
 Two efforts are live.
 
-### 1. The website — ticketed, build not started
+### 1. The website — built, waiting on people and content
 
-`website/decisions.md`
+`website/decisions.md`, `website/issues/` (01–07, **all done**)
 
-Eleven questions of `/grilling` settled the technical and design direction:
-Astro on Vercel, static, inquiry form only (no booking calendar), email as the
-source of truth with Airtable as a convenience mirror, a doorway homepage with
-Celebrations and Weddings paths, gallery-wall aesthetic.
+Astro 7 on Vercel, deployed from this branch (project `poppies`). The site has:
+the doorway homepage, the Celebrations and Weddings paths, About, the enquiry
+form, the photo pool, `/shot-list`, and SEO. Each ticket's `## Comments` records
+what was built and how it was checked. Local builds need **Node 24**.
 
-**The content-free shell is ticketed** under `website/issues/` (01–07): skeleton
-on Vercel, the enquiry path, the photo pool and shot list, the doorway, About and
-service area, the two paths, and SEO. Ticketed straight from the decisions record
-with no spec. **Start with 01**; 02–05 open up once it lands.
+**Blocked on people, not code:**
 
-The site's *content* — what services exist, how they are packaged and priced —
-is still blocked on effort 2. Ticket 05 holds a single placeholder service until
-the offering model lands.
+- **Enquiry form:** set `RESEND_API_KEY` and `ENQUIRY_TO` (and the optional
+  Airtable trio) in Vercel, and add a Vercel Firewall rate-limit rule on
+  `/api/enquiry`. Until then every enquiry lands on the error page, by design.
+- **Photos:** none exist. Every slot shows a placeholder. Work from
+  `/shot-list`.
+- **Copy:** all page copy and shot-list framing notes are drafts in her absence.
+  About assumes she works alone (checklist Q7). The footer towns are
+  provisional (Q5).
+- **Domain:** once bought, set `SITE_URL` in Vercel, verify the domain in Resend
+  and set `ENQUIRY_FROM`, and set `site.email`.
+
+The site's *content* — services, packaging, prices — is still blocked on
+effort 2. The services collection holds a dev-only placeholder until then.
 
 ### 2. The offering model — charted, 2 of 9 tickets resolved
 
