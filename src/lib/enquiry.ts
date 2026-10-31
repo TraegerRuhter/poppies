@@ -3,16 +3,22 @@
 
 import type { RateLimiter } from './rate-limit';
 
-export interface Enquiry {
-  name: string;
-  email: string;
-  date: string;
-  town: string;
-  eventType: string;
-  scale: string;
-  colours: string;
-  budget: string;
-}
+// Every enquiry field in one place: its form name, its label in the email, its
+// Airtable column, how the form asks for it when missing (null if optional),
+// and what the email shows when it is left blank. Budget especially is soft
+// (decisions §3).
+export const FIELDS = [
+  { key: 'name', label: 'Name', column: 'Name', missing: 'your name', blank: '' },
+  { key: 'email', label: 'Email', column: 'Email', missing: 'an email address we can reply to', blank: '' },
+  { key: 'date', label: 'Date', column: 'Date', missing: 'the date', blank: '' },
+  { key: 'town', label: 'Town or venue', column: 'Town', missing: 'the town or venue', blank: '' },
+  { key: 'eventType', label: 'Event', column: 'Event', missing: 'what you are planning', blank: '' },
+  { key: 'scale', label: 'Scale', column: 'Scale', missing: null, blank: '—' },
+  { key: 'colours', label: 'Colours', column: 'Colours', missing: null, blank: '—' },
+  { key: 'budget', label: 'Budget', column: 'Budget', missing: null, blank: 'not given' },
+] as const;
+
+export type Enquiry = Record<(typeof FIELDS)[number]['key'], string>;
 
 export interface EnquiryEmail {
   to: string[];
@@ -33,40 +39,20 @@ export interface EnquiryDeps {
 
 export const HONEYPOT = 'website';
 
-// Everything else is optional; budget especially is soft (decisions §3).
-const REQUIRED = ['name', 'email', 'date', 'town', 'eventType'] as const;
-
 function missingFields(enquiry: Enquiry): string[] {
-  return REQUIRED.filter((key) =>
-    key === 'email' ? !/^[^\s@]+@[^\s@]+$/.test(enquiry.email) : enquiry[key] === '',
-  );
+  return FIELDS.filter((f) => f.missing !== null)
+    .filter((f) => (f.key === 'email' ? !/^[^\s@]+@[^\s@]+$/.test(enquiry.email) : enquiry[f.key] === ''))
+    .map((f) => f.key);
 }
 
 function readEnquiry(form: FormData): Enquiry {
-  const field = (name: string) => String(form.get(name) ?? '').trim();
-  return {
-    name: field('name'),
-    email: field('email'),
-    date: field('date'),
-    town: field('town'),
-    eventType: field('eventType'),
-    scale: field('scale'),
-    colours: field('colours'),
-    budget: field('budget'),
-  };
+  return Object.fromEntries(
+    FIELDS.map((f) => [f.key, String(form.get(f.key) ?? '').trim()]),
+  ) as Enquiry;
 }
 
 function compose(enquiry: Enquiry, to: string[]): EnquiryEmail {
-  const lines = [
-    `Name: ${enquiry.name}`,
-    `Email: ${enquiry.email}`,
-    `Date: ${enquiry.date}`,
-    `Town or venue: ${enquiry.town}`,
-    `Event: ${enquiry.eventType}`,
-    `Scale: ${enquiry.scale || '—'}`,
-    `Colours: ${enquiry.colours || '—'}`,
-    `Budget: ${enquiry.budget || 'not given'}`,
-  ];
+  const lines = FIELDS.map((f) => `${f.label}: ${enquiry[f.key] || f.blank}`);
   return {
     to,
     replyTo: enquiry.email,

@@ -1,13 +1,14 @@
 ---
 import Frame from './Frame.astro';
-import { galleryFrames, rows, type Register } from '../lib/photos';
+import { galleryFrames, galleryRows } from '../lib/photos';
+import type { PathKey } from '../lib/paths';
 
 interface Props {
-  register?: Register;
+  register?: PathKey;
 }
 
 const frames = await galleryFrames(Astro.props.register);
-const layout = rows(frames);
+const layout = galleryRows(frames);
 ---
 
 <div class="gallery">

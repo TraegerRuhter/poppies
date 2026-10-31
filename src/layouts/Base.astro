@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { getEntry } from 'astro:content';
 import { site } from '../site.config';
 import { DEFAULT_OG } from '../lib/og';
+import type { Temperature } from '../lib/paths';
 
 interface Props {
   title?: string;
@@ -12,7 +13,7 @@ interface Props {
   image?: string;
   /** Mark this page as the business's home, with LocalBusiness structured data. */
   localBusiness?: boolean;
-  temperature?: 'warm' | 'cool';
+  temperature?: Temperature;
   /** Keep a working page (e.g. the shot list) out of search results. */
   noindex?: boolean;
 }

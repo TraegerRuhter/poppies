@@ -47,7 +47,7 @@ const description = home.data.description ?? home.data.title;
   </section>
 
   <!-- An ordinary page underneath, complete on its own. -->
-  <section class="intro wrap" id="work">
+  <section class="intro wrap divided" id="work">
     <div class="intro-frame">
       <Frame frame={homeHero} sizes="(min-width: 1080px) 640px, 100vw" />
     </div>
@@ -61,7 +61,7 @@ const description = home.data.description ?? home.data.title;
     <Gallery />
   </section>
 
-  <section class="wrap closing">
+  <section class="wrap closing divided">
     <h2>Planning something?</h2>
     <p>Tell us the date, the place and roughly what you have in mind.</p>
     <a class="button" href="/enquire">Start an enquiry</a>
@@ -109,10 +109,6 @@ const description = home.data.description ?? home.data.title;
     align-items: center;
     padding-block: var(--space-5);
   }
-  /* Dividers sit within the content width, not across the side gutters. */
-  .intro, .closing {
-    background: linear-gradient(var(--line), var(--line)) top center / calc(100% - 2 * var(--gutter)) 1px no-repeat;
-  }
   .body { color: var(--ink-muted); }
   .work { padding-bottom: var(--space-5); }
 
@@ -121,16 +117,6 @@ const description = home.data.description ?? home.data.title;
     text-align: center;
   }
   .closing p { color: var(--ink-muted); }
-  .button {
-    display: inline-block;
-    margin-top: var(--space-2);
-    padding: 14px 28px;
-    background: var(--ink);
-    color: var(--ground);
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: 2px;
-  }
 
   .rise:nth-child(2) { animation-delay: 80ms; }
   .doors .rise:nth-child(2) { animation-delay: 160ms; }

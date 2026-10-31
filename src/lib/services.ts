@@ -1,7 +1,7 @@
 // The real boundaries behind the enquiry path: Resend for email, Airtable for
 // the mirror. Plain fetch, so neither SDK becomes a dependency.
 
-import type { Enquiry, EnquiryEmail } from './enquiry';
+import { FIELDS, type Enquiry, type EnquiryEmail } from './enquiry';
 
 // Resend's shared test sender works before the domain exists, but mail from it
 // can land in spam. Set ENQUIRY_FROM once the domain is verified in Resend.
@@ -43,14 +43,7 @@ export function airtableMirror(token: string | undefined, baseId: string | undef
             records: [
               {
                 fields: {
-                  Name: enquiry.name,
-                  Email: enquiry.email,
-                  Date: enquiry.date,
-                  Town: enquiry.town,
-                  Event: enquiry.eventType,
-                  Scale: enquiry.scale,
-                  Colours: enquiry.colours,
-                  Budget: enquiry.budget,
+                  ...Object.fromEntries(FIELDS.map((f) => [f.column, enquiry[f.key]])),
                   Received: new Date().toISOString(),
                 },
               },

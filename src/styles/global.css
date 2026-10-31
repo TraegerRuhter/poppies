@@ -37,6 +37,28 @@ a { color: inherit; }
   color: var(--ink-muted);
 }
 
+/* The one call to action style, for links and the form's submit alike. */
+.button {
+  display: inline-block;
+  margin-top: var(--space-2);
+  padding: 14px 28px;
+  background: var(--ink);
+  color: var(--ground);
+  border: 0;
+  border-radius: 2px;
+  font: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* A section divider that sits within the content width, not across the side
+   gutters; use with .wrap. */
+.divided {
+  background: linear-gradient(var(--line), var(--line)) top center / calc(100% - 2 * var(--gutter)) 1px no-repeat;
+}
+
 /* Motion is quiet fades and rises only — nothing bounces, nothing floats. */
 @keyframes rise {
   from { opacity: 0; transform: translateY(12px); }

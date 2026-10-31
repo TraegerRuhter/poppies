@@ -7,17 +7,15 @@ import Frame from './Frame.astro';
 import Gallery from './Gallery.astro';
 import Services from './Services.astro';
 import { frameFor } from '../lib/photos';
-import { PATHS } from '../lib/paths';
+import { PATHS, type PathKey } from '../lib/paths';
 import { ogImage } from '../lib/og';
 
 interface Props {
-  path: keyof typeof PATHS;
-  /** Content entry in src/content/pages. */
-  page: string;
+  path: PathKey;
 }
 
-const { path, page } = Astro.props;
-const { temperature, heroSlot } = PATHS[path];
+const { path } = Astro.props;
+const { temperature, heroSlot, page } = PATHS[path];
 const entry = await getEntry('pages', page);
 if (!entry) throw new Error(`Missing content: src/content/pages/${page}.md`);
 const { title, eyebrow, lede, cta, description } = entry.data;
@@ -44,17 +42,17 @@ const enquire = `/enquire?event=${path}`;
     </div>
   </section>
 
-  <section class="copy wrap">
+  <section class="copy wrap divided">
     <div class="prose"><Content /></div>
     <Services />
   </section>
 
-  <section class="work wrap" aria-labelledby="work-heading">
+  <section class="work wrap divided" aria-labelledby="work-heading">
     <h2 id="work-heading">Recent work</h2>
     <Gallery register={path} />
   </section>
 
-  <section class="closing wrap">
+  <section class="closing wrap divided">
     <h2>Tell us what you're planning.</h2>
     <p>The date, the place, and roughly what you have in mind is plenty to start.</p>
     <a class="button" href={enquire}>{cta ?? 'Start an enquiry'}</a>
@@ -70,22 +68,8 @@ const enquire = `/enquire?event=${path}`;
     padding-block: var(--space-5);
   }
   .lede { font-size: var(--step-1); color: var(--ink-muted); max-width: 32rem; }
-  .button {
-    display: inline-block;
-    margin-top: var(--space-2);
-    padding: 14px 28px;
-    background: var(--ink);
-    color: var(--ground);
-    text-decoration: none;
-    font-weight: 500;
-    border-radius: 2px;
-  }
-  .button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 
-  .copy, .work, .closing {
-    padding-block: var(--space-5);
-    background: linear-gradient(var(--line), var(--line)) top center / calc(100% - 2 * var(--gutter)) 1px no-repeat;
-  }
+  .copy, .work, .closing { padding-block: var(--space-5); }
   .prose { max-width: 38rem; }
   .prose :global(ul) { padding-left: 1.1em; margin: 0 0 var(--space-3); }
   .prose :global(li) { margin-bottom: var(--space-1); }

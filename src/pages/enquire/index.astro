@@ -1,23 +1,19 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { HONEYPOT } from '../../lib/enquiry';
+import { FIELDS, HONEYPOT } from '../../lib/enquiry';
+import { PATHS } from '../../lib/paths';
 
 // On demand, so the paths can link in with ?event= and a bounced submission
 // can say what was missing, with no client-side JavaScript.
 export const prerender = false;
 
 const EVENT_TYPES = [
-  { value: 'celebration', label: 'A birthday or celebration' },
-  { value: 'wedding', label: 'A wedding' },
+  ...Object.entries(PATHS).map(([value, path]) => ({ value, label: path.enquiryLabel })),
   { value: 'other', label: 'Something else' },
 ];
-const LABELS: Record<string, string> = {
-  name: 'your name',
-  email: 'an email address we can reply to',
-  date: 'the date',
-  town: 'the town or venue',
-  eventType: 'what you are planning',
-};
+const LABELS: Record<string, string> = Object.fromEntries(
+  FIELDS.flatMap((f) => (f.missing ? [[f.key, f.missing]] : [])),
+);
 
 const params = Astro.url.searchParams;
 const event = params.get('event');
@@ -86,7 +82,7 @@ const missing = (params.get('missing') ?? '').split(',').filter((key) => key in 
         <label>Leave this empty <input name={HONEYPOT} tabindex="-1" autocomplete="off" /></label>
       </div>
 
-      <button type="submit">Send enquiry</button>
+      <button class="button" type="submit">Send enquiry</button>
     </form>
   </section>
 </Base>
@@ -113,22 +109,12 @@ const missing = (params.get('missing') ?? '').split(',').filter((key) => key in 
     color: var(--ink);
     border-radius: 2px;
   }
-  input:focus-visible, select:focus-visible, button:focus-visible {
+  input:focus-visible, select:focus-visible {
     outline: 2px solid var(--ink);
     outline-offset: 2px;
   }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
   @media (max-width: 520px) { .pair { grid-template-columns: 1fr; } }
   .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
-  button {
-    justify-self: start;
-    font: inherit;
-    font-weight: 500;
-    padding: 14px 28px;
-    background: var(--ink);
-    color: var(--ground);
-    border: 0;
-    border-radius: 2px;
-    cursor: pointer;
-  }
+  button { justify-self: start; margin-top: 0; }
 </style>

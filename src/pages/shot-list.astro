@@ -3,13 +3,17 @@
 // site and kept out of search; it exists for the photo session.
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import { PATHS } from '../lib/paths';
 
 const slots = (await getCollection('slots')).sort((a, b) => a.data.order - b.data.order);
 const photos = await getCollection('photos');
 const filledBy = (slotId: string) => photos.find((p) => p.data.slot?.id === slotId);
 const filled = slots.filter((s) => filledBy(s.id)).length;
 const ROLE = { hero: 'Hero', portrait: 'Portrait', gallery: 'Gallery' } as const;
-const REGISTER = { celebration: 'Celebrations', wedding: 'Weddings', both: 'Both paths' } as const;
+const REGISTER: Record<string, string> = {
+  ...Object.fromEntries(Object.entries(PATHS).map(([key, path]) => [key, path.label])),
+  both: 'Both paths',
+};
 ---
 
 <Base title="Shot list" description="The photographs the site is designed around." noindex>

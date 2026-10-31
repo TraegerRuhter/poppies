@@ -2,6 +2,7 @@ import { defineCollection, reference } from 'astro:content';
 import { file, glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { parse } from 'yaml';
+import { PATH_KEYS } from './lib/paths';
 
 // Page copy lives in content, not in components (decisions §4), so a CMS later
 // is a change of loader rather than a rewrite.
@@ -22,7 +23,7 @@ const pages = defineCollection({
         question: z.string(),
         paths: z.array(
           z.object({
-            key: z.enum(['celebration', 'wedding']),
+            key: z.enum(PATH_KEYS),
             label: z.string(),
             blurb: z.string(),
           }),
@@ -33,7 +34,7 @@ const pages = defineCollection({
   }),
 });
 
-const register = z.enum(['celebration', 'wedding', 'both']);
+const register = z.enum([...PATH_KEYS, 'both']);
 
 // The photographs the site is designed around; also printed as the shot list.
 // Entries keep their position in the file, which is the order they appear in

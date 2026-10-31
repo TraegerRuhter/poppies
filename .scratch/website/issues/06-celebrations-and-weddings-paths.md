@@ -43,3 +43,26 @@ in `src/content/pages/celebrations.md` and `weddings.md`.
 
 Also checked: no `<script>`, no overflow, page titles "Celebrations · Poppies"
 and "Weddings · Poppies".
+
+**2026-10-31 — standards-review cleanup (no behaviour change).**
+
+- **One definition of the paths.** `src/lib/paths.ts` is now the single
+  definition of the paths. The content schemas, the enquiry form's event
+  list, the gallery's register type, the shot list's labels and the layout's
+  temperature type all derive from it. A path's content page lives there too,
+  so `<PathPage path="wedding" />` no longer takes a separate `page` prop.
+- **One field table for the enquiry.** `FIELDS` in `src/lib/enquiry.ts` lists
+  each field once: its email label, its Airtable column, its missing-field
+  prompt, and its blank text. Reading the form, composing the email, the
+  Airtable row and the form's missing-field messages all iterate it. A new
+  field is now a one-line change plus its input on the form.
+- **Shared styles.** `.button` and the section divider (`.divided`) are now in
+  `global.css` instead of being copied across four files.
+- **Clearer gallery code.** `rows()` is renamed `galleryRows()`, and
+  `galleryFrames` loads the slots once.
+
+Verified as behaviour-preserving: 12 tests pass and the type check is clean.
+All 7 static routes are pixel-identical before and after, at 1280px and 390px,
+with reduced motion. The on-demand enquiry form was checked by hand: event
+options, pre-fill, missing-field notice, button style, and the error page with
+no secrets.

@@ -2,7 +2,7 @@ import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 
 export type Slot = CollectionEntry<'slots'>;
 export type Photo = CollectionEntry<'photos'>;
-export type Register = 'celebration' | 'wedding';
+import type { PathKey } from './paths';
 
 // A position in a layout: a photo, or the slot it is waiting to be filled for.
 export interface Frame {
@@ -12,7 +12,7 @@ export interface Frame {
 
 const byOrder = (a: Slot, b: Slot) => a.data.order - b.data.order;
 
-const serves = (entryRegister: string, register?: Register) =>
+const serves = (entryRegister: string, register?: PathKey) =>
   !register || entryRegister === 'both' || entryRegister === register;
 
 /**
@@ -59,12 +59,13 @@ export async function frameFor(slotId: string): Promise<Frame> {
  * shot-list order, as placeholders until filled; then every other photo for the
  * register that is not already the hero or portrait somewhere.
  */
-export async function galleryFrames(register?: Register): Promise<Frame[]> {
-  const slots = (await getCollection('slots'))
+export async function galleryFrames(register?: PathKey): Promise<Frame[]> {
+  const allSlots = await getCollection('slots');
+  const slots = allSlots
     .filter((s) => s.data.role === 'gallery' && serves(s.data.register, register))
     .sort(byOrder);
   const photos = (await checkedPhotos()).filter((p) => serves(p.data.register, register));
-  const slotRoles = new Map((await getCollection('slots')).map((s) => [s.id, s.data.role]));
+  const slotRoles = new Map(allSlots.map((s) => [s.id, s.data.role]));
 
   const placed = new Set<string>();
   const frames: Frame[] = slots.map((slot) => {
@@ -87,7 +88,7 @@ export type RowKind = 'feature' | 'pair' | 'trio' | 'single';
  * Alternates a feature row (one large, one small) with a row of three; small
  * remainders become a pair or a closing single.
  */
-export function rows<T>(items: T[]): { kind: RowKind; items: T[] }[] {
+export function galleryRows<T>(items: T[]): { kind: RowKind; items: T[] }[] {
   const out: { kind: RowKind; items: T[] }[] = [];
   let i = 0;
   while (i < items.length) {
