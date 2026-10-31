@@ -1,0 +1,76 @@
+---
+// The shot list as a printable checklist (decisions §2). Not linked from the
+// site and kept out of search; it exists for the photo session.
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+
+const slots = (await getCollection('slots')).sort((a, b) => a.data.order - b.data.order);
+const photos = await getCollection('photos');
+const filledBy = (slotId: string) => photos.find((p) => p.data.slot?.id === slotId);
+const filled = slots.filter((s) => filledBy(s.id)).length;
+const ROLE = { hero: 'Hero', portrait: 'Portrait', gallery: 'Gallery' } as const;
+const REGISTER = { celebration: 'Celebrations', wedding: 'Weddings', both: 'Both paths' } as const;
+---
+
+<Base title="Shot list" noindex>
+  <section class="wrap shots">
+    <p class="eyebrow">Shot list · {filled} of {slots.length} filled</p>
+    <h1>Photographs to take</h1>
+    <p class="rules">
+      For every shot: before guests arrive, in daylight, against a clean background.
+      A phone is enough. Character pieces never go in a hero.
+    </p>
+
+    <ol>
+      {slots.map((slot) => {
+        const photo = filledBy(slot.id);
+        return (
+          <li class:list={{ done: !!photo }}>
+            <span class="box" aria-hidden="true">{photo ? '✓' : ''}</span>
+            <div>
+              <h2>{slot.data.title}</h2>
+              <p class="meta">
+                {ROLE[slot.data.role]} · {slot.data.aspect} · {REGISTER[slot.data.register]}
+                {photo && <> · filled by <code>{photo.id}</code></>}
+              </p>
+              <p>{slot.data.framing}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+</Base>
+
+<style>
+  .shots { padding-block: var(--space-5); max-width: 44rem; }
+  .rules { color: var(--ink-muted); margin-bottom: var(--space-4); }
+  ol { list-style: none; padding: 0; margin: 0; }
+  li {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: var(--space-2);
+    padding-block: var(--space-3);
+    border-top: 1px solid var(--line);
+    break-inside: avoid;
+  }
+  .box {
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--ink);
+    display: grid;
+    place-items: center;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  h2 { font-size: var(--step-1); margin-bottom: 4px; }
+  .meta { font-size: var(--step--1); color: var(--ink-muted); margin: 0 0 6px; }
+  li p:last-child { margin: 0; }
+  .done h2, .done p { color: var(--ink-muted); }
+
+  @media print {
+    :global(.site-header), :global(.site-footer) { display: none; }
+    :global(body) { background: #fff; color: #000; }
+    .shots { padding-block: 0; }
+  }
+</style>
