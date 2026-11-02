@@ -78,11 +78,12 @@ excepted.
 **The name stays "Poppies"** (decided 2026-11-02). It's a single config value
 on the site.
 
-- **New high-risk finding:** a USPTO filing for **POPPIE** (serial 98162236,
-  filed 2023) covers balloon design services, the same services as Poppies.
-  Its current status is unknown. Check it at https://tsdr.uspto.gov and get
-  legal advice if it's live, **before** the domain, signage or an assumed
-  business name filing.
+- **New high-risk finding:** **POPPIE** (USPTO serial 98162236) covers
+  balloon design services, the same services as Poppies. It was **reportedly
+  registered on 2024-05-14**, per an automated reviewer citing TSDR; no person
+  has confirmed it yet. Confirm at https://tsdr.uspto.gov, then get a
+  trademark attorney's view **before** the domain, signage or an assumed
+  business name filing. That's a prerequisite, not a maybe.
 - **The Oregon SOS registry is still unchecked.** Both registries are blocked
   from cloud sessions unless the environment's network settings allow them.
 - **Tagline:** avoid "A pop of colour…". **A POP OF COLOR** is a filed mark

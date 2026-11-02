@@ -117,6 +117,8 @@ Stated plainly, because several of these are the questions that actually matter:
 
 ## Suggested next steps (not done here — no purchases or registrations were made)
 
+> **Superseded 2026-11-02.** The name is decided as "Poppies" (see the update below). Step 3's suggestion to consider a more distinctive name is closed. What's left is clearance work under the chosen name: the registry and trademark checks, then the domain.
+
 1. Run the Oregon SOS business-name search for `POPPIES`, `POPPY`, and `POPPIES%` from an unblocked network. This is the gating question.
 2. Run a USPTO search for POPPIES/POPPY in Classes 35 and 41.
 3. Decide about `poppies.events` with `poppiesevents.com` (LA wedding planner, poppy branding) in full view. A more distinctive name — adding a coastal or personal qualifier the way "Poppies & Top Hats" and "Two Poppies" both did — would sidestep three of the four Oregon collisions at once and make the business findable.
@@ -146,19 +148,22 @@ a person runs them in a browser.
 - Owner per a snippet: **Gather and Pop LLC**. A search result also lists
   **GATHER & POP**, registered under **6612556**, which suggests the same
   owner is active in balloon decor.
-- **The current status is unknown.** The cached snippet showed "New
-  Application – Record Initialized Not Assigned To Examiner", which is the
-  state at filing. It may since have registered, been abandoned, or anything
-  in between.
+- **Status: reportedly REGISTERED on 2024-05-14.** An automated code
+  reviewer on PR #7 (Codex) cited the USPTO TSDR record for serial 98162236
+  as showing registration on that date. **Not confirmed by a person**: TSDR is
+  blocked from this environment. The cached search snippet only showed the
+  2023 filing state. Treat it as registered until someone checks TSDR and
+  finds otherwise.
 - **Why it matters:** POPPIE and POPPIES differ by one letter, sound almost
   the same, and cover **the same services**. That's the core of a
-  likelihood-of-confusion problem. If POPPIE registered, it could limit using
-  "Poppies" for balloon design. Her own earlier use in her local area may
-  count for something. **This is a question for a trademark attorney, not
-  for this document.**
-- **Check:** look up serial 98162236 at https://tsdr.uspto.gov for the status,
-  owner and goods. If it's live, get legal advice before the domain, signage
-  or an assumed business name filing go in her name.
+  likelihood-of-confusion problem. A registered POPPIE could limit using
+  "Poppies" for balloon design nationally. Her own earlier use in her local
+  area may count for something. **This is a question for a trademark
+  attorney, not for this document.**
+- **Legal review is a prerequisite.** Confirm the registration at
+  https://tsdr.uspto.gov (serial 98162236), then get a trademark attorney's
+  view **before** the domain, signage or an assumed business name filing go in
+  her name, and before spending on the brand.
 
 ### Tagline consequence — avoid "A pop of colour"
 
