@@ -120,3 +120,65 @@ Stated plainly, because several of these are the questions that actually matter:
 1. Run the Oregon SOS business-name search for `POPPIES`, `POPPY`, and `POPPIES%` from an unblocked network. This is the gating question.
 2. Run a USPTO search for POPPIES/POPPY in Classes 35 and 41.
 3. Decide about `poppies.events` with `poppiesevents.com` (LA wedding planner, poppy branding) in full view. A more distinctive name — adding a coastal or personal qualifier the way "Poppies & Top Hats" and "Two Poppies" both did — would sidestep three of the four Oregon collisions at once and make the business findable.
+
+---
+
+## Update 2026-11-02 — the name is decided; second attempt at the checks
+
+**Decision (owner's side, via the developer): the name stays "Poppies".**
+Treat the name as settled, not open. The website already uses it from one
+config value. What's still open is the legal risk below, not the choice.
+
+**The checks were tried again and are still blocked.** The egress proxy
+refused `egov.sos.state.or.us`, `sos.oregon.gov`, `data.oregon.gov`,
+`tmsearch.uspto.gov` and `tsdr.uspto.gov` (403 on CONNECT). The fetch tool
+couldn't resolve those hosts either, or `trademarks.justia.com`. Everything
+below comes from **search-result snippets only**. To run the real checks from
+a session, allow those hosts in the environment's network settings; otherwise
+a person runs them in a browser.
+
+### New finding — HIGH RISK: "POPPIE" filed for balloon design services
+
+- **POPPIE**, USPTO serial **98162236**, standard-character mark, filed
+  **2023-09-01**. Per the snippets, it covers *party balloons* and *balloon
+  design services, namely, custom arrangement of balloons and decorative
+  elements*.
+- Owner per a snippet: **Gather and Pop LLC**. A search result also lists
+  **GATHER & POP**, registered under **6612556**, which suggests the same
+  owner is active in balloon decor.
+- **The current status is unknown.** The cached snippet showed "New
+  Application – Record Initialized Not Assigned To Examiner", which is the
+  state at filing. It may since have registered, been abandoned, or anything
+  in between.
+- **Why it matters:** POPPIE and POPPIES differ by one letter, sound almost
+  the same, and cover **the same services**. That's the core of a
+  likelihood-of-confusion problem. If POPPIE registered, it could limit using
+  "Poppies" for balloon design. Her own earlier use in her local area may
+  count for something. **This is a question for a trademark attorney, not
+  for this document.**
+- **Check:** look up serial 98162236 at https://tsdr.uspto.gov for the status,
+  owner and goods. If it's live, get legal advice before the domain, signage
+  or an assumed business name filing go in her name.
+
+### Tagline consequence — avoid "A pop of colour"
+
+- **A POP OF COLOR**, serial **97240654**, filed **2022-01-26**. Per the
+  snippets, it's owned by **RoxyB Ventures, LLC** and covers balloon products
+  (arrangements, walls, centrepieces; Class 28) and **balloon design and event
+  decorating services**. Its current status is also unknown.
+- So the tagline candidate "A pop of colour for the coast" sits right next to
+  a filed mark for the same services. **Don't use it.** "Pop art for the
+  coast" turned up no conflict in these searches, but it hasn't been
+  searched specifically.
+
+### Oregon Secretary of State registry — still not checked
+
+Search results gave no record either way. This remains open: search
+`POPPIES` and `POPPY` (businesses and assumed business names) at
+https://sos.oregon.gov/business/pages/find.aspx, plus the Oregon state
+trademark registry.
+
+Sources (search results only): [Justia — POPPIE](https://trademarks.justia.com/981/62/poppie-98162236.html),
+[Justia — GATHER & POP](https://trademarks.justia.com/905/37/gather-90537526.html),
+[Justia — A POP OF COLOR](https://trademarks.justia.com/972/40/a-pop-of-97240654.html),
+[Oregon SOS — business name availability](https://sos.oregon.gov/business/pages/name-availability-help.aspx).
