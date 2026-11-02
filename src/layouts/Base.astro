@@ -26,7 +26,8 @@ const {
   temperature,
   noindex = false,
 } = Astro.props;
-const pageTitle = title ? `${title} · ${site.name}` : site.name;
+// The homepage passes no title and gets the name with the brand line.
+const pageTitle = title ? `${title} · ${site.name}` : `${site.name} — ${site.tagline}`;
 const area = await getEntry('serviceArea', 'service-area');
 if (!area) throw new Error('Missing content: src/content/service-area.yaml');
 const towns = area.data.towns;

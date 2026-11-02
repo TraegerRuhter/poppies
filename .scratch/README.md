@@ -71,21 +71,23 @@ the tent ever goes out without balloons.
 Work it with `/wayfinder` and the map. **One ticket per session**, research
 excepted.
 
-### 3. Naming — unresolved, blocked externally
+### 3. Naming — decided "Poppies"; legal checks still open
 
-`naming/poppies-name-collision.md`
+`naming/poppies-name-collision.md` (see the 2026-11-02 update at the bottom).
 
-"Poppies" is a soft pun (*pop*) with a poppy flower as the logo. The name is
-**not settled**, and the website treats the business name as a single config
-value so it stays cheap to change.
+**The name stays "Poppies"** (decided 2026-11-02). It's a single config value
+on the site.
 
-- `poppies.events` was **withdrawn** — one character from `poppiesevents.com`, an
-  LA wedding studio with poppy-flower branding.
-- Four Oregon businesses already trade on "Poppies," three touching weddings.
-  None does balloon installation, which is the argument for a balloon qualifier.
-- **The two decisive checks were never run** — the Oregon Secretary of State
-  registry and USPTO were both blocked by this environment's egress proxy. Free,
-  roughly ten minutes, and they gate the name.
+- **New high-risk finding:** **POPPIE** (USPTO serial 98162236) covers
+  balloon design services, the same services as Poppies. It was **reportedly
+  registered on 2024-05-14**, per an automated reviewer citing TSDR; no person
+  has confirmed it yet. Confirm at https://tsdr.uspto.gov, then get a
+  trademark attorney's view **before** the domain, signage or an assumed
+  business name filing. That's a prerequisite, not a maybe.
+- **The Oregon SOS registry is still unchecked.** Both registries are blocked
+  from cloud sessions unless the environment's network settings allow them.
+- **Tagline:** avoid "A pop of colour…". **A POP OF COLOR** is a filed mark
+  for balloon design services.
 
 ## A caveat that applies to all the research here
 
@@ -99,7 +101,7 @@ unblocked network would raise confidence materially.
 
 | Item | Blocks |
 | --- | --- |
-| Oregon SOS + USPTO name searches | The name, and therefore the domain |
+| USPTO status of POPPIE (98162236) + Oregon SOS search | Whether "Poppies" is safe to register, and therefore the domain |
 | Buy the domain, in her name and email | Resend sender verification, and so the inquiry form |
 | Business email on that domain | The form's from/to addresses |
 | Photo audit — what exists, how good | The first layout; the site is designed to look deliberate at six photos |
