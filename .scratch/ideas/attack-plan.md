@@ -23,7 +23,7 @@ sketches).
 
 Files go in `research/`, cited, with confidence per claim, like wave 1.
 
-- [ ] **07 Pricing and unit economics.** Published prices nationally and in the
+- [x] **07 Pricing and unit economics.** Published prices nationally and in the
       Pacific Northwest, by product (per-foot garland, arches, sculpture,
       proposals, rental surprise setups, subscriptions, the tent). Material
       cost per foot, labour hours, margins, deposits and minimums. → Input to
@@ -40,7 +40,7 @@ Files go in `research/`, cited, with confidence per claim, like wave 1.
       costs, certificates), contracts and standard clauses, deposits, taxes
       (Oregon has no sales tax; the Corporate Activity Tax threshold), tent
       permits.
-- [ ] **11 Business-to-business buyers on the coast.** Hotels and resorts, the
+- [x] **11 Business-to-business buyers on the coast.** Hotels and resorts, the
       casino, wineries and breweries, real estate (open houses, brokerages),
       car dealers, banks, retail, schools, nonprofits and civic events: who
       buys decor, when, and how to reach them.
