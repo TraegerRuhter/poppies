@@ -50,7 +50,7 @@ Files go in `research/`, cited, with confidence per claim, like wave 1.
 
 ## Wave 3: synthesis (Claude, as each stream lands)
 
-- [ ] **A pricing proposal** for offering-model ticket 05: research input with
+- [x] **A pricing proposal** (`drafts/pricing-proposal.md`, linked from ticket 05) for offering-model ticket 05: research input with
       worked examples, not a decision.
 - [x] **A competitor matrix** (`drafts/competitive-position.md`; the full matrix is in `research/08`): one table, plus where Poppies wins and loses.
 - [x] **A startup checklist** (`drafts/startup-checklist.md`): everything to set up before the first paid job,

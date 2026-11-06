@@ -29,3 +29,27 @@ recommendation departs from what the market does, say so explicitly and why.
 
 Packaging shape depends on it: tiers are only meaningful if there is a basis for
 what separates one tier from the next.
+
+## Comments
+
+**2026-11-06: research input, not a decision.** Overnight research produced a
+priced proposal for this ticket: `.scratch/ideas/drafts/pricing-proposal.md`,
+built from `.scratch/ideas/research/07-pricing-and-unit-economics.md` (about 75
+price points and a cost build-up).
+
+In brief:
+
+- per-foot organic garland at $28/$35/$42–45
+- a **$500 minimum that rises with distance**
+- **teardown and travel as separate, zoned fees**
+- The Arrival at $395 with collection
+- proposals at $650–1,200
+- The Pavilion at about $3,000–4,500
+
+The central finding bears on this ticket's "coastal venue two hours away"
+case: materials are under 10% of price, and a one-person coastal job earns
+about $43 an hour before overhead at $28/ft with no travel or teardown fee.
+Travel stops being absorbed at the county line.
+
+The three awkward cases in this ticket are still for the owner to decide:
+wedding vs birthday pricing, travel, and figure work.
