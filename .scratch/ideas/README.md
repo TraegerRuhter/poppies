@@ -14,8 +14,10 @@ It's raw material for the owner and for the offering-model map
 | `research/04-reviews-and-local-marketing.md` | Reviews, Google Business Profile, wedding directories, social formats, referrals |
 | `research/05-explainers-and-customer-questions.md` | What customers don't understand, and the explainers and tools that would answer them |
 | `research/06-gaps-regulation-sustainability.md` | What's missing in the space, balloon laws and environmental criticism, helium |
-| `ideas.md` | The idea list (100+), each triaged |
-| `drafts/` | Ready-to-use drafts: explainers, review-request templates and the like |
+| `ideas.md` | **Start here.** 131 ideas, each triaged, with the top ten up front, plus 12 parked |
+| `brainstorm.md` | Claude's unfiltered brainstorm (65 ideas), merged into `ideas.md` |
+| `page.html` | The same list as a filterable page, published as a private artifact: https://claude.ai/artifact/J3XxwNaYN31tysYFjM5QRk. Regenerate with `page-src/` after editing `ideas.md` |
+| `drafts/` | Ready to use: four explainers, the review kit, a Google profile checklist, partner outreach emails |
 
 ## How to read the triage
 
