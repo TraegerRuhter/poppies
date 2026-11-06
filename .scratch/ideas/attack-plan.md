@@ -32,7 +32,7 @@ Files go in `research/`, cited, with confidence per claim, like wave 1.
       Balloons, Pop & Go, Balloon Artisan, Portland Balloon Decor, Balloon
       Theories, plus coast rental and decor companies. Offerings, prices,
       service area, reviews, positioning and gaps.
-- [ ] **09 Operations: suppliers, equipment and software.** Wholesale latex in
+- [x] **09 Operations: suppliers, equipment and software.** Wholesale latex in
       the Pacific Northwest, inflators, frames, transport, storage, and
       quoting, CRM, contracts and payment tools for small event vendors.
 - [x] **10 Business setup in Oregon.** Assumed business name, city and county
