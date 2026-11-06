@@ -300,9 +300,9 @@ way, install plus same-day teardown.
 |---|---|
 | Price: 20 ft × $28 | $560 (above a $500 minimum) |
 | Materials | $44 |
-| Build 5.5 h + install 1 h + teardown 0.75 h + driving 2 × 1 h | 10.25 h |
+| Build 5.5 h + install 1 h + teardown 0.75 h + driving 2 × 1 h | 9.25 h *(corrected 2026-11-06; first printed as 10.25 h, an addition slip)* |
 | Mileage: 2 round trips × 50 mi × $0.76 | $76 |
-| Owner earns (price − materials − mileage) | $440 ÷ 10.25 h = **≈$43/h**, before overhead (insurance, storage, software, marketing) |
+| Owner earns (price − materials − mileage) | $440 ÷ 9.25 h = **≈$48/h**, before overhead (insurance, storage, software, marketing). *Corrected; first printed as ≈$43/h* |
 
 **The point:** at $28/ft with no separate travel or teardown fee, a
 one-person coastal job pays a modest wage. The day goes to driving, not to

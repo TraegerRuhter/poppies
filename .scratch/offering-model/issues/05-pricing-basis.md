@@ -48,7 +48,8 @@ In brief:
 
 The central finding bears on this ticket's "coastal venue two hours away"
 case: materials are under 10% of price, and a one-person coastal job earns
-about $43 an hour before overhead at $28/ft with no travel or teardown fee.
+about $48 an hour before overhead at $28/ft with no travel or teardown fee
+(corrected from $43: the research's hours had an addition slip).
 Travel stops being absorbed at the county line.
 
 The three awkward cases in this ticket are still for the owner to decide:

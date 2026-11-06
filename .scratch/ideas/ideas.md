@@ -693,7 +693,7 @@ the tag line rather than by number range.
 
 158. **Adopt the pricing proposal's fee structure:** zoned travel, teardown as
      its own fee, a minimum that rises with distance. *A $560 Newport garland
-     pays about $43 an hour without them.*
+     pays about $48 an hour, before overhead, without them.*
      `fit ●●● · S · price · her (decision) · 07 §6, drafts/pricing-proposal.md · tier Next`
 159. **"Booked in a week, not two":** 7-day standard booking, with 72-hour
      express for small pieces. *Salem's main rival asks for 2+ weeks;

@@ -11,7 +11,7 @@ placeholders in other drafts, it says so.*
 **Balloons are cheap; her time and the drive are not.** Materials for a
 standard organic garland come to about $2.20 a foot, under 10% of a $28/ft
 price. A 20 ft, $560 garland in Newport with same-day teardown takes about
-10 hours with the driving, which pays about **$43 an hour before
+9 hours with the driving, which pays about **$48 an hour before
 overhead**. So the levers are the **minimum, travel and teardown fees**, more
 than the per-foot rate. (`research/07` §2g)
 
