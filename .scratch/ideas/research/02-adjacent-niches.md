@@ -102,10 +102,170 @@ Date: 2026-11-06
 - **The Heart Bandits** (section 9) is in effect a productised balloon/neon arch business with proposal positioning, and its prices ($799-1,849 base) are far above what a plain "balloon arch" listing gets ($74.99 on Greetwell, $250 on Airbnb). **The occasion sets the price, not the balloons.**
 
 ## Patterns
-(pending)
+1. **Name the occasion, not the medium.** The new categories are named after a moment ("proposal," "elopement," "bride reveal," "sleepover," "arrival") rather than a material (balloons, tents, flowers). The same balloon heart arch goes for $74.99 as "decorations" on Greetwell and $799-1,849 as a Heart Bandits proposal. Confidence: high (prices from the vendors' own pages).
+2. **Productise into a fixed, photographed, priced package with add-ons.** Picnic Collective tiers by guest count, Heart Bandits sells one base package plus a priced add-on menu, teepee businesses price per tent per theme, and Cloth + Gold prices per place setting. A fixed package can be booked without a consult, which is what lets a 1-2 person team scale.
+3. **Reuse a kit of identical units and rotate a cheap layer of theme.** Teepees, bell tents, tablescapes, flower walls: the same frames with swappable linens and props. Capital goes into durable units and the "new look" costs little. Balloons are consumable, so the reusable layer for Poppies is the tent, frames, plinths, and props.
+4. **Bring the venue to land people already have.** Pop-up weddings, backyard bundles, The Pop-Up BnB, and teepee sleepovers all make a backyard, rental, or beach feel like a venue. The pitch is avoiding a $3,000-15,000 venue fee. This fits Poppies' customers (land, backyards, vacation rentals) and its frame tent exactly.
+5. **Use someone else's idle capacity.** Pop-Up Weddings Calgary rents one venue for a day and runs five couples back to back; Just Elope pitched venues on filling empty slots; Beautiful Bells has guests pay for their own tents. A "wedding day" can be sold in time slots and split across several payers.
+6. **Get found through the marketplace where the occasion is planned:** Batch (bachelorettes), Airbnb Services and Greetwell or host upsell stores (vacation-rental arrivals), The Knot and WeddingWire (weddings), Etsy (DIY). Being findable at the moment of planning beats general Instagram reach.
+7. **Search pages: one page per place per package.** Heart Bandits' "[city] proposal ideas / heart arch" pages and The Yes Girls' origin (100,000 searches a month with no supplier) show that a fixed product plus a dedicated landing page for each place wins Google. For Poppies that means pages named for each town (Cannon Beach, Manzanita, Pacific City, Newport, Yachats...).
+8. **Short video sold the visual categories; it doesn't keep them.** TikTok made luxury picnics (2020-21) and Instagram made grazing boards. The ones that lasted added a channel (Graze Craze franchising, storefront delis, licensing teepee playbooks). Viral reach starts a business; partnerships and search keep it.
+9. **Licensing and franchising follow only after the format is fixed.** AZ Sleepy Teepee, Elite Teepees, Bouquet Box, and Graze Craze could license because the product was standard. Custom one-off art cannot be licensed; a named, repeatable format can.
+10. **Kits and templates for DIYers are a crowded, low-margin market.** ElliesPartySupply describes garland kits going from a handful of shops to hundreds. The defensible version is a distinctive aesthetic, not generic know-how.
 
 ## Ideas this suggests for Poppies
-(pending)
+Brand fit: ●●● strong fit with the refined gallery-wall brand, ●● workable with careful styling, ● risky or off-brand (included for range). Note: check Oregon beach and state-park rules on balloons outdoors, which may restrict them, before any beach-based idea.
+
+**Productise and name occasions**
+1. **"The Arrival": a fixed-price vacation-rental welcome installation** (one sculptural piece plus a card, set up before check-in). *Why:* the surprise-setup category is proven and the Oregon coast is a vacation-rental economy. ●●●
+2. **List "The Arrival" on Airbnb Services and Greetwell or host upsell stores.** *Why:* balloon studios already sell there at $250-550; it puts Poppies at the guest's point of purchase. ●●
+3. **Partner with 3-5 coast property managers (Cannon Beach, Manzanita, Pacific City) for referrals or a revenue share in their upsell menu.** *Why:* this is the Greetwell model without the middleman; managers want ancillary revenue. ●●●
+4. **A proposal package: one sculptural balloon form at a viewpoint, rental, or private land, one hour, fixed price, with a photographer partner add-on.** *Why:* Heart Bandits shows proposals sell at 3-10 times the price of the same decor called "decorations." ●●●
+5. **A "proposal ideas on the Oregon coast" page for each town, each with one fixed package.** *Why:* this is the Heart Bandits and Yes Girls search playbook. ●●●
+6. **Three named, fixed-price tiers on the site (for example Gesture / Installation / Gallery), each with a photo and a "from $".** *Why:* fixed packages can be booked without a consult; this is the most common pattern across every category. ●●●
+7. **A published add-on menu (plinth, sign, florals partner, extra hour).** *Why:* a base package plus add-ons raises the average order without custom quoting. ●●●
+
+**Venue-in-a-box (tent plus decor)**
+8. **"The Pavilion": the 20×40 tent plus a balloon installation as a fixed backyard micro-wedding package (up to about 30-40 guests).** *Why:* it turns customers' land into a venue and avoids the $3k-15k venue fee. ●●●
+9. **Bundle the Pavilion with a partner list (officiant, photographer, caterer or grazing table, mobile horse-trailer bar) at one headline price.** *Why:* micro-wedding companies sell the bundle, not the parts; Poppies can sell it as the lead vendor. ●●
+10. **A "pop-up wedding day": hold the tent on one partner's property and sell 3-5 back-to-back elopement slots on one Saturday.** *Why:* the Pop-Up Weddings Calgary model spreads one setup across several couples. ●●●
+11. **Approach coast elopement photographers and guides to bundle a portable ceremony backdrop with their packages.** *Why:* elopement photographers are the "planners" of that market ($1,700-6,600 packages) and lack decor. ●●●
+12. **"Tent nights": rent the frame tent and decor for vacation-rental group celebrations (family reunions, 40th birthdays).** *Why:* these are Pop-Up BnB-style experiences on rented land. ●●
+13. **Partner with a bell-tent glamping company for "stay over" weddings, with guests paying for their own tents.** *Why:* the Beautiful Bells model adds wedding revenue without cost to the couple. ●●
+
+**Event-adjacent formats**
+14. **A balloon "bar": a build-your-own mini sculpture or bouquet station for showers and team events.** *Why:* flower bars proved guests pay for a hands-on, take-home activity. ●●
+15. **Co-sell with a mobile bar: a "bar plus backdrop" bundle for backyard parties.** *Why:* horse-trailer bars ($600 for 4 hours) are photogenic but bare, and both serve the same host at the same moment. ●●
+16. **Picnic partnership: a balloon sculpture add-on for an existing picnic company (Wild Rose Picnics serves the coast) or Overleaf Lodge's picnics.** *Why:* it adds a premium tier to an established product with no marketing cost. ●●●
+17. **A gallery-wall "photo moment": one sculptural wall for venues and wineries to rent for the season.** *Why:* the selfie-wall and flower-wall rental model gives recurring revenue from one build. ●●
+18. **Teepee-style sleepover sets with a refined palette (linen, oat, terracotta) plus small balloon clusters.** *Why:* this is a proven kids' format; the restrained aesthetic sets it apart from candy-coloured competitors. ●●
+19. **Seasonal tablescape-plus-installation rentals for dinner parties in vacation rentals (delivered and collected, price per setting).** *Why:* the Cloth + Gold model with balloons as the centrepiece. ●●
+
+**Get found**
+20. **List on Batch for coast bachelorettes** (check whether Batch covers Oregon coast cities). *Why:* "bride reveal" setups are a top category there. ●●
+21. **Get onto The Knot and WeddingWire under "wedding rentals / tents" as well as decor.** *Why:* the tent is the rarer item, and couples searching for a backyard wedding look for tents first. ●●●
+22. **Build "real backyards" galleries by town (with owners' permission).** *Why:* this gives local search pages real content and proves the venue-in-a-box idea. ●●●
+23. **Short process videos (one sculpture assembled in time-lapse) as the main social format.** *Why:* TikTok drove the picnic boom; process plus reveal is the format that performs. ●●
+24. **A "for property managers" page with a one-sheet, net pricing, and a lead time (7 days is standard).** *Why:* B2B partners need terms, not inspiration. ●●●
+
+**Productise the brand (later)**
+25. **Name and publish seasonal "Poppies palette" colour stories (for example "Kelp," "Fog," "Driftwood").** *Why:* a named look can later be licensed or sold as a kit; generic know-how can't. ●●●
+26. **A premium mailed "gallery gesture" kit (pre-sized balloons plus a printed placement guide) for remote rentals outside the service area.** *Why:* it extends reach without travel; the market is crowded, so it only works on the strength of the aesthetic. ●
+27. **Corporate brand activations at coast resorts and breweries (sculptural logo forms).** *Why:* 360-booth operators report activations as their highest-ticket jobs. ●●
+28. **Licence the format to a studio in another coast or mountain town once packages are fixed.** *Why:* the AZ Sleepy Teepee and Elite Teepees licensing path. ●
+
+**Bold / crazy**
+29. **"Pop-up gallery" weekend: rent an empty storefront in Cannon Beach or Astoria, fill it with sculptural balloon work, and sell timed photo sessions.** *Why:* selfie studios proved people pay for photo rooms; this also works as a portfolio showcase for wedding leads. ●●
+30. **A tent-plus-sculpture "ballroom" on private land for one night, sold by ticket (for example a solstice dinner with a caterer).** *Why:* owning the event creates content and a marquee portfolio piece without waiting for a client. ●●
+31. **Gift certificates for "The Arrival" or proposals, sold to the friends and family of the person being celebrated.** *Why:* surprise categories are bought by someone other than the recipient. ●●●
+32. **A proposal-plus-elopement "two-part" package (proposal setup, then a pop-up wedding slot within a year at a discount).** *Why:* it captures the same couple twice. ●●
+33. **A free "venue-less wedding on the Oregon coast" guide (permits, beach rules, tent sizing, partner list).** *Why:* it ranks in search, captures leads, and positions Poppies as the backyard-wedding expert. ●●●
 
 ## Sources
-(pending)
+All sources are linked inline next to each claim above. The full list of URLs cited, in order of appearance:
+
+- [Business Insider](https://businessinsider.nl/i-throw-luxury-private-picnics-that-cost-upwards-of-10000-here-are-some-of-the-wildest-things-clients-have-asked-for-and-what-makes-for-the-best-experience/)
+- [KSDK](https://ksdk.com/article/entertainment/television/show-me-st-louis/alpaca-picnic/63-8580ee89-c46d-461e-9114-9e1a00912e31)
+- [Airbnb](https://www.airbnb.com/services/7046418)
+- [Airbnb](https://www.airbnb.com/services/7052191)
+- [Airbnb](https://www.airbnb.com/services/7190168)
+- [The Knot](https://www.theknot.com/marketplace/wild-rose-picnics-lake-oswego-or-2072688)
+- [Unique Inns](https://www.uniqueinns.com/specials/overleaf-lodge-and-spa/picnics-by-the-sea-8207)
+- [GMA/ABC](https://abcnews.go.com/food/story/luxury-picnic-planners-share-top-tips-create-stunning-77337545)
+- [Yahoo/Aegis](https://news.yahoo.com/luxury-picnic-company-grew-pandemic-125900587.html)
+- [KCPR](https://kcpr.org/?p=14048)
+- [Houstonia](https://www.houstoniamag.com/eat-and-drink/the-big-business-of-picnics/)
+- [What's Up Newp](https://whatsupnewp.com/2022/05/pop-up-picnics-businesses-prove-they-have-staying-power/)
+- [Smithsonian](https://www.smithsonianmag.com/innovation/picnics-are-back-180982102/)
+- [Simply Eloped team page](https://simplyeloped.com/team/)
+- [CB Insights](https://www.cbinsights.com/company/simply-eloped)
+- [Avenue Calgary](https://www.avenuecalgary.com/avenue-calgary-weddings/pop-up-weddings-calgary)
+- [Black Enterprise](https://blackenterprise.com/black-woman-owned-micro-wedding-company-shares-5-tips-budget-friendly-wedding/)
+- [Big Think](https://bigthink.com/?p=55660)
+- [Edmonton Journal via PressReader](https://www.pressreader.com/canada/edmonton-journal/20170513/282595967835081)
+- [Community Impact](https://communityimpact.com/austin/lake-travis-westlake/arts-entertainment/2022/04/18/local-wedding-business-elope-in-austin-redefines-weddings)
+- [Visit Palm Springs PDF](https://assets.simpleviewinc.com/simpleview/image/upload/v1/clients/palmsprings/Micro_Wedding_Brochure_186cfd42-51a0-4fe4-82e7-6603edb1bd08.pdf)
+- [Hilton Head](https://hiltonheadisland.org/offers/micro-wedding)
+- [My Event Rentals](https://reach.dog/shop/my-event-rentals/products/intimate-outdoor-wedding-package)
+- [Squarespace packages page](https://celery-cornet-f4wb.squarespace.com/packages)
+- [Tripleseat/EventUp](https://eventupblog.tripleseat.com/perfect-backyard-wedding)
+- [Tri-Cities Area Journal of Business](https://www.tricitiesbusinessnews.com/2019/07/patty-wagon-touring-taps/)
+- [The Preferred List podcast](https://www.buzzsprout.com/2520237/episodes/18743572-episode-33-how-a-rusty-trailer-accidentally-became-a-mobile-bar-wild-horse-mobile-bar)
+- [WYDaily](https://wydaily.com/brews-and-bites/2022/02/18/williamsburg-couple-turns-vintage-horse-trailer-into-mobile-bar-to-serve-parties-events/)
+- [WNYT](https://wnyt.com/top-stories/wnyt-upstate-of-business/horse-trailer-turned-into-mobile-bar-and-cafe)
+- [Fox 2](https://www.fox2detroit.com/news/metro-detroit-woman-transforms-old-horse-trailer-into-mobile-bar-for-parties)
+- [Franchise Times, Apr 2026](https://www.franchisetimes.com/issue-archive/2026/april/bouquet-box-flower-bar-turns-diy-concept-into-an-experiential-franchise/article_af861320-508e-46d0-b98b-de71105f4e62.html)
+- [Mpls St Paul Magazine](https://mspmag.com/shop-and-style/build-your-own-bouquet-at-the-flower-bar)
+- [Albuquerque Journal](https://www.abqjournal.com/business/local-floral-startup-blooms-under-mother-daughter-team/3038325)
+- [Bethesda Chamber](https://web.greaterbethesdachamber.org/EVENT-PLANNING/Calluna-Flower-Truck-17203)
+- [Zola](https://www.zola.com/wedding-vendors/wedding-extras/little-bug-flower-bar)
+- [Zola](https://www.zola.com/wedding-vendors/wedding-extras/the-bouquet-bar-chi)
+- [Luxe](https://luxesource.com/architecture-design/cloth-gold-bridget-rogers/)
+- [AOL/Real Simple](https://www.aol.com/rented-entire-dinner-party-tablescape-210200484.html)
+- [PaperCity](https://www.papercitymag.com/home-design/social-studies-creative-tablescapes-rent-service-texas-women-entrepreneurs/)
+- [PaperCity](https://www.papercitymag.com/home-design/casamia-tablescapes-box-home-parties-hostess-coronavirus/)
+- [Domino](https://www.domino.com/content/table-teaspoon-rental-entertaining-tips/)
+- [Livingetc](https://www.livingetc.com/whats-news/lay-london-table-laying-234780)
+- [Photo Booth Supply Co](https://blog.photoboothsupplyco.com/photo-booth-equipment-costs-roi-and-what-operators-actually-earn)
+- [Check Cherry](https://www.checkcherry.com/articles/235-how-much-does-photo-booth-rental-c)
+- [Royal Gazette](https://www.royalgazette.com/?p=162441)
+- [Post and Courier](https://www.postandcourier.com/myrtle-beach/business/selfie-wrld-a-unique-selfie-studio-in-myrtle-beach-set-for-april-opening/article_ec2559fe-93c4-11eb-a0da-e3fc5a3cfb88.html)
+- [St Pete Rising](https://stpeterising.com/home/2021/8/18/st-petes-first-selfie-studio-the-social-warehouse-will-debut-this-fall-in-downtown-st-pete)
+- [BizQuest](https://images.bizquest.com/start-up-business/photobooth-and-360-booth-20-000-turnkey-business/BW2381776)
+- [Arizona Foothills](https://www.arizonafoothillsmagazine.com/valleygirlblog/?p=32068)
+- [Macaroni Kid](https://southscottsdale.preview.macaronikid.com/articles/69fbefb02bc26d73308ec402/arizona-families-are-redefining-sleepovers)
+- [PR Newswire](https://prnewswire.com/news-releases/elite-teepees-offering-unique-business-license-opportunity-300993520.html)
+- [SmartCompany](https://www.smartcompany.com.au/entrepreneurs/business-idea-kids-birthday-parties/)
+- [Storage King](https://www.storageking.co.uk/blog/this-teepee-specialist-is-taking-sleepovers-to-the-next-level/)
+- [Main Line Tonight](https://mainlinetonight.com/the-new-main-line-sleepover/)
+- [The Yes Girls about](https://theyesgirls.com/about-yes-local/)
+- [InsideHook](https://www.insidehook.com/article/relationships/the-weird-decadent-world-of-marriage-proposal-consulting)
+- [Bustle](https://www.bustle.com/wellness/proposal-planners)
+- [Money](https://money.com/valentines-creative-ways-propose-marriage/?amp=true)
+- [Atlanta heart arch page](https://www.theheartbandits.com/atlanta-proposal-ideas/heart-arch-proposal-atlanta/)
+- [Phoenix](https://theheartbandits.com/?p=48510)
+- [Hawaii](https://theheartbandits.com/?p=47006)
+- [Batch listing example](https://letsbatch.com/experiences/5641fc42-8770-44dc-8983-4fb489e9785d)
+- [another](https://letsbatch.com/experiences/0b80ab01-0891-4189-be5e-2c9008d6f84f)
+- [Batch FAQ](https://letsbatch.com/faqs)
+- [2023 report](https://letsbatch.com/blog/bach-app-special-report)
+- [Rock n Boho case study](https://letsbatch.com/blog/how-batch-helped-rock-n-boho-hit-1-on-google-without-paid-ads)
+- [suppliers page](https://letsbatch.com/suppliers)
+- [Airbnb community](https://community.withairbnb.com/t5/Support-with-your-bookings/Thoughtful-details-guests-love/m-p/2035958)
+- [Airbnb](https://www.airbnb.com/services/7009861)
+- [Airbnb](https://www.airbnb.com/services/6970374)
+- [Airbnb](https://www.airbnb.com/services/7207596)
+- [Airbnb](https://www.airbnb.com/services/7137431)
+- [Airbnb](https://www.airbnb.com/services/6867246)
+- [Airbnb](https://www.airbnb.com/services/7101523)
+- [Greetwell for operators](https://www.greetwell.com/wf/for-tour-operators)
+- [listing](https://www.greetwell.com/us/direct/8977)
+- [Rigby case study](https://www.rigbyjs.com/case-studies/greetwell)
+- [Hostfully](https://www.hostfully.com/blog/increase-revenue-with-hostfully-guidebooks-marketplace)
+- [Hospitable](https://hospitable.com/upsells-launch)
+- [StayFi](https://stayfi.com/upsell-integrations/)
+- [Westgate](https://www.westgateresorts.com/hotels/florida/orlando/westgate-vacation-villas-resort/overview/room-decorations/)
+- [Airbnb newsroom](https://news.airbnb.com/en-au/2025-may-release-now-you-can-airbnb-more-than-an-airbnb/)
+- [Hostaway](https://www.hostaway.com/blog/airbnb-2025-summer-release-everything-app/)
+- [Unique Inns](https://www.uniqueinns.com/specials/overleaf-lodge-and-spa/picnics-and-gift-packages-8207)
+- [WeddingWire](https://weddingwire.com/biz/the-pop-up-bnb/7dffad8d1d8fbdb2.html)
+- [Consistently Curious](https://www.consistentlycurious.com/glamping-in-your-backyard-with-pop-up-bnb/)
+- [Add to Event](https://www.addtoevent.co.uk/beautiful-bells)
+- [Easy Weddings](https://www.easyweddings.com.au/WeddingAccommodation/Melbourne/TwilightGlamping/)
+- [Polka Dot Wedding](https://polkadotwedding.com/wedding-vendor/happy-glamper/)
+- [Boutique Camping trade Q&A](https://boutiquecamping.com/blogs/news/trade-testimonial-setting-up-an-events-rental-glamping-business)
+- [The Business Journal](https://thebusinessjournal.com/?p=79845)
+- [FGCU360](https://fgcu360.com/2022/08/10/alumna-entrepreneur-on-board-with-charcuterie-platter-popularity/)
+- [Biz New Orleans](https://bizneworleans.com/adult-lunchables/)
+- [Community Impact](https://communityimpact.com/dallas-fort-worth/grapevine-colleyville-southlake/business/2022/08/12/yayayum-boards-owner-shifts-from-food-blogger-to-charcuterie-board-purveyor-in-grapevine)
+- [BizBash](https://www.bizbash.com/bizbash-lists/brands-event-pros/article/22644288/industry-innovators-2023-kabrel-geller)
+- [Jax Daily Record](https://jaxdailyrecord.com/article/graze-craze-charcuterie-franchise-opening-in-st-augustine)
+- [Fast Casual](https://www.fastcasual.com/news/graze-craze-doubles-footprint/)
+- [Franchising.com](https://www.franchising.com/news/20230712_graze_craze_opens_first_arkansas_location_expands_in_texas.html)
+- [Alura interview](https://www.alura.io/interview/elliespartysupply)
+- [Gumroad](https://littleagencyco.gumroad.com/l/grandballoonartistbundle)
+- [Payhip](https://payhip.com/BalloonArtistProGuide)
+- [The Spoon](https://thespoon.tech/coterie-will-deliver-a-high-end-party-in-a-box-to-your-doorstep)
+- [ABC11](https://abc11.com/post/nc-made-happy-hippo-party-boxes-helps-parents-simplify-birthday-planning/19751965/)
+- [225 Magazine](https://www.225batonrouge.com/?p=211090)
+- [Press release, Apr 2026](https://lifestyle.q923radio.com/story/155753/from-mall-kiosk-to-luxury-event-brand-the-balloon-guy-marks-major-growth-milestone/)
