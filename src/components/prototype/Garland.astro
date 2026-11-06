@@ -1,0 +1,48 @@
+---
+// PROTOTYPE — throwaway. An SVG garland from the seeded generator.
+import { garland, PALETTES } from './garland';
+
+interface Props {
+  palette?: readonly string[];
+  width?: number;
+  height?: number;
+  seed?: number;
+  density?: number;
+  sag?: number;
+  label?: string;
+  class?: string;
+}
+
+const {
+  palette = PALETTES.celebration,
+  width = 900,
+  height = 220,
+  seed = 7,
+  density = 1,
+  sag = 0.25,
+  label = 'An organic balloon garland',
+  class: className,
+} = Astro.props;
+const balloons = garland({ width, height, palette, seed, density, sag });
+const id = `g${seed}${Math.round(width)}`;
+const colors = [...new Set(palette)];
+---
+
+<svg class={className} viewBox={`-30 -30 ${width + 60} ${height + 60}`} role="img" aria-label={label} preserveAspectRatio="xMidYMid meet">
+  <defs>
+    {colors.map((c, i) => (
+      <radialGradient id={`${id}-${i}`} cx="35%" cy="30%" r="70%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55" />
+        <stop offset="35%" stop-color={c} stop-opacity="1" />
+        <stop offset="100%" stop-color={c} stop-opacity="1" />
+      </radialGradient>
+    ))}
+  </defs>
+  {balloons.map((b) => (
+    <circle cx={b.x.toFixed(1)} cy={b.y.toFixed(1)} r={b.r.toFixed(1)} fill={`url(#${id}-${colors.indexOf(b.color)})`} />
+  ))}
+</svg>
+
+<style>
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+</style>

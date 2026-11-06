@@ -1,0 +1,51 @@
+---
+// PROTOTYPE B — Palette doorway: hovering or focusing a path previews its temperature
+// across the whole page, before you click. Fades only.
+import Garland from '../Garland.astro';
+import { PALETTES } from '../garland';
+---
+
+<section class="doorway">
+  <div class="garlands" aria-hidden="true">
+    <div class="g g-neutral"><Garland palette={PALETTES.neutral} seed={5} width={1200} height={180} /></div>
+    <div class="g g-warm"><Garland palette={PALETTES.celebration} seed={5} width={1200} height={180} /></div>
+    <div class="g g-cool"><Garland palette={PALETTES.wedding} seed={5} width={1200} height={180} /></div>
+  </div>
+  <h1>What are you planning?</h1>
+  <div class="choices">
+    <a href="/celebrations" data-temp="warm"><span>A celebration</span><small>Birthdays, showers, parties</small></a>
+    <a href="/weddings" data-temp="cool"><span>A wedding</span><small>Ceremonies, receptions, the coast</small></a>
+  </div>
+  <p class="hint">Hover or tab to a choice: the whole page shifts to its palette.</p>
+</section>
+
+<script>
+  const root = document.documentElement;
+  document.querySelectorAll<HTMLAnchorElement>('.choices a').forEach((a) => {
+    const on = () => (root.dataset.temperature = a.dataset.temp!);
+    const off = () => delete root.dataset.temperature;
+    a.addEventListener('pointerenter', on);
+    a.addEventListener('focus', on);
+    a.addEventListener('pointerleave', off);
+    a.addEventListener('blur', off);
+  });
+</script>
+
+<style>
+  .doorway { padding: 40px max(16px, env(safe-area-inset-left, 0px)) 140px; max-width: 1100px; margin: 0 auto; display: grid; gap: 32px; text-align: center; }
+  .garlands { position: relative; height: clamp(110px, 18vw, 200px); }
+  .g { position: absolute; inset: 0; transition: opacity 500ms var(--ease); }
+  .g-warm, .g-cool { opacity: 0; }
+  :global(html[data-temperature='warm']) .g-warm, :global(html[data-temperature='cool']) .g-cool { opacity: 1; }
+  :global(html[data-temperature]) .g-neutral { opacity: 0; }
+  :global(body) { transition: background-color 500ms var(--ease); }
+  h1 { margin: 0; font-size: clamp(2.4rem, 7vw, 4.6rem); }
+  .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 760px; margin: 0 auto; width: 100%; }
+  .choices a { display: grid; gap: 4px; padding: 28px 20px; border: 1px solid var(--line); background: var(--surface); text-decoration: none; transition: border-color 300ms var(--ease); }
+  .choices a:hover, .choices a:focus-visible { border-color: var(--support); outline: none; }
+  .choices span { font-family: var(--font-display); font-size: var(--step-2); }
+  .choices small { color: var(--ink-muted); }
+  .hint { color: var(--ink-muted); font-size: var(--step--1); }
+  @media (max-width: 560px) { .choices { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .g, :global(body) { transition: none; } }
+</style>

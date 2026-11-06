@@ -1,0 +1,46 @@
+---
+// PROTOTYPE A — Gallery wall: the doorway as two framed works with museum labels.
+import Garland from '../Garland.astro';
+import { PALETTES } from '../garland';
+---
+
+<section class="wall">
+  <p class="eyebrow">Now showing</p>
+  <h1>What are you planning?</h1>
+  <div class="works">
+    <a class="work" href="/celebrations">
+      <div class="mat"><Garland palette={PALETTES.celebration} seed={3} sag={0.5} width={600} height={260} label="A warm garland in coral, blush and apricot" /></div>
+      <div class="label">
+        <p class="title">Celebrations</p>
+        <p>Air-filled latex on steel frame, 2026</p>
+        <p>Birthdays, showers, parties. Installed on the central coast.</p>
+        <p class="price">From $[__] · View the work →</p>
+      </div>
+    </a>
+    <a class="work" href="/weddings">
+      <div class="mat"><Garland palette={PALETTES.wedding} seed={11} sag={0.5} width={600} height={260} label="A quiet garland in sage, fog and sea glass" /></div>
+      <div class="label">
+        <p class="title">Weddings</p>
+        <p>Air-filled latex, sea-glass palette, 2026</p>
+        <p>Ceremony arches and reception garlands for the coast.</p>
+        <p class="price">From $[__] · View the work →</p>
+      </div>
+    </a>
+  </div>
+  <p class="aside">Not sure yet? <a href="#">Walk the whole gallery</a> or <a href="/enquire">tell us about it</a>.</p>
+</section>
+
+<style>
+  .wall { padding: 64px max(16px, env(safe-area-inset-left, 0px)) 120px; max-width: 1100px; margin: 0 auto; display: grid; gap: 28px; }
+  .wall h1 { margin: 0; }
+  .works { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .work { display: grid; gap: 18px; text-decoration: none; }
+  .mat { background: var(--surface); padding: 7% 5%; border: 1px solid var(--line); box-shadow: 0 18px 40px -24px rgba(42, 38, 34, 0.35), inset 0 0 0 10px var(--ground); transition: box-shadow 300ms var(--ease); }
+  .work:hover .mat, .work:focus-visible .mat { box-shadow: 0 24px 50px -22px rgba(42, 38, 34, 0.45), inset 0 0 0 10px var(--ground); }
+  .label { justify-self: start; max-width: 300px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); font-size: 0.82rem; line-height: 1.5; color: var(--ink-muted); }
+  .label p { margin: 0; }
+  .label .title { font-family: var(--font-display); font-size: 1.2rem; color: var(--ink); }
+  .label .price { margin-top: 6px; color: var(--ink); }
+  .aside { color: var(--ink-muted); }
+  @media (max-width: 720px) { .works { grid-template-columns: 1fr; gap: 36px; } }
+</style>

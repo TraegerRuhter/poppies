@@ -1,0 +1,67 @@
+---
+// PROTOTYPE E — Pop to reveal: the tagline made literal. Each balloon hides one
+// useful thing; tapping it fades the balloon away (no bounce) to show it.
+const FACTS = [
+  { c: '#e8836b', t: 'Air, not helium', d: 'Our garlands are air-filled. They last for days indoors and can never drift away.' },
+  { c: '#a9b8a3', t: 'Weddings', d: 'Ceremony arches and reception garlands in quiet coastal colours.', href: '/weddings' },
+  { c: '#f4b183', t: 'Celebrations', d: 'Birthdays, showers and parties, built on site before guests arrive.', href: '/celebrations' },
+  { c: '#9fbfbf', t: 'Nothing left behind', d: 'Nothing is ever released, and we collect every piece at teardown.' },
+  { c: '#f2c1b6', t: 'Where we work', d: 'Lincoln City to Yachats, and further along the coast by arrangement.' },
+  { c: '#d2452f', t: 'Start an enquiry', d: 'The date, the place, and roughly what you have in mind.', href: '/enquire' },
+];
+---
+
+<section class="pop">
+  <div class="copy">
+    <p class="eyebrow">Poppies</p>
+    <h1>Events that pop.</h1>
+    <p>Tap a balloon.</p>
+  </div>
+  <ul class="cluster">
+    {FACTS.map((f, i) => (
+      <li style={`--c:${f.c}; --i:${i}`}>
+        <div class="fact">
+          <h2>{f.t}</h2>
+          <p>{f.d}</p>
+          {f.href && <a href={f.href}>Go →</a>}
+        </div>
+        <button type="button" class="balloon" aria-label={`Reveal: ${f.t}`}><span class="knot"></span></button>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.balloon').forEach((b) =>
+    b.addEventListener('click', () => {
+      b.classList.add('popped');
+      b.setAttribute('aria-hidden', 'true');
+      b.tabIndex = -1;
+      b.closest('li')!.querySelector<HTMLElement>('.fact a, .fact h2')?.focus?.();
+    }),
+  );
+</script>
+
+<style>
+  .pop { padding: 48px max(16px, env(safe-area-inset-left, 0px)) 140px; max-width: 1000px; margin: 0 auto; display: grid; gap: 28px; }
+  .copy h1, .copy p { margin: 0; }
+  .copy h1 { font-size: clamp(2.6rem, 8vw, 5rem); }
+  .copy p { color: var(--ink-muted); }
+  .cluster { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cluster li { position: relative; aspect-ratio: 1; }
+  .fact { position: absolute; inset: 8%; display: grid; align-content: center; gap: 6px; padding: 12px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 50%; }
+  .fact h2 { font-size: 1.05rem; margin: 0; }
+  .fact p { margin: 0; font-size: 0.82rem; color: var(--ink-muted); }
+  .fact a { font-size: 0.85rem; }
+  .balloon {
+    position: absolute; inset: 0; border: 0; border-radius: 50%; cursor: pointer;
+    background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.6), transparent 38%), var(--c);
+    box-shadow: inset -10px -14px 30px rgba(0, 0, 0, 0.08);
+    transition: opacity 260ms var(--ease), transform 260ms var(--ease);
+  }
+  .balloon:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .balloon.popped { opacity: 0; transform: scale(1.04); pointer-events: none; }
+  .knot { position: absolute; left: 50%; bottom: -6px; width: 10px; height: 10px; background: var(--c); transform: translateX(-50%) rotate(45deg); }
+  @media (max-width: 560px) { .cluster { grid-template-columns: repeat(2, 1fr); } .fact p { font-size: 0.75rem; } }
+  @media (prefers-reduced-motion: reduce) { .balloon { transition: none; } .balloon.popped { transform: none; } }
+</style>

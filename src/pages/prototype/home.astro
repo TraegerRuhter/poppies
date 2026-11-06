@@ -1,0 +1,40 @@
+---
+// PROTOTYPE — throwaway. Ten homepage sketches on one route, switchable with
+// ?variant=A…J, the arrow keys, or the floating bar. Dev only: production gets a 404.
+import Base from '../../layouts/Base.astro';
+import PrototypeSwitcher from '../../components/prototype/PrototypeSwitcher.astro';
+import A from '../../components/prototype/home/A.astro';
+import B from '../../components/prototype/home/B.astro';
+import C from '../../components/prototype/home/C.astro';
+import D from '../../components/prototype/home/D.astro';
+import E from '../../components/prototype/home/E.astro';
+import F from '../../components/prototype/home/F.astro';
+import G from '../../components/prototype/home/G.astro';
+import H from '../../components/prototype/home/H.astro';
+import I from '../../components/prototype/home/I.astro';
+import J from '../../components/prototype/home/J.astro';
+
+export const prerender = false;
+if (!import.meta.env.DEV) return new Response(null, { status: 404 });
+
+const VARIANTS = [
+  { key: 'A', name: 'Gallery wall', C: A },
+  { key: 'B', name: 'Palette doorway', C: B },
+  { key: 'C', name: 'Build a garland', C: C },
+  { key: 'D', name: 'Garland ruler', C: D },
+  { key: 'E', name: 'Pop to reveal', C: E },
+  { key: 'F', name: 'Field guide', C: F },
+  { key: 'G', name: 'Tide table', C: G },
+  { key: 'H', name: 'Postcard enquiry', C: H },
+  { key: 'I', name: 'Install day', C: I },
+  { key: 'J', name: 'Today on the coast', C: J },
+];
+const key = Astro.url.searchParams.get('variant')?.toUpperCase() ?? 'A';
+const current = VARIANTS.find((v) => v.key === key) ?? VARIANTS[0];
+const Variant = current.C;
+---
+
+<Base title={`Sketch ${current.key}: ${current.name}`} description="Prototype homepage sketches." noindex>
+  <Variant />
+  <PrototypeSwitcher variants={VARIANTS.map(({ key, name }) => ({ key, name }))} current={current.key} />
+</Base>

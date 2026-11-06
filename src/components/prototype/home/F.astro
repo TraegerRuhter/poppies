@@ -1,0 +1,55 @@
+---
+// PROTOTYPE F — A field guide to coastal balloons: the services as naturalist's
+// specimen plates. Fun to read, and it answers "what's the difference?".
+import Garland from '../Garland.astro';
+import { PALETTES } from '../garland';
+const SPECIES = [
+  { name: 'Organic garland', latin: 'Sertum organicum', habitat: 'Mantels, cake tables, long walls', life: 'Several days indoors; the day of the event outdoors', size: '6–30 ft', seen: 'Birthdays, showers, receptions', palette: PALETTES.celebration, seed: 2, sag: 0.3 },
+  { name: 'Ceremony arch', latin: 'Arcus nuptialis', habitat: 'Lawns, bluffs, under the tent', life: 'The day of the event; anchored for wind', size: '7–9 ft tall', seen: 'Weddings, elopements, vow renewals', palette: PALETTES.wedding, seed: 8, sag: 0.9 },
+  { name: 'Ceiling cloud', latin: 'Nubes tentoria', habitat: 'The 20×40 tent, low ceilings', life: 'The whole event, out of the sun', size: 'Priced per tent bay', seen: 'Receptions, milestone parties', palette: PALETTES.coast, seed: 14, sag: 0.05 },
+  { name: 'Sculpture', latin: 'Figura commissa', habitat: 'Entrances, photo spots, shop windows', life: 'Days to weeks indoors', size: 'One of a kind', seen: 'Commissions, brand events', palette: PALETTES.celebration, seed: 21, sag: 0.6 },
+];
+---
+
+<section class="guide">
+  <header>
+    <p class="eyebrow">Plate I–IV</p>
+    <h1>A field guide to coastal balloons</h1>
+    <p>How to tell them apart, where they thrive, and how long they live.</p>
+  </header>
+  <div class="plates">
+    {SPECIES.map((s, i) => (
+      <article class="plate">
+        <p class="num">Plate {['I', 'II', 'III', 'IV'][i]}</p>
+        <div class="specimen"><Garland palette={s.palette} seed={s.seed} sag={s.sag} width={600} height={160} label={`Illustration: ${s.name}`} /></div>
+        <h2>{s.name}</h2>
+        <p class="latin">{s.latin}</p>
+        <dl>
+          <dt>Habitat</dt><dd>{s.habitat}</dd>
+          <dt>Lifespan</dt><dd>{s.life}</dd>
+          <dt>Size</dt><dd>{s.size}</dd>
+          <dt>Often seen at</dt><dd>{s.seen}</dd>
+        </dl>
+      </article>
+    ))}
+  </div>
+  <p class="note">Spotted one you'd like? <a href="/enquire">Tell us where and when.</a></p>
+</section>
+
+<style>
+  .guide { padding: 48px max(16px, env(safe-area-inset-left, 0px)) 140px; max-width: 1080px; margin: 0 auto; display: grid; gap: 32px; }
+  header { display: grid; gap: 8px; max-width: 38rem; }
+  header h1, header p { margin: 0; }
+  header p:last-child { color: var(--ink-muted); }
+  .plates { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .plate { background: var(--surface); border: 1px solid var(--line); padding: 20px; display: grid; gap: 6px; align-content: start; }
+  .num { margin: 0; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); }
+  .specimen { border-bottom: 1px solid var(--line); padding: 8px 0 16px; margin-bottom: 8px; }
+  h2 { margin: 0; }
+  .latin { margin: 0 0 8px; font-family: var(--font-display); font-style: italic; color: var(--ink-muted); }
+  dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 0.9rem; }
+  dt { color: var(--ink-muted); }
+  dd { margin: 0; }
+  .note { color: var(--ink-muted); }
+  @media (max-width: 720px) { .plates { grid-template-columns: 1fr; } }
+</style>

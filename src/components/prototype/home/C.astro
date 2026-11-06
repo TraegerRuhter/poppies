@@ -1,0 +1,77 @@
+---
+// PROTOTYPE C — Build a garland: tap colours from the studio's stock, watch the
+// garland redraw, then send that palette with an enquiry.
+const STOCK = [
+  ['Fog', '#dfe3dc'], ['Sage', '#a9b8a3'], ['Sea glass', '#9fbfbf'], ['Harbour', '#47646b'],
+  ['Kelp', '#5f6b4e'], ['Driftwood', '#b9a68e'], ['Sand', '#e7dccb'], ['Ivory', '#f7f3ec'],
+  ['Blush', '#f2c1b6'], ['Apricot', '#f4b183'], ['Coral', '#e8836b'], ['Poppy', '#d2452f'],
+] as const;
+---
+
+<section class="builder">
+  <div class="copy">
+    <p class="eyebrow">Try it</p>
+    <h1>Pick your colours.</h1>
+    <p>Choose up to four from what we stock. The garland redraws as you go. When it looks right, send it with your enquiry.</p>
+  </div>
+  <svg id="c-garland" viewBox="-30 -30 960 280" role="img" aria-label="Your garland preview"></svg>
+  <fieldset class="swatches">
+    <legend>Stock colours</legend>
+    {STOCK.map(([name, hex], i) => (
+      <label class="sw">
+        <input type="checkbox" value={hex} data-name={name} checked={['Sage', 'Fog', 'Sea glass', 'Ivory'].includes(name)} />
+        <span class="chip" style={`--c:${hex}`}></span>
+        <span>{name}</span>
+      </label>
+    ))}
+  </fieldset>
+  <p class="chosen" aria-live="polite"></p>
+  <a class="button" id="c-send" href="/enquire">Ask about this palette</a>
+</section>
+
+<script>
+  const svg = document.getElementById('c-garland')!;
+  const boxes = [...document.querySelectorAll<HTMLInputElement>('.swatches input')];
+  const chosen = document.querySelector('.chosen')!;
+  const send = document.getElementById('c-send') as HTMLAnchorElement;
+  function rng(seed: number) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0), s / 2 ** 32); }
+  function draw() {
+    let picked = boxes.filter((b) => b.checked);
+    if (picked.length > 4) { picked.slice(4).forEach((b) => (b.checked = false)); picked = picked.slice(0, 4); }
+    const colors = picked.length ? picked.map((b) => b.value) : ['#e7dccb'];
+    const rand = rng(9), W = 900, H = 220, out: string[] = [];
+    const defs = colors.map((c, i) => `<radialGradient id="cg${i}" cx="35%" cy="30%" r="70%"><stop offset="0%" stop-color="#fff" stop-opacity=".55"/><stop offset="35%" stop-color="${c}"/><stop offset="100%" stop-color="${c}"/></radialGradient>`).join('');
+    const balls: [number, number, number, number][] = [];
+    for (let c = 0; c <= 20; c++) {
+      const t = c / 20, cx = t * W, cy = H / 2 + Math.sin(t * Math.PI) * H * 0.3 - H * 0.15;
+      for (const base of [21, 13, 13, 13, 7, 7, 7, 7]) {
+        const r = base * (0.85 + rand() * 0.3), a = rand() * Math.PI * 2, d = (base === 21 ? 4 : base === 13 ? 16 : 24) * rand();
+        balls.push([cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.8, r, Math.floor(rand() * colors.length)]);
+      }
+    }
+    balls.sort((a, b) => b[2] - a[2]).forEach(([x, y, r, i]) => out.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="url(#cg${i})"/>`));
+    svg.innerHTML = `<defs>${defs}</defs>${out.join('')}`;
+    const names = picked.map((b) => b.dataset.name);
+    chosen.textContent = names.length ? `Your palette: ${names.join(', ')}` : 'Pick at least one colour.';
+    send.href = `/enquire?event=&colours=${encodeURIComponent(names.join(', '))}`;
+  }
+  boxes.forEach((b) => b.addEventListener('change', draw));
+  draw();
+</script>
+
+<style>
+  .builder { padding: 48px max(16px, env(safe-area-inset-left, 0px)) 140px; max-width: 960px; margin: 0 auto; display: grid; gap: 24px; }
+  .copy { display: grid; gap: 8px; max-width: 34rem; }
+  .copy h1, .copy p { margin: 0; }
+  .copy p:last-child { color: var(--ink-muted); }
+  svg { width: 100%; height: auto; overflow: visible; }
+  .swatches { border: 0; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+  .swatches legend { font-size: var(--step--1); color: var(--ink-muted); margin-bottom: 8px; }
+  .sw { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); background: var(--surface); cursor: pointer; font-size: 0.9rem; }
+  .sw input { position: absolute; opacity: 0; }
+  .sw:has(input:checked) { border-color: var(--ink); }
+  .sw:has(input:focus-visible) { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .chip { width: 20px; height: 20px; border-radius: 50%; background: var(--c); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08); flex: none; }
+  .chosen { margin: 0; color: var(--ink-muted); }
+  .button { justify-self: start; }
+</style>

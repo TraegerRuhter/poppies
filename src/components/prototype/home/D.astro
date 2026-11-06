@@ -1,0 +1,80 @@
+---
+// PROTOTYPE D — Garland ruler: drag the length and see it against things people
+// know (a 6 ft table, a door, a person), with the rough size of job it is.
+---
+
+<section class="ruler">
+  <div class="copy">
+    <p class="eyebrow">How much garland do you need?</p>
+    <h1>Drag to size it.</h1>
+  </div>
+  <svg id="d-scene" viewBox="0 0 960 340" role="img" aria-label="A garland drawn to scale against a table, a door and a person"></svg>
+  <label class="slider">
+    <span>Length: <strong id="d-ft">12</strong> ft</span>
+    <input id="d-len" type="range" min="4" max="30" step="1" value="12" />
+  </label>
+  <p class="verdict" id="d-verdict" aria-live="polite"></p>
+  <a class="button" id="d-send" href="/enquire">Ask about a 12 ft garland</a>
+</section>
+
+<script>
+  const svg = document.getElementById('d-scene')!;
+  const len = document.getElementById('d-len') as HTMLInputElement;
+  const ft = document.getElementById('d-ft')!;
+  const verdict = document.getElementById('d-verdict')!;
+  const send = document.getElementById('d-send') as HTMLAnchorElement;
+  const PX = 28; // pixels per foot
+  const FLOOR = 320;
+  const COLORS = ['#e8836b', '#f2c1b6', '#f4b183', '#f6e7d2', '#d2452f'];
+  function rng(seed: number) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0), s / 2 ** 32); }
+  function draw() {
+    const feet = Number(len.value);
+    ft.textContent = String(feet);
+    const W = feet * PX, x0 = 40, y = FLOOR - 7 * PX;
+    const rand = rng(4), parts: string[] = [];
+    const n = Math.max(3, Math.round(W / 40));
+    const balls: [number, number, number, string][] = [];
+    for (let c = 0; c <= n; c++) {
+      const t = c / n, cx = x0 + t * W, cy = y + Math.sin(t * Math.PI) * 30;
+      for (const base of [16, 10, 10, 6, 6]) {
+        const r = base * (0.85 + rand() * 0.3), a = rand() * Math.PI * 2, d = (base === 16 ? 3 : 14) * rand();
+        balls.push([cx + Math.cos(a) * d, cy + Math.sin(a) * d * 0.8, r, COLORS[Math.floor(rand() * COLORS.length)]]);
+      }
+    }
+    balls.sort((a, b) => b[2] - a[2]).forEach(([x, yy, r, c]) => parts.push(`<circle cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" r="${r.toFixed(1)}" fill="${c}"/>`));
+    const ink = getComputedStyle(document.documentElement).getPropertyValue('--ink-muted').trim() || '#6f675e';
+    const props = `
+      <line x1="0" y1="${FLOOR}" x2="960" y2="${FLOOR}" stroke="${ink}" stroke-width="1"/>
+      <rect x="60" y="${FLOOR - 2.5 * PX}" width="${6 * PX}" height="6" fill="${ink}"/>
+      <rect x="66" y="${FLOOR - 2.5 * PX}" width="4" height="${2.5 * PX}" fill="${ink}"/><rect x="${54 + 6 * PX}" y="${FLOOR - 2.5 * PX}" width="4" height="${2.5 * PX}" fill="${ink}"/>
+      <text x="${60 + 3 * PX}" y="${FLOOR + 16}" text-anchor="middle" font-size="12" fill="${ink}">6 ft table</text>
+      <rect x="420" y="${FLOOR - 6.67 * PX}" width="${3 * PX}" height="${6.67 * PX}" fill="none" stroke="${ink}"/>
+      <text x="${420 + 1.5 * PX}" y="${FLOOR + 16}" text-anchor="middle" font-size="12" fill="${ink}">door, 6′8″</text>
+      <circle cx="640" cy="${FLOOR - 5.2 * PX}" r="${0.35 * PX}" fill="none" stroke="${ink}"/>
+      <line x1="640" y1="${FLOOR - 4.85 * PX}" x2="640" y2="${FLOOR - 2.4 * PX}" stroke="${ink}"/>
+      <line x1="640" y1="${FLOOR - 2.4 * PX}" x2="628" y2="${FLOOR}" stroke="${ink}"/><line x1="640" y1="${FLOOR - 2.4 * PX}" x2="652" y2="${FLOOR}" stroke="${ink}"/>
+      <text x="640" y="${FLOOR + 16}" text-anchor="middle" font-size="12" fill="${ink}">5′6″</text>
+      <line x1="${x0}" y1="${y - 46}" x2="${x0 + W}" y2="${y - 46}" stroke="${ink}"/>
+      <text x="${x0 + W / 2}" y="${y - 54}" text-anchor="middle" font-size="13" fill="${ink}">${feet} ft</text>`;
+    svg.innerHTML = props + parts.join('');
+    verdict.textContent =
+      feet <= 8 ? 'About the length of a cake table: a single focal piece.' :
+      feet <= 16 ? 'A backdrop behind a table, or a doorway: a designed corner.' :
+      feet <= 24 ? 'A long wall or a ceremony arch: a designed room.' :
+      'A statement run across a room or the tent: a full installation.';
+    send.textContent = `Ask about a ${feet} ft garland`;
+    send.href = `/enquire?scale=${encodeURIComponent(feet + ' ft garland')}`;
+  }
+  len.addEventListener('input', draw);
+  draw();
+</script>
+
+<style>
+  .ruler { padding: 48px max(16px, env(safe-area-inset-left, 0px)) 140px; max-width: 1000px; margin: 0 auto; display: grid; gap: 20px; }
+  .copy h1, .copy p { margin: 0; }
+  svg { width: 100%; height: auto; }
+  .slider { display: grid; gap: 8px; font-size: 1rem; }
+  .slider input { width: 100%; accent-color: var(--accent); }
+  .verdict { margin: 0; font-family: var(--font-display); font-size: var(--step-1); }
+  .button { justify-self: start; }
+</style>
