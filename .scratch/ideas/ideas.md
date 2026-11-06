@@ -1,4 +1,4 @@
-# Poppies: 140 ideas, triaged
+# Poppies: 131 ideas, triaged (plus 12 parked)
 
 2026-11-06. Merged and de-duplicated from the six research streams
 (`research/01`–`06`) and the unfiltered brainstorm (`brainstorm.md`). **Nothing
@@ -22,6 +22,20 @@ here is decided.** It's a menu for the owner and for the offering-model map.
 **Tiers:** **Do now** (cheap, safe, unblocked) · **Next** (high value, needs a
 decision or some build) · **Explore** (promising, needs testing or more
 facts) · **Parked** (off-brand, premature or poor value, with the reason).
+
+
+## Tier index
+
+The sections below group ideas by theme. Each idea's tier:
+
+- **Do now (28):** 1–20, 60–63, 70–73. Cheap, safe, unblocked or nearly so.
+- **Next (78):** 21–53, 64–66, 74–95, 121–140. High value, needs a decision
+  or some build work.
+- **Explore (25):** 96–120. Promising, but needs testing, facts or a later
+  stage.
+- **Parked (12):** listed at the end, each with the reason.
+
+Numbers skip 54–59 and 67–69, left as gaps between themes.
 
 ---
 
