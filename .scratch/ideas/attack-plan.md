@@ -55,7 +55,7 @@ Files go in `research/`, cited, with confidence per claim, like wave 1.
 - [ ] **A competitor matrix**: one table, plus where Poppies wins and loses.
 - [ ] **A startup checklist**: everything to set up before the first paid job,
       in order, with rough costs.
-- [ ] **A 12-month calendar**: the coast's event and wedding calendar mapped to
+- [x] **A 12-month calendar** (`drafts/twelve-month-calendar.md`): the coast's event and wedding calendar mapped to
       outreach, content and product launches.
 - [ ] **A simple financial model**: costs, prices and the bookings needed to
       break even, as a spreadsheet.
