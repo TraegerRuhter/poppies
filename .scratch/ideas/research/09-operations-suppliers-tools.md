@@ -129,3 +129,134 @@ Status: in progress (sections 2–5 pending).
 - Store **cool, dark and dry**, away from direct sun, **fluorescent light** and heat, and never in a vehicle or a sunny window. Keep balloons in their original bags until needed [H6][H7]. (M)
 - One wholesale guide targets **50–68 °F with low humidity** [H8]. (L–M)
 - Shelf life is **about 1–2 years** if stored well; old latex goes brittle and pops [H6][H8]. Rotate stock first-in, first-out. Lidded opaque bins in an interior closet work; a coastal garage that's damp and cold works less well. (M)
+
+---
+
+## 4. Software
+
+### 4.1 All-in-one client tools (enquiry → proposal → contract → deposit → invoice)
+
+| Tool | Price (2026, per snippets) | Payment fees | Fit for Poppies | Conf. |
+|---|---|---|---|---|
+| **HoneyBook** | Starter **$36/mo** ($29 billed annually; no scheduler); Essentials **$59** ($49); Premium **$129** ($109) [SW1][SW2][SW3]. The older $19/39/79 tiers were replaced in Feb 2025 [SW4] | 2.9% + 25¢ per card payment [SW2] | Proposal with **package choice + contract + deposit in one link**. Fastest setup. A balloon-specific blog favours it for bigger events [SW5] | M |
+| **Dubsado** | Starter **$35/mo**, Premier **$55/mo** after a 1 Dec 2025 restructure (annual $335 / $525); some sources still show $20/$40 [SW6][SW7] | Stripe, Square or PayPal rates | More customisable (forms, conditional workflows). Steeper setup | M |
+| **17hats** | **$60/mo** single plan ($600/yr); add-ons push it to about $85/mo [SW8] | Processor rates | Suggested for "still testing the model" [SW5], but no longer cheap | M |
+| **Bonsai** | $15–59 per user per month, no free tier [SW9] | About $32 on a $1,000 card invoice [SW9] | Freelancer-oriented; less event-specific | L–M |
+| **Square Invoices** | Free plan; Plus around $49/mo (sources conflict) [SW10] | **3.3% + 30¢** online card payments on the free plan, 2.9% + 30¢ on Plus [SW10] | **Deposit and balance invoices with no subscription.** No built-in contracts or proposals | M |
+| **Stripe** (Payment Links / Invoicing) | No monthly fee for basic Payment Links | Standard 2.9% + 30¢ [SW11]. Stripe Invoicing adds a small per-invoice fee (not confirmed here) | Can be wired to the Astro site and Airtable. A developer-friendly route | M |
+
+### 4.2 Balloon-specific tools
+
+- **Fanfaire** is a balloon-artist platform with a "Pricing Wizard" (price matrix), a **Design Studio with a built-in pricing engine**, and a "Digital Storefront" for booking and payment. It has a free trial; prices weren't visible. It positions itself against HoneyBook (vendor content, so weigh accordingly) [SW12][SW13]. (M on features, unknown on price)
+- **BalloonSuite** is described in a roundup as balloon-pro business software covering clients, quotes, invoices, contracts and scheduling. No primary page was found [SW14]. (L)
+- **BalloonBuilder.com** is balloon design software for columns, arches, walls and backdrops with **real-time 3D rendering** (Capterra listing) [SW15]. (M)
+- **Calculators and apps:**
+  - **ArchCount**: free, first released July 2026. It turns dimensions into balloon counts and an inventory pull sheet [SW16]. (L, aggregator)
+  - **Balloon Brain**: $5.99 iPhone app for quoting with per-bag costs and profit breakdown; data stays on the device [SW17]. (M)
+  - **BalloonTools**: $6.99 iPad app with calculators for arches, columns and helium (Danish developer) [SW18]. (M)
+  - **Pricing Calculator**: subscription app [SW19]. (L)
+  - Etsy and Gumroad **pricing spreadsheets** cost around $27 [SW20]. (L)
+- **Mock-ups on venue photos:**
+  - An early-stage App Store **garland design app** that one reviewer used for client mock-ups [SW21].
+  - **Venue Visualizer**, which shows an empty venue photo "transformed" with AI [SW22].
+  - Assorted AI decor apps [SW21].
+  - Some studios offer a **free digital venue mock-up within 48 h** of an enquiry as a sales tactic [SW21].
+  - Most working decorators simply use **Canva or Procreate** with PNG balloon-cluster cut-outs. Ready-made "balloon artist bundles" are sold on Gumroad [SW23]. (M)
+
+### 4.3 Airtable as the CRM
+
+- Poppies' enquiry form already mirrors to Airtable. The **free plan allows 1,000 records per base**, public forms and limited automations. **Team is about $20 per seat per month billed annually ($24 monthly) with 50,000 records**. Read-only viewers are free [SW24]. (M)
+- At 1–2 people and fewer than 200 enquiries a year, the free tier lasts a long time if you keep one base. Airtable can't do e-signatures or take payments natively, so pair it with Stripe Payment Links or Square, plus a contract tool, or move the booked-client stage into HoneyBook.
+
+### 4.4 Scheduling
+
+- HoneyBook Essentials and Dubsado include schedulers [SW3]. Free alternatives are **Calendly free, Google Calendar appointment schedules, and Cal.com**; these are general knowledge, not sourced in this pass (L). A balloon studio mostly books **events** rather than meetings, so a shared Google Calendar with an "install" and "teardown" colour code plus an Airtable "Jobs" view is enough at first.
+
+---
+
+## 5. Workflow benchmarks
+
+| Metric | Figure | Source / Conf. |
+|---|---|---|
+| Balloons per foot (organic garland) | Standard **10–15/ft**; dense **12–15+/ft**; add **10% spares** [B1][B2] | M |
+| Build time | One pricing model assumes **16.5 min per ft** (about 3.6 ft per hour, so a 20 ft garland takes about 5.5 h) [B2]. A first-timer takes **3–4 h for one small garland**; long builds of 8 h are common [B1] | L–M |
+| Crew | **2 people, 2–4 h** to set up a 12–16 ft arch plus centrepieces. Large installs take **3–4 crew for 3–5 h** of on-site labour [B3] | L–M |
+| Labour rates (US) | $25–75/h; some quote $50–150 per worker per hour [B3] | L |
+| Market price per foot | $15–35/ft basic installed, $35–75/ft full; NJ cluster around $40–55/ft [B3][B4] | L–M |
+| Set-up fee | Usually billed separately, **$50–250 per install** [B3] | L |
+| Lifespan | Air-filled latex lasts days to 2 weeks indoors. Outdoor heat and sun cut it to hours (4–6 h claimed) [B1] | L–M |
+
+**Prep rhythm (synthesis, M):**
+- **T-14 days:** confirm design and colours, then order latex (shipping to the coast takes 3–6 days).
+- **T-2 days:** inflate and twist clusters (duplets and quads) and bag them by section.
+- **T-1 day:** build 4–6 ft sections indoors, cool and out of sun. Load the kit.
+- **Day of:** drive with A/C on, join sections on site, add 5" fillers and glue-dot accents, weight everything, take photos.
+- **Teardown:** pop, bag and dispose of the balloons (see the sustainability notes in file 06).
+
+**Install-day checklist (synthesis from [E9][E10], M):**
+- Spare latex in every size (10–20%)
+- Pump plus hand pump, extension cord, power bank or station
+- Glue dots, strip or line, zip ties, scissors, tape, fishing line, Command hooks
+- Sandbags or water weights, ratchet straps, tent stakes, ladder
+- Towels and tarp for rain, fan for heat
+- Contract and venue contact, permit (beach), photos of the mock-up
+- Trash bags, first aid, snacks and water
+
+---
+
+## Starter kit (estimates, not quotes)
+
+| Item | Low budget | Mid budget | Notes |
+|---|---|---|---|
+| Electric inflator | $30 (dual-nozzle Balloon Time class) | $440 (Conwin Air Force 4) + $30 backup | [E1][E2] |
+| Hand or foot pump (×2) | $15 | $25 | Beach |
+| Portable power station | — | $250–400 | For beach and outdoor sites (inference) |
+| Sizer (box + DIY large template) | $12 | $40 (Qualatex sizer + template) | [E5][E6] |
+| Strip, line, glue dots, tie tools, zip ties, tape, Command hooks | $60 | $120 | [E7][E8] |
+| Arch frame(s) | $30 (one consumer kit) | $250 (one heavy steel arch + one hexagon/circle backdrop) | [E11] |
+| Bases and weights | $50 (pair of water bases) | $150 (water bases + 6 sandbags) | [E11] |
+| Grid or mesh wall panels | — | $100–150 | L |
+| Opening latex stock (core neutrals + 6 colours, 5"/11"/18") | $300 | $700 | ~$16–35 per 100 bag [P3][W8] |
+| Storage bins and transport bags | $60 | $150 | |
+| Tools (ladder, drill, scissors, measure, first aid) | $80 | $200 | |
+| Helium | $0 (don't hold any) | $0 at launch; rent per job | [E12][E13] |
+| **Software, year 1** | **$0–100** (Airtable free + Square/Stripe invoices + a free e-sign tool + Balloon Brain $6) | **~$350–700** (HoneyBook Starter annual ~$350, or Essentials ~$590) | [SW1–SW3][SW17] |
+| **Total, approx.** | **≈ $750** | **≈ $2,500–3,100** | Vehicle not included |
+
+The 20×40 frame tent is assumed to be already owned or covered elsewhere.
+
+---
+
+## Recommended stack (1–2 person studio)
+
+1. **Keep the Astro form → Resend email + Airtable as the single lead list** (free tier). Add "Status", "Event date", "Venue type", "Quote $", "Deposit paid" and "Install crew" fields, plus a calendar view. This costs nothing and keeps the existing build. [SW24]
+2. **Quoting:** use a personal **price-per-foot matrix in Airtable or a spreadsheet**. Check its arithmetic against **Balloon Brain** ($5.99) or **ArchCount** (free) for balloon counts. Don't pay for a balloon-specific suite until volume justifies it. [SW16][SW17]
+3. **Contract + deposit:** for the first ~10 bookings, a contract PDF via a free e-sign tool plus a **Square invoice** (deposit and balance, with no subscription) is enough. **Once at about 2+ bookings a month, move to HoneyBook Starter ($29/mo annual)**. Its single link for proposal, contract and deposit is what converts wedding and event clients, and it's the easiest setup of the all-in-ones [SW1][SW3][SW5]. Choose **Dubsado** instead only if you want heavy custom workflows [SW6].
+4. **Trial Fanfaire** before committing to HoneyBook. It's the only tool found that combines a balloon price matrix, a design studio and a storefront, but it has no visible pricing and its claims come from the vendor. [SW12][SW13]
+5. **Mock-ups:** start with **Canva + PNG balloon clusters** on the client's venue photo. Consider BalloonBuilder or Fanfaire Design Studio later. [SW15][SW23]
+6. **Scheduling:** a shared Google Calendar plus the Airtable calendar view. You don't need HoneyBook's scheduler until you're running discovery calls.
+
+Why: the costs are near zero until there's revenue, the setup reuses what's already built, and there's one clear upgrade step (HoneyBook) when deposits and contracts become a bottleneck.
+
+---
+
+## Ideas this suggests for Poppies
+
+1. **Coastal safety stock:** there's no balloon supplier on the coast, so always hold 2× your next job's core neutrals.
+2. **Two-supplier rule:** one California wholesaler for speed (Instaballoons or Balloon Warehouse) and one multi-brand store (Bargain Balloons or Toy World) for colour gaps.
+3. **Open an Oregon Business Registry account** and keep the Oregon Resale Certificate (150-800-002) PDF ready for trade applications.
+4. **"Build in sections" as a selling point:** modular 4–6 ft sections mean Poppies can install at remote rental houses and up beach stairs.
+5. **Coast-proof install standard:** a weight or anchor every 2–3 ft, a wind-check photo, and a published "weather call" policy (reschedule or indoor fallback).
+6. **Air-only by default** (no helium): cheaper, longer-lasting and greener. Offer helium bouquets only through a partner.
+7. **A free venue mock-up within 48 h** for every qualified enquiry, made in Canva. Competitors use this as a conversion tactic.
+8. **Price per foot plus a separate setup/travel fee** with Highway 101 mileage zones (Newport, Lincoln City, Florence, Tillamook).
+9. **Publish a "Garland To-Go" size guide by vehicle** (sedan 6 ft, SUV 8 ft, minivan 10 ft) for pickup orders.
+10. **Pickup "Grab & Go" garlands** in mattress bags, for low-touch weekday revenue.
+11. **An Airtable "Jobs" base** with a pull-sheet view (balloons by size and colour per job), generated from the quote.
+12. **A care card left at every install** (keep out of sun, away from heaters and pets). BAPIA-style care guidance.
+13. **A cool, dark storage zone** in an interior room, with FIFO-dated bins and a dehumidifier, because a coastal garage is damp.
+14. **Partner with Pacific Event Rentals (Lincoln/Tillamook) and local rental-house managers** for referrals and shared delivery.
+15. **Time every build for the first 10 jobs** (ft per hour, balloons per ft) and feed the numbers back into the price matrix.
+16. **Portable power station** marketed as "we can install anywhere, even beaches with no outlet".
+
+---
