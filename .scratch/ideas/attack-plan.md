@@ -53,7 +53,7 @@ Files go in `research/`, cited, with confidence per claim, like wave 1.
 - [ ] **A pricing proposal** for offering-model ticket 05: research input with
       worked examples, not a decision.
 - [x] **A competitor matrix** (`drafts/competitive-position.md`; the full matrix is in `research/08`): one table, plus where Poppies wins and loses.
-- [ ] **A startup checklist**: everything to set up before the first paid job,
+- [x] **A startup checklist** (`drafts/startup-checklist.md`): everything to set up before the first paid job,
       in order, with rough costs.
 - [x] **A 12-month calendar** (`drafts/twelve-month-calendar.md`): the coast's event and wedding calendar mapped to
       outreach, content and product launches.
