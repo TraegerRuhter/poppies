@@ -57,9 +57,15 @@ Files go in `research/`, cited, with confidence per claim, like wave 1.
       in order, with rough costs.
 - [x] **A 12-month calendar** (`drafts/twelve-month-calendar.md`): the coast's event and wedding calendar mapped to
       outreach, content and product launches.
-- [ ] **A simple financial model**: costs, prices and the bookings needed to
+- [~] **A simple financial model** (`model/poppies-break-even.xlsx`). Built with live formulas, but **not yet verified**: the recalculation check timed out before the 3am stop. Open it in Excel or Sheets, which recalculate on open, and check the numbers look sane: costs, prices and the bookings needed to
       break even, as a spreadsheet.
 - [ ] **New ideas merged into `ideas.md`**, with the ideas page regenerated.
+
+## Status at the 3am stop (2026-11-06)
+
+Wave 2 is done: all six streams, 07–12. Wave 3 is done except merging the new ideas into `ideas.md` and finishing verification of the financial model. Wave 4 was not started.
+
+- [ ] **Not done:** merge wave 2's new ideas into `ideas.md` and regenerate the ideas page.
 
 ## Wave 4, if there's room
 
