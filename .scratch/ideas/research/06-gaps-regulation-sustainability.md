@@ -1,33 +1,104 @@
 # Gaps, Regulation & Sustainability in Balloon Decor — Research for Poppies
 
 Date: 2026-11-06
-Status: IN PROGRESS (skeleton)
+Status: complete (first pass)
 
-Sourcing caveat: built from web-search result snippets; direct page fetching was mostly blocked. Verify statutes and agency rules at the primary source before relying on them.
+**Sourcing caveat.** This was built from web-search result snippets; direct page fetching was mostly blocked, so I could not read most statutes, studies or agency pages in full. Every claim links to the source the snippet came from. Confidence: **High** = primary source (statute, agency, peer-reviewed paper) agrees with several reports; **Medium** = reputable secondary reporting, or a primary source seen only as a snippet; **Low** = weak, conflicting or single-source. Check statutes and park permit conditions at the source before quoting them to a client.
+
+---
 
 ## 1. Regulation
-_pending_
+
+### 1.1 Oregon state law — no statewide balloon-release ban (as of Nov 2026)
+
+- **HB 2592 (2025 session) would have made it a crime to intentionally release a balloon into Oregon's airspace.** It amended ORS 164.805 (offensive littering): up to 30 days in jail and/or a $1,250 fine, with exemptions for government or scientific/meteorological balloons and hot-air balloons that are recovered. [Bill text, OR Legislature](https://apps.oregonlegislature.gov/liz/2025R1/Downloads/MeasureDocument/HB2592) · [Measure analysis](https://apps.oregonlegislature.gov/liz/2025R1/Downloads/MeasureAnalysisDocument/83572). **High.**
+- **It died in committee.** It was referred to House Judiciary and then to Ways & Means, and was left in committee when the session adjourned on 27 June 2025. [OLIS overview](https://olis.oregonlegislature.gov/liz/2025R1/Measures/Overview/HB2592) · [LegiScan](https://legiscan.com/OR/bill/HB2592/2025). **Medium-High.** Expect it, or something like it, to come back. Oregon's 2026 short session didn't appear in my results (not checked), so the 2027 long session is the next likely window. Watch for it.
+- **What does apply today:** the general offensive-littering statute, [ORS 164.805](https://law.justia.com/codes/oregon/2019/volume-04/chapter-164/section-164-805/) (Class C misdemeanor). Arguably a released balloon that lands is litter, but no court reading of that turned up. **Medium.**
+- **Sky lanterns** have been banned statewide since 1 Jan 2017 under HB 4140 (2016), with a fine of up to $2,000. [LegiScan HB4140](https://legiscan.com/OR/bill/HB4140/2016) · [IJPR](https://www.ijpr.org/2016-12-27/new-year-means-new-laws-in-oregon). **High.** Relevant if clients ask about "lantern send-offs".
+
+### 1.2 Oregon State Parks / ocean shore
+
+- **No balloon-specific Oregon Parks & Recreation (OPRD) rule turned up.** OAR 736-021-0100 requires a special use permit or written permission for certain activities on the Ocean Shore State Recreation Area. [OAR 736-021-0100](https://oregon.public.law/rules/oar_736-021-0100). A 2022 OPRD draft rule said organized events with more than 50 people need a special use permit. [OPRD draft](https://www.oregon.gov/oprd/PRP/Documents/PRP_RUL_Draft_Rule_Revisions_DronesInStateParks_02-15-22.pdf). **Medium.**
+- **Park-specific permit conditions are where décor gets regulated.** The 2026 activity permit for Shore Acres State Park says candles, flames and combustibles are not permitted, all decorations must be freestanding, and nothing may be attached to park structures or plants. [Shore Acres permit form](https://shoreacres.net/wp-content/uploads/2026/05/4-Activity-Permit-Application-2026-Fillable.pdf). **Medium.** Freestanding, weighted, ground-anchored structures are the compliant format.
+- **Beach weddings with arches or chairs** generally need an OPRD special use permit; small elopements may not. [Photographer guide (secondary)](https://kloshetumtumphotography.mypixieset.com/blog/oregon-elopments/) · [Willamette Week on beach-wedding permits](https://www.wweek.com/outdoors/2021/04/05/oregon-state-parks-will-not-issue-beach-wedding-permits-until-july-1/). **Medium-Low.**
+- **Nearby federal comparison:** Redwood National Park's wedding conditions prohibit releasing doves, butterflies, balloons or other items. [NPS Redwood](https://nps.gov/redw/planyourvisit/supweddings.htm). **High** for NPS, not binding on Oregon parks. Siuslaw National Forest and Oregon Dunes NRA sites near Lincoln County would follow USFS permit terms (not checked).
+- **Action:** before any beach or state-park install, get the client's OPRD permit and read its conditions. Ask OPRD's permit office directly about balloons. I could not confirm a written OPRD policy on them.
+
+### 1.3 Lincoln County & coastal cities
+
+- **I found no balloon-release ordinance for Lincoln City, Newport, Yachats, Depoe Bay, Cannon Beach, Manzanita or Florence.** The searches only returned fireworks bans (Lincoln City, Newport and Yachats ban fireworks). [Lincoln City fireworks page](https://www.lincolncityor.gov/departments/emergency-preparedness/fire-ready/firework-regulations) · [Beach Connection](https://www.beachconnection.net/news/remember-fireworks-banned-beaches-heatwave-extra-concerns070224.php). **Low-Medium** (absence of evidence). Confirm with the city recorder or municipal code before relying on it.
+- A low-quality site claims "several local jurisdictions" in Oregon have ordinances. [lawshun](https://lawshun.com/article/is-it-against-the-law-to-release-balloons-in-oregon). **Low.**
+- Under [OAR 736-030](https://www.law.cornell.edu/regulations/oregon/chapter-736/division-30), coastal cities can regulate some beach activities. No balloon provision turned up.
+
+### 1.4 Other US states (examples)
+
+| State | Rule | Source | Conf. |
+|---|---|---|---|
+| Florida | HB 321 (2024), in effect 1 Jul 2024. Intentionally releasing any lighter-than-air balloon counts as littering ($150 fine). It replaced the old "more than 10 in 24 h" threshold. Exemptions: children under 6, indoor releases, scientific balloons, recovered hot-air balloons. | [FL Senate staff analysis](https://flsenate.gov/Session/Bill/2024/321/Analyses/h0321c.CRJ.PDF) · [Oceana](https://usa.oceana.org/press-releases/florida-bans-intentional-balloon-releases/) · [Fox13](https://www.fox13news.com/news/desantis-signs-bill-banning-intentional-releases-balloons-florida) | High |
+| Virginia | 2021 law bans outdoor balloon releases: $25 civil penalty per balloon, ages 16+. Before that, releasing 50+ balloons per hour was already banned. Reports differ on whether "nonbiodegradable" survived into the final text. | [NPR/WAMU](https://www.npr.org/local/2021/02/22/970137984/virginia-is-on-its-way-to-banning-balloon-releases) · [The Hill](https://digital-release.thehill.com/?p=561245) · [Longwood CLEAN VA](https://www.longwood.edu/CLEANVA/BalloonLaws.html) | Medium-High |
+| Maryland | Statewide ban in effect 1 Oct 2021 (ages 13+). Covers intentional releases and organizing or taking part in a mass release of 10+ balloons. Fine up to $100, community service, or an education video. | [MD DNR](https://news.maryland.gov/dnr/?p=34574) · [Chesapeake Bay Mag](https://chesapeakebaymagazine.com/md-va-pass-statewide-balloon-release-bans) | High |
+| Tennessee | Has a statutory provision limiting releases. I couldn't confirm the details. | [Balloons Blow law list](https://balloonsblow.org/balloon-laws/) | Low |
+| California, Connecticut, Delaware, Hawaii, Maine, Rhode Island, Louisiana | Appear on advocacy and news lists of state restrictions. Coverage varies (some are mass-release thresholds only). One 2026 report counts "at least 12" states. | [KMPH](https://kmph.com/news/nation-world/another-state-just-made-balloon-releases-illegal-that-makes-12-cincinnati-ohio-kentucky-indiana) · [Prevent Balloon Litter](https://preventballoonlitter.squarespace.com/policies-and-laws) · [ABC7](https://abc7ny.com/post/states-consider-limits-on-balloon-releases-over-pollution-concerns/5274992/) | Low-Medium |
+| Nevada | AB 194 (2025) would prohibit certain releases. Final status unknown. | [NV Legislature](https://leg.state.nv.us/Session/83rd2025/Bills/AB/AB194.pdf) | Low |
+
+**Trend:** laws are moving from "mass release over N balloons" toward "any intentional outdoor release". Florida 2024 is the template, and Oregon's HB 2592 copied its exemption list. **Medium-High.**
+
+### 1.5 Foil / metallic balloons and power lines (California)
+
+- **California AB 847 (2022)** phases out sales of electrically conductive foil balloons unless they meet new standards. Reporting puts the full ban around 2031. Business & Professions Code §22942 and following already required helium foil balloons to be weighted, and California has banned their outdoor release since its 1990 Balloon Law. [AB 847 chaptered text](https://legiscan.com/CA/text/AB847/id/2607109) · [B&P §22942](https://california.public.law/codes/business_and_professions_code_section_22942) · [Wikipedia: California Balloon Law](https://en.wikipedia.org/wiki/California_Balloon_Law). **Medium-High** (the exact phase-in dates depend on statutory triggers, so check the text).
+- **Why:** Southern California Edison blamed foil balloons for 1,103 outages affecting 1.6 million customers in one year. [CBS LA](https://www.cbsnews.com/losangeles/news/bill-aims-to-ban-metallic-balloons-taking-air-out-of-future-mothers-day-celebrations/) · [ABC7](https://abc7.com/post/california-bill-aims-to-ban-metallic-balloons-to-reduce-power-outages/1334447/). **Medium.**
+- Oregon has no equivalent. The practical risk is real anyway: coastal winds plus overhead lines near venues. Pacific Power and Central Lincoln PUD outage messaging wasn't checked.
+
+---
 
 ## 2. Environmental criticism & science
-_pending_
+
+### 2.1 Seabirds and marine debris — the strongest evidence
+
+- **Roman, Hardesty, Hindell & Wilcox (2019), *Scientific Reports* 9:3202** ([doi:10.1038/s41598-018-36585-9](https://doi.org/10.1038/s41598-018-36585-9)). This CSIRO/University of Tasmania team necropsied 1,733 seabirds from 51 species. Soft plastics were about 5% of ingested items but caused more than 40% of the deaths. **Balloons were the debris most likely to kill: almost 1 in 5 seabirds that ingested balloon material died from it.** [ScienceDaily](https://sciencedaily.com/releases/2019/03/190301084847.htm) · [EurekAlert](https://www.eurekalert.org/news-releases/814336) · [Phys.org](https://phys.org/news/2019-03-balloons-marine-debris-mortality-seabirds.pdf). **High.**
+  - Popular coverage says balloons are "32 times more likely" to kill than hard plastic ([Euronews](https://www.euronews.com/2019/03/04/balloons-deadliest-risk-to-seabirds-ingesting-ocean-plastic), [RNZ](https://www.rnz.co.nz/news/world/383791/balloons-most-lethal-type-of-plastic-for-seabirds)). Some outlets say "30". Use "about 1 in 5" or "the deadliest type of debris per item ingested" unless you've read the paper's figure yourself. **Medium** on the multiplier.
+  - Fair framing: the study is Australian and Southern Ocean seabirds. Balloons are a small share of debris by count, but very lethal per item. Release and loss, not décor that stays put, is the exposure pathway.
+- **Other documented harms** (well established, though specific Oregon data wasn't found): sea turtles eating balloon fragments, entanglement in ribbons, livestock ingestion. These come from NOAA Marine Debris Program reporting and beach-cleanup counts (not fetched). **Medium.**
+
+### 2.2 "Biodegradable latex" — what the research says
+
+- **The industry's long-cited evidence was one 1989 report** by D.K. Burchette, then technical adviser to the National Association of Balloon Artists. It concluded latex balloons degraded "at about the same rate as oak leaves". Critics note it was not peer-reviewed, industry-linked, and based on about six balloons. [The Conversation (Gilmour & Lavers)](https://theconversation.com/we-composted-biodegradable-balloons-heres-what-we-found-after-16-weeks-138731) · [BalloonHQ copy of the 1989 report](https://balloonhq.com/?p=2039). **Medium-High.** (The critique comes from the authors of the rival study.)
+- **Gilmour & Lavers (2021), *Journal of Hazardous Materials*: "Latex balloons do not degrade uniformly in freshwater, marine and composting environments".** They tested balloons in fresh water, seawater and industrial compost for 16 weeks, including balloons marketed as "biodegradable". **Overall, the balloons kept their shape and size.** Composted balloons lost only 1–2% of their mass, and some in fresh water gained mass. [Adrift Lab](https://adriftlab.org/publications/latex-balloons-do-not-degrade-uniformly-in-freshwater-marine-and-composting-environments) · [IMAS/UTas](https://imas.utas.edu.au/news/news-items/new-study-finds-latex-balloons-are-not-biodegradable) · [data.gov.au dataset](https://data.gov.au/data/dataset/06df0362-8623-4cec-acb5-3008e903896c) · [UTas open-access PDF](https://figshare.utas.edu.au/articles/journal_contribution/Latex_balloons_do_not_degrade_uniformly_in_freshwater_marine_and_composting_environments/22991270). **High.**
+- **Lambert et al.** observed latex fragments breaking down in seawater over about 87 days in one study, but only 3–5% weight loss per year in a 2020 seawater microcosm study. [Missouri MOST policy brief](https://mostpolicyinitiative.org/wp-content/uploads/2025/02/Balloon-Release.pdf) (summarising). **Medium.** Results vary a lot with conditions, additives, sunlight and temperature. The balanced conclusion is that natural latex is *ultimately* biodegradable, in that the polymer can be broken down by microbes. **It is not reliably degradable on the timescale that matters to a seabird or turtle (weeks to months), and commercial balloons contain plasticisers, pigments and coagulants.** **High** for "not fast"; **Medium** for exact rates.
+- **"Latex-free" and foil balloons** (metallised nylon or PET) are not biodegradable at all. [Bargain Balloons support](https://support.bargainballoons.ca/support/solutions/articles/27000057644-dangers-of-balloon-releases-and-the-law). **High.**
+
+### 2.3 FTC Green Guides — the marketing-claims rulebook
+
+- **16 CFR Part 260.** Under §260.8, an unqualified "degradable" or "biodegradable" claim is deceptive unless the marketer has competent and reliable scientific evidence that **the entire item will completely break down and return to nature within a reasonably short time (≤ 1 year) after customary disposal**. Items that usually go to landfill, incineration or recycling shouldn't carry unqualified degradable claims. [Trellis summary](https://trellis.net/article/after-years-pondering-ftc-releases-marketers-green-guides/) · [Mondaq on "non-toxic"/"biodegradable"](https://www.mondaq.com/unitedstates/environmental-law/1322550/is-your-product-really-non-toxic-or-biodegradable-the-ftc-weighs-in) · [Akin Gump](https://akingump.com/en/insights/blogs/speaking-sustainability/ftc-publishes-updates-to-its-green-guides-for-the-use-of-environmental-marketing-claims). **High** for the one-year rule (it's in the 2012 Guides).
+- **Revision status:** the Guides were last revised in **2012**. The FTC opened a new review in Dec 2022 ([Hogan Lovells](https://www.hoganlovells.com/en/publications/ftc-seeks-public-comment-on-possible-updates-to-green-guides) · [Net Zero Compare](https://netzerocompare.com/policies/ftc-green-guides)). I found **no final 2023–2026 revision**. Articles describing "revised Green Guides" ([Trellis](https://trellis.net/article/after-years-pondering-ftc-releases-marketers-green-guides/), [Kelley Drye](https://www.kelleydrye.com/viewpoints/articles/ftc-issues-final-revisions-to-the-green-guides-new-guidelines-for-substantiating-environmental-marketing-claims)) appear to refer to the 2012 revision, despite a misleading 2026 date stamp. **Medium.** Treat the 2012 Guides as current until federalregister.gov shows otherwise.
+- **Also relevant:** general claims like "eco-friendly" or "green" are discouraged unless qualified. Compostable claims need evidence that the item breaks down safely in a timely way in compost, and that compost facilities are actually available to a substantial share of customers. Those are 2012 Guides, §§260.4 and 260.7 (from memory of the Guides' structure; confirm). **Medium.** **Implication for Poppies: don't call latex balloons "biodegradable" or "eco-friendly" without qualification.** Given Gilmour & Lavers, a home-compost or "returns to nature" claim would be hard to substantiate.
+- Oregon's Unlawful Trade Practices Act (ORS 646.608) also reaches misleading environmental claims; that wasn't researched in depth.
+
+### 2.4 Public sentiment and advocacy
+
+- **Balloons Blow** (balloonsblow.org) is the best-known US anti-balloon campaign. It runs a state-law tracker and argues for ending releases and, more broadly, cutting balloon use. [Balloons Blow laws](https://balloonsblow.org/balloon-laws/). **High** that it exists; its counts are advocacy.
+- Prevent Balloon Litter, Oceana (which lobbied for the Florida ban) and many beach-cleanup groups campaign against releases. [Oceana](https://usa.oceana.org/press-releases/florida-bans-intentional-balloon-releases/) · [Prevent Balloon Litter](https://preventballoonlitter.squarespace.com/what-are-the-solutions). **High.**
+- Mainstream outlets now routinely frame releases as harmful: [WTOP](https://wtop.com/local/2022/07/its-illegal-to-intentionally-release-certain-balloons-outdoors-in-virginia-maryland-and-delaware), [ABC7](https://abc7ny.com/post/states-consider-limits-on-balloon-releases-over-pollution-concerns/5274992/). On the Oregon coast, expect a meaningful share of clients, venues and photographers to be sensitive to "balloons + beach". This is an inference from the market (eco-tourism, SOLVE beach cleanups, Oregon Coast Aquarium in Newport), not measured. **Medium.**
+
+### 2.5 How the responsible industry responds
+
+- **The Balloon Council (US)** runs "Smart Balloon Practices": **never release balloons, always weight helium balloons, dispose of them properly** (cut latex and put it in the trash), and "Worth the Weight". [TBC Smart Balloon Practices](https://theballooncouncil.org/smart-balloon-practices/) · [PR Newswire](https://prnewswire.com/news-releases/smart-balloon-practices-for-valentines-day---say-i-love-you-to-your-sweetheart-and-the-planet-301733879.html). **High.**
+- **Reported shift:** until about 2018, TBC said "biodegradable" latex with no attachments was acceptable for releases. It then moved to "never release". [Prevent Balloon Litter](https://preventballoonlitter.squarespace.com/what-are-the-solutions) · [Wikipedia: Balloon release](https://en.wikipedia.org/wiki/Balloon_release). **Medium** (I didn't see TBC's own 2018 statement).
+- **NABAS (UK)** strongly recommends that members not provide release services. [NABAS PDF](https://www.nabas.co.uk/wp-content/uploads/2025/07/Environmental-PDF-download-Never-Release-Balloons.pdf). Qualatex runs a "Don't Let Go" editorial line. [Qualatex](https://africa.qualatex.com/en-gb/balloon-images/2019-issue-3/dont-let-go-editorial-qualatex-balloons). **High.**
+- **Fair summary:** industry and advocates now agree that **releases are bad**. They still disagree on whether *contained, disposed-of* décor is a meaningful problem (industry says no; some advocates want balloon use cut overall). The evidence of harm is overwhelmingly about balloons that escape.
+
+---
 
 ## 3. Helium
-_pending_
 
-## 4. Sustainability-forward opportunities
-_pending_
+- **2022–2023: "Helium Shortage 4.0".** Outages at the Amur plant in Russia, problems at the US Federal Helium Reserve (whose sale closed in 2024), and maintenance in Qatar and Algeria tightened supply. Balloon retailers reported rationing and higher prices. [WestAir](https://westairgases.com/blog/helium-shortage/) · [Gasworld](https://gasworld.com/story/signs-of-optimism-after-widespread-challenges-for-helium). **Medium.**
+- **2024–early 2025: easing toward surplus.** New supply from Amur and new entrants pushed the market from scarcity toward surplus, and ChemAnalyst's Q1 2025 pricing cites oversupply. Consultant Phil Kornbluth expected Amur could lead to oversupply through 2027. [ChemAnalyst: scarcity to surplus](https://www.chemanalyst.com/NewsAndDeals/NewsDetails/new-entrants-to-helium-market-accelerate-shift-from-scarcity-to-surplus-36636) · [ChemAnalyst Q1 2025](https://chemanalyst.com/Pricing-data/bulk-helium-1100) · [Gasworld Amur](https://www.gasworld.com/story/amur-gas-project-set-for-biggest-impact-on-helium/). **Medium.**
+- **March 2026 onward: a new shock.** Iranian missile strikes on Qatar's Ras Laffan complex (18–19 Mar 2026) took helium output offline. Qatar supplied roughly a third of world helium. Disruption in the Strait of Hormuz trapped containers. A restart in June was hit by an internal explosion, and one source puts Qatar's helium capacity at about 25% of normal in August. QatarEnergy's CEO is reported as saying full repairs will take 3–5 years. [The National](https://www.thenationalnews.com/business/2026/03/18/iran-war-puts-endangered-helium-supplies-at-risk-as-qatar-halts-exports) · [Exiger](https://www.exiger.com/perspectives/iran-war-disrupts-one-third-of-global-helium-supply/) · [IUMI June 2026](https://iumi.com/newsletter-june-2026/qatari-helium-shortages/) · [Fusion Worldwide](https://www.fusionww.com/insights/helium-shortage-2026) · [Wikipedia: 2026 Iran war fuel crisis](https://en.wikipedia.org/wiki/2026_Iran_war_fuel_crisis). **Medium** (that the event happened: several outlets agree; the damage and timeline figures are industry estimates).
+- **Prices:** spot prices are reported up 40%, doubled, or tripled (60 Minutes, Oct 2026), with spot quotes of about $1,000–1,200/Mcf in shortage areas. [The Brief](https://www.thebrief.news/en/standard/article/17413/helium-prices-jump-40-as-iran-conflict-cuts-off-a-third-of-global-supply) · [vlsi.kr](https://www.vlsi.kr/en/helium-shortage-fab-shutdown-risk-en/) · [ChemAnalyst: prioritization](https://www.chemanalyst.com/NewsAndDeals/NewsDetails/helium-supplies-tighten-forcing-prioritization-toward-critical-industries-41640). **Low-Medium** on exact figures. Suppliers are prioritising medical, semiconductor and science customers; party balloons sit last in line. **Medium.**
+- **Retail impact:** Dollar Tree said a helium squeeze hurt its party-balloon sales in 2026 (per [Fusion Worldwide](https://www.fusionww.com/insights/helium-shortage-2026) / [Alupetra](https://www.alupetra.com/insights/helium-shortage-2026-gulf-supply.html) summaries). **Medium.** One source reports US cylinder prices rising from about $125 (2024) to over $200. **Low.** Party City went bankrupt in Dec 2024 and closed its stores in 2025 (from memory, not from these results; verify), which removed a big helium-balloon retail channel.
+- **Russia** is a partial offset (Amur, with about 1.1 bcf/yr planned for 2026), but one low-quality source reports Russian export controls to non-EAEU countries through 2027. [Gasworld](https://www.gasworld.com/story/helium-summit-russian-helium-production-to-reach-1-1-bcf-in-2026/2263063.article/) · [tyhjgas](https://www.tyhjgas.com/news/helium-crisis-5-0). **Low.**
 
-## 5. Gaps in the market
-_pending_
+**Implications for Poppies.** Air-filled organic garlands, arches, columns and sculpture use **no helium at all**, so the main product line is insulated from the shock. Helium-dependent products (floating bouquets, ceiling balloons, big orbz) should be priced with a helium surcharge or quoted "subject to availability". Avoid locking in helium-heavy package prices months ahead. Air-filled alternatives include frames, stands, poles, hanging installs with fishing line or monofilament, air-filled "floating" illusions on clear rods, and ceiling hangs from rigging points. "No helium" is a truthful, specific, positive message (unlike "biodegradable").
 
-## 6. Insurance / licensing basics
-_pending_
+---
 
-## Rules Poppies must follow
-_pending_
-
-## Ideas this suggests for Poppies
-_pending_
-
-## Sources
-_pending_
