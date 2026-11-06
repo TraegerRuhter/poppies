@@ -61,6 +61,16 @@ describe('handleEnquiry', () => {
     expect(sent[0].text).toContain('Lincoln City');
   });
 
+  it('carries how they heard about us and any latex allergy into the email and the row', async () => {
+    const { sent, rows, deps } = fakes();
+
+    await handleEnquiry(submission({ source: 'A venue', latex: 'One guest is allergic' }), deps);
+
+    expect(sent[0].text).toContain('Heard about us: A venue');
+    expect(sent[0].text).toContain('Latex allergy: One guest is allergic');
+    expect(rows[0]).toMatchObject({ source: 'A venue', latex: 'One guest is allergic' });
+  });
+
   it('mirrors each delivered enquiry to Airtable as one row', async () => {
     const { rows, deps } = fakes();
 

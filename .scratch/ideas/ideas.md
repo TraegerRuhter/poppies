@@ -24,6 +24,20 @@ decision or some build) · **Explore** (promising, needs testing or more
 facts) · **Parked** (off-brand, premature or poor value, with the reason).
 
 
+## Progress
+
+- **Done (form, 2026-11-07):** #8 ("How did you hear about us?"), the form half
+  of #6 (an optional latex-allergy question), and #19 (helper text under the
+  fields). Both answers reach the email and the Airtable row; test-first, 13
+  tests. The Airtable table needs two new columns: "Latex allergy" and "Heard
+  about us".
+- **Drafted, awaiting her review:** #15 (four explainers), #60 (review kit),
+  #9 (Google profile checklist), #131 and #121–#133 outreach
+  (`drafts/partner-outreach.md`).
+- **Not done:** #20 (keep input on a bounced form) is lower value than it
+  looked. The form's `required` and `type=email` attributes already stop most
+  bounces in the browser, with the input kept.
+
 ## Tier index
 
 The sections below group ideas by theme. Each idea's tier:

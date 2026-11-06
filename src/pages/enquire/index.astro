@@ -11,6 +11,18 @@ const EVENT_TYPES = [
   ...Object.entries(PATHS).map(([value, path]) => ({ value, label: path.enquiryLabel })),
   { value: 'other', label: 'Something else' },
 ];
+// Where enquiries come from, so effort goes to the channels that book work.
+const SOURCES = [
+  'Google',
+  'Instagram',
+  'Facebook',
+  'Nextdoor',
+  'A venue',
+  'A planner or photographer',
+  'A friend',
+  'Saw one of our installations',
+  'Somewhere else',
+];
 const LABELS: Record<string, string> = Object.fromEntries(
   FIELDS.flatMap((f) => (f.missing ? [[f.key, f.missing]] : [])),
 );
@@ -58,10 +70,12 @@ const missing = (params.get('missing') ?? '').split(',').filter((key) => key in 
         <label>
           Date
           <input name="date" type="date" required />
+          <small>So we can check we're free.</small>
         </label>
         <label>
           Town or venue
           <input name="town" required />
+          <small>Travel along the coast changes the quote.</small>
         </label>
       </div>
       <label>
@@ -71,10 +85,24 @@ const missing = (params.get('missing') ?? '').split(',').filter((key) => key in 
       <label>
         <span>Colours <span class="optional">optional</span></span>
         <input name="colours" placeholder="Sage and cream, or “not sure yet”" />
+        <small>We'll suggest palettes if you're not sure.</small>
       </label>
       <label>
         <span>Budget, if you have one in mind <span class="optional">optional</span></span>
         <input name="budget" placeholder="A rough figure or range is plenty" />
+        <small>It helps us suggest something that fits, rather than start too big.</small>
+      </label>
+      <label>
+        <span>Anyone with a latex allergy? <span class="optional">optional</span></span>
+        <input name="latex" placeholder="Leave blank if not" />
+        <small>Most balloons are natural latex. Tell us and we'll plan around it.</small>
+      </label>
+      <label>
+        <span>How did you hear about us? <span class="optional">optional</span></span>
+        <select name="source">
+          <option value="">Choose one</option>
+          {SOURCES.map((s) => <option>{s}</option>)}
+        </select>
       </label>
 
       <!-- Honeypot: hidden from people and assistive tech; bots fill it. -->
@@ -99,6 +127,7 @@ const missing = (params.get('missing') ?? '').split(',').filter((key) => key in 
   form { display: grid; gap: var(--space-3); }
   label { display: grid; gap: 6px; font-size: var(--step--1); font-weight: 500; }
   .optional { font-weight: 400; color: var(--ink-muted); }
+  small { font-weight: 400; color: var(--ink-muted); font-size: 0.8rem; }
   input, select {
     font: inherit;
     font-size: var(--step-0);

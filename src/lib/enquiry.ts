@@ -16,6 +16,8 @@ export const FIELDS = [
   { key: 'scale', label: 'Scale', column: 'Scale', missing: null, blank: '—' },
   { key: 'colours', label: 'Colours', column: 'Colours', missing: null, blank: '—' },
   { key: 'budget', label: 'Budget', column: 'Budget', missing: null, blank: 'not given' },
+  { key: 'latex', label: 'Latex allergy', column: 'Latex allergy', missing: null, blank: 'none mentioned' },
+  { key: 'source', label: 'Heard about us', column: 'Heard about us', missing: null, blank: 'not given' },
 ] as const;
 
 export type Enquiry = Record<(typeof FIELDS)[number]['key'], string>;
