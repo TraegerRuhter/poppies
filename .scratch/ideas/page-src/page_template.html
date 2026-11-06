@@ -1,0 +1,265 @@
+<title>Poppies Ideas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Layout: one reading column, a ranked top ten, then a filterable ledger of every idea. Brand tokens from the Poppies site. */
+  :root {
+    --ground: #f6f2ec; --surface: #fffdf9; --ink: #2a2622; --muted: #6f675e;
+    --line: #e2dbd1; --accent: #d2452f; --coast: #47646b; --warm: #b0713f;
+    --tint: #efe7dc;
+    --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --ground: #1b1916; --surface: #24211d; --ink: #efe9e1; --muted: #a79e93;
+    --line: #3a352f; --accent: #e8664f; --coast: #8fb0b7; --warm: #d39a6a; --tint: #2c2823; color-scheme: dark; } }
+  :root[data-theme="dark"] {
+    --ground: #1b1916; --surface: #24211d; --ink: #efe9e1; --muted: #a79e93;
+    --line: #3a352f; --accent: #e8664f; --coast: #8fb0b7; --warm: #d39a6a; --tint: #2c2823; color-scheme: dark; }
+  body { background: var(--ground); color: var(--ink); font: 15px/1.6 var(--body); }
+  .wrap { max-width: 920px; margin: 0 auto; padding-block: 40px 80px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid; gap: 56px; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.15; margin: 0; text-wrap: balance; }
+  h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+  h2 { font-size: clamp(1.5rem, 3.6vw, 2rem); }
+  h3 { font-size: 1.15rem; }
+  p { margin: 0; }
+  .eyebrow { font-size: .74rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+  .dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); margin-right: 8px; vertical-align: .05em; }
+  header { display: grid; gap: 16px; }
+  .lede { font-size: 1.08rem; color: var(--muted); max-width: 62ch; }
+  .stats { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: .9rem; color: var(--muted); }
+  .stats b { font-family: var(--display); font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-right: 6px; font-variant-numeric: tabular-nums; }
+  .finding { border-left: 3px solid var(--accent); background: var(--surface); padding: 20px 22px; display: grid; gap: 8px; }
+  .finding p { max-width: 70ch; }
+  section { display: grid; gap: 20px; }
+  .section-head { display: grid; gap: 6px; }
+  .section-head p { color: var(--muted); max-width: 65ch; }
+  ol.top { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: top; }
+  ol.top li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line); counter-increment: top; }
+  ol.top li::before { content: counter(top); font-family: var(--display); font-size: 1.6rem; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+  ol.top h3 { margin-bottom: 4px; }
+  ol.top p { color: var(--muted); max-width: 68ch; }
+  .controls { display: grid; gap: 12px; background: var(--surface); border: 1px solid var(--line); padding: 16px; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .row > span { font-size: .78rem; color: var(--muted); min-width: 52px; }
+  .seg button { font: inherit; font-size: .86rem; padding: 6px 12px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); border-radius: 999px; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .seg button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  input[type=search], select { font: inherit; font-size: .9rem; padding: 7px 10px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); border-radius: 4px; min-width: 0; }
+  input[type=search] { flex: 1 1 220px; }
+  select { flex: 0 1 240px; }
+  .count { font-size: .85rem; color: var(--muted); }
+  .ledger { display: grid; gap: 0; }
+  .idea { display: grid; grid-template-columns: 48px 1fr; gap: 14px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .idea .n { font-family: var(--display); font-size: 1.05rem; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .idea-body { display: grid; gap: 6px; min-width: 0; }
+  .idea h3 { font-family: var(--body); font-size: 1rem; font-weight: 600; line-height: 1.4; }
+  .idea p { color: var(--muted); font-size: .93rem; max-width: 70ch; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .chip { font-size: .74rem; padding: 2px 9px; border-radius: 999px; background: var(--tint); color: var(--ink); white-space: nowrap; }
+  .chip.tier-now { background: var(--accent); color: var(--surface); }
+  .chip.tier-next { background: var(--coast); color: var(--surface); }
+  .chip.tier-explore { background: transparent; border: 1px solid var(--warm); color: var(--warm); }
+  .chip.fit { letter-spacing: .1em; color: var(--accent); background: transparent; border: 1px solid var(--line); }
+  .src { font-size: .74rem; color: var(--muted); }
+  .empty { padding: 28px 0; color: var(--muted); border-top: 1px solid var(--line); }
+  details { border-top: 1px solid var(--line); padding-top: 12px; }
+  summary { cursor: pointer; font-family: var(--display); font-size: 1.2rem; }
+  .parked { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+  .parked li { color: var(--muted); }
+  .parked b { color: var(--ink); font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); padding: 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+  .card ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: .92rem; display: grid; gap: 4px; }
+  code { font-size: .8rem; background: var(--tint); padding: 1px 5px; border-radius: 3px; overflow-wrap: anywhere; }
+  .rules { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+  .rules li { padding-left: 22px; position: relative; max-width: 70ch; }
+  .rules li::before { content: ""; position: absolute; left: 0; top: .62em; width: 10px; height: 2px; background: var(--accent); }
+  footer { color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); padding-top: 20px; }
+  @media (max-width: 560px) { .idea, ol.top li { grid-template-columns: 34px 1fr; gap: 10px; } .controls { position: static; } }
+  @media (prefers-reduced-motion: no-preference) { .seg button { transition: background .15s, color .15s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow"><span class="dot"></span>Poppies · market research · November 2026</p>
+    <h1>What Poppies could do next</h1>
+    <p class="lede">Twelve research streams, from balloon innovators and the Oregon coast to pricing, competitors and business buyers, turned into a triaged idea list and ready-to-use drafts. Nothing here is decided; it's a menu for the owner.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="finding">
+    <p class="eyebrow">The headline</p>
+    <p id="headline"></p>
+  </div>
+
+  <section aria-labelledby="top-h">
+    <div class="section-head">
+      <h2 id="top-h">The ten that matter most</h2>
+      <p>Ranked by how much they could move the business for the effort. Numbers in brackets point to ideas in the full list below.</p>
+    </div>
+    <ol class="top" id="topten"></ol>
+  </section>
+
+  <section aria-labelledby="all-h">
+    <div class="section-head">
+      <h2 id="all-h">Every idea</h2>
+      <p>Filter by tier, by who can act on it, and by effort. "Developer" means it can start now without the owner; "Owner" means it needs her input, skill or decision.</p>
+    </div>
+    <div class="controls" role="search">
+      <div class="row seg" id="tier-seg"><span>Tier</span></div>
+      <div class="row seg" id="who-seg"><span>Who</span></div>
+      <div class="row seg" id="effort-seg"><span>Effort</span></div>
+      <div class="row">
+        <label for="theme" class="eyebrow" style="min-width:52px">Theme</label>
+        <select id="theme"></select>
+        <input type="search" id="q" placeholder="Search ideas, e.g. tent, Salishan, reviews" aria-label="Search ideas">
+      </div>
+      <div class="count" id="count" aria-live="polite"></div>
+    </div>
+    <div class="ledger" id="ledger"></div>
+    <details>
+      <summary>Parked ideas, with the reason (<span id="parked-n"></span>)</summary>
+      <ul class="parked" id="parked"></ul>
+    </details>
+  </section>
+
+  <section aria-labelledby="res-h">
+    <div class="section-head">
+      <h2 id="res-h">What the research found</h2>
+      <p>Each stream is a cited file in the repo under <code>.scratch/ideas/research/</code>. Page fetching was blocked, so findings rest on search-result snippets, with confidence marked per claim.</p>
+    </div>
+    <div class="grid" id="research"></div>
+  </section>
+
+  <section aria-labelledby="drafts-h">
+    <div class="section-head">
+      <h2 id="drafts-h">Ready to use</h2>
+      <p>Drafts in <code>.scratch/ideas/drafts/</code>, written in the website's voice. Anything that's her policy is marked <code>[her call]</code>.</p>
+    </div>
+    <div class="grid" id="drafts"></div>
+  </section>
+
+  <section aria-labelledby="rules-h">
+    <div class="section-head">
+      <h2 id="rules-h">Rules to keep</h2>
+      <p>The lines the research says not to cross.</p>
+    </div>
+    <ul class="rules" id="rules"></ul>
+  </section>
+
+  <footer>Source of truth: <code>.scratch/ideas/ideas.md</code> in the poppies repository. This page is generated from it.</footer>
+</div>
+
+<script>
+const DATA = __DATA__;
+const RESEARCH = [
+  {t: "Balloon innovators", f: "01-balloon-innovators.md", pts: ["A Chicago studio (Paris312) sells decor like a catalogue: named fixed-price sets, flat delivery, seasonal drops, now licensed nationally.", "The only true recurring model: storefront garland subscriptions at $175–250 a month.", "Rentals ($199–499) and classes ($49–60) carry the margin.", "Prestige artists are paid for commissions and shows; the photo is the lasting asset."]},
+  {t: "Adjacent niches", f: "02-adjacent-niches.md", pts: ["The occasion sets the price: about $75 as decorations, $800–1,850 as a proposal package.", "Studios sell vacation-rental surprise setups on Airbnb Services and Greetwell for $250–550.", "Venue-in-a-box sells “skip the $3,000–15,000 venue”.", "Survivors productised: fixed packages from reusable units, then licensing."]},
+  {t: "The Oregon coast", f: "03-oregon-coast-market.md", pts: ["No balloon installation studio is based on the central coast; the one local balloon shop is a gift bar. The nearest installation rivals are 1.5–2.5 hours away.", "About $600M a year in visitor spending in Lincoln County; half of visitors come from Portland and the valley.", "Weddings run 25–165 guests at resorts or rental houses, beaches and lawns. No coastal event barns.", "Beach structures need a $100 OPRD permit, 30 days ahead, freestanding, zero debris."]},
+  {t: "Reviews and local marketing", f: "04-reviews-and-local-marketing.md", pts: ["Google has a “Balloon artist” category; set up as a service-area business with towns listed.", "Google replaced public Q&A with an AI “Ask” button that answers from the site and reviews.", "Paid Knot or WeddingWire listings look poor value in year one; take the free storefronts.", "No current wedding show runs on the Oregon coast."]},
+  {t: "Customer questions", f: "05-explainers-and-customer-questions.md", pts: ["“Biodegradable” balloons stayed intact after 16 weeks in a peer-reviewed study.", "Price is couples’ first filter, and “what drives the cost” is the most-searched topic.", "Honest longevity favours air-filled designs and the tent.", "No free customer-facing garland estimator with a preview turned up anywhere."]},
+  {t: "Gaps and regulation", f: "06-gaps-regulation-sustainability.md", pts: ["Oregon has no statewide release ban; HB 2592 died in committee in June 2025.", "Helium supply was reportedly cut by about a third in 2026, so air-filled work is an advantage.", "No US latex recycling programme serves decorators.", "A tent over 400 sq ft generally needs a fire permit and an NFPA 701 certificate."]},
+  {t: "Pricing and unit economics", f: "07-pricing-and-unit-economics.md", pts: ["Organic garland centres on $25\u201335/ft nationally; $28 is the most common middle figure.", "Materials are under 10% of price; the cost is her time and the drive.", "A $560 Newport garland with same-day teardown pays about $48 an hour before overhead.", "Portland rents a 20\u00d740 tent for $750\u2013850, before delivery to the coast."]},
+  {t: "Competitors", f: "08-competitor-teardown.md", pts: ["No installation studio is based on the central coast; Float Balloon Bar LC in Lincoln City is a gift and bouquet shop.", "The real rivals are 1.5\u20132.5 hours away; Magic Balloons PDX is the style rival.", "Salem Balloons and Flowers wants two weeks\u2019 notice and is closed weekends.", "Most rivals have fewer than 5 reviews."]},
+  {t: "Operations", f: "09-operations-suppliers-tools.md", pts: ["No balloon supplier on the coast: keep safety stock and two suppliers.", "A starter kit costs about $750 (lean) to $3,100.", "Build in 4\u20136 ft sections; an SUV carries about 8 ft.", "Airtable plus Square or Stripe until about 2 bookings a month."]},
+  {t: "Oregon business setup", f: "10-oregon-business-setup.md", pts: ["State filings are cheap: an LLC is $100 plus $100 a year; an assumed business name is $50 every 2 years.", "Lincoln City, Depoe Bay, Toledo and Newport each license out-of-town businesses.", "The 800 sq ft tent needs a fire permit every time it goes up.", "General information, not legal or tax advice."]},
+  {t: "Business buyers", f: "11-coast-b2b-buyers.md", pts: ["Real estate agents for small, frequent \u201cJust Listed\u201d kits.", "Hotel ballrooms, the outlet mall and a bank with a party habit.", "Galas fall in March and December; holiday decor is decided in September.", "B2B peaks in Oct\u2013Dec and Mar\u2013May, around wedding season."]},
+  {t: "Craft and community", f: "12-craft-credentials-community.md", pts: ["Certification: free QBN membership, three online exams, then a practical; Qualatex suggests about 2 years first.", "A Portland artist\u2019s vacant-storefront pop-up got OPB coverage.", "Organic, double-stuffed, muted palettes and sculpture suit the brand.", "Oregon Wedding Day, Junebug and The Knot\u2019s badge are the first press wins."]},
+];
+const DRAFTS = [
+  {t: "Four explainers", f: "explainer-*.md", d: "How long balloons last on the coast; balloons and the coast (responsible use, no “biodegradable”); what drives the price; safety for children, pets and allergies."},
+  {t: "Review kit", f: "review-kit.md", d: "The card left at installs, the photos message, one reminder, the wedding follow-up and review replies, all within Google’s and the FTC’s rules."},
+  {t: "Google profile checklist", f: "google-business-profile-setup.md", d: "Category, service area, description, photos, review link and a five-minute monthly routine."},
+  {t: "Partner outreach", f: "partner-outreach.md", d: "First-contact emails for property managers, coast venues, elopement photographers and the chambers, with named targets."},
+  {t: "Pricing proposal", f: "pricing-proposal.md", d: "A starting price card and fee terms: per-foot tiers, a minimum that rises with distance, separate travel and teardown fees. Input to the pricing ticket, not a decision."},
+  {t: "Competitive position", f: "competitive-position.md", d: "The position in one line, the five moves that matter most, and what to check by phone."},
+  {t: "Startup checklist", f: "startup-checklist.md", d: "Everything before the first paid job, in order: about $1,750\u20135,600 before a vehicle."},
+  {t: "12-month calendar", f: "twelve-month-calendar.md", d: "The coast\u2019s seasons mapped to outreach, content and launches."},
+  {t: "Break-even model", f: "../model/poppies-break-even.xlsx", d: "A spreadsheet with live formulas: change prices and bookings, see profit and the jobs needed to break even."},
+];
+const RULES = [
+  "Never release balloons, anywhere. Put a no-release clause in the contract.",
+  "Never call balloons biodegradable, compostable or eco-friendly. Make specific, true claims about what Poppies does.",
+  "No incentives for reviews of any kind, no asking only happy clients, no scripting, no insider reviews, and never ask for Yelp reviews.",
+  "Beaches and state parks: confirm the permit, keep decor freestanding, and sweep every fragment.",
+  "Keep foil balloons weighted and away from power lines; never unsecured outdoors.",
+  "The tent needs a fire permit and a flame-resistance certificate; venues will ask for insurance naming them.",
+  "Clear the POPPIE trademark question before the name goes on a domain, signage or a filing.",
+];
+
+const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md = s => esc(s).replace(/`(.+?)`/g, '<code>$1</code>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+const whoKey = w => { const d = /dev/.test(w), h = /her/.test(w); return (d && h) || /both/.test(w) ? 'both' : d ? 'dev' : 'her'; };
+const shortTheme = t => t.replace(/\s*\(.*?\)\s*/g, '').replace(/^The tent: /, 'Tent: ').replace(/^Vacation rentals: /, 'Vacation rentals: ');
+const tierClass = {"Do now": "tier-now", "Next": "tier-next", "Explore": "tier-explore"};
+const effortLabel = {S: "an afternoon", M: "days", L: "a project", "S→M": "an afternoon, then ongoing"};
+
+document.getElementById('headline').textContent = DATA.headline.charAt(0).toUpperCase() + DATA.headline.slice(1);
+const ideas = DATA.ideas.map(i => ({...i, wk: whoKey(i.who), th: shortTheme(i.theme), ef: i.effort.startsWith('S') ? 'S' : i.effort}));
+const devCount = ideas.filter(i => i.wk !== 'her').length;
+document.getElementById('stats').innerHTML = [
+  [ideas.length, 'ideas'], [ideas.filter(i => i.tier === 'Do now').length, 'to do now'], [devCount, 'the developer can start'], [DATA.parked.length, 'parked'], [12, 'research streams']
+].map(([n, l]) => `<span><b>${n}</b>${l}</span>`).join('');
+
+document.getElementById('topten').innerHTML = DATA.topten.map(t => `<li><div><h3>${md(t.title)}</h3><p>${md(t.text)}</p></div></li>`).join('');
+
+const state = {tier: 'All', who: 'All', effort: 'All', theme: 'All', q: ''};
+function seg(id, key, opts) {
+  const el = document.getElementById(id);
+  opts.forEach(([val, label]) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = label; b.dataset.val = val;
+    b.setAttribute('aria-pressed', String(state[key] === val));
+    b.addEventListener('click', () => { state[key] = val; el.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.val === val))); render(); });
+    el.appendChild(b);
+  });
+}
+seg('tier-seg', 'tier', [['All','All'],['Do now','Do now'],['Next','Next'],['Explore','Explore']]);
+seg('who-seg', 'who', [['All','Anyone'],['dev','Developer'],['both','Both'],['her','Owner']]);
+seg('effort-seg', 'effort', [['All','Any'],['S','An afternoon'],['M','Days'],['L','A project']]);
+const themes = ['All', ...[...new Set(ideas.map(i => i.th))]];
+const sel = document.getElementById('theme');
+sel.innerHTML = themes.map(t => `<option value="${esc(t)}">${t === 'All' ? 'All themes' : esc(t)}</option>`).join('');
+sel.addEventListener('change', () => { state.theme = sel.value; render(); });
+document.getElementById('q').addEventListener('input', e => { state.q = e.target.value.trim().toLowerCase(); render(); });
+
+function render() {
+  const list = ideas.filter(i =>
+    (state.tier === 'All' || i.tier === state.tier) &&
+    (state.who === 'All' || i.wk === state.who) &&
+    (state.effort === 'All' || i.ef === state.effort) &&
+    (state.theme === 'All' || i.th === state.theme) &&
+    (!state.q || (i.title + ' ' + i.text + ' ' + i.theme).toLowerCase().includes(state.q)));
+  document.getElementById('count').textContent = `Showing ${list.length} of ${ideas.length}`;
+  const L = document.getElementById('ledger');
+  if (!list.length) { L.innerHTML = '<p class="empty">No ideas match. Clear a filter or the search to see more.</p>'; return; }
+  L.innerHTML = list.map(i => `
+    <article class="idea">
+      <span class="n">${i.n}</span>
+      <div class="idea-body">
+        <h3>${md(i.title)}</h3>
+        ${i.text ? `<p>${md(i.text)}</p>` : ''}
+        <div class="chips">
+          <span class="chip ${tierClass[i.tier]}">${i.tier}</span>
+          <span class="chip fit" title="Fit with the brand and a small coastal studio">${esc(i.fit)}</span>
+          <span class="chip">Effort: ${effortLabel[i.effort] || esc(i.effort)}</span>
+          <span class="chip">Moves: ${esc(i.payoff)}</span>
+          <span class="chip">Who: ${esc(i.who)}</span>
+          <span class="chip">${esc(i.th)}</span>
+        </div>
+        ${i.src ? `<span class="src">From ${esc(i.src)}</span>` : ''}
+      </div>
+    </article>`).join('');
+}
+render();
+
+document.getElementById('parked-n').textContent = DATA.parked.length;
+document.getElementById('parked').innerHTML = DATA.parked.map(p => `<li><b>${md(p.title)}</b> ${md(p.text)}</li>`).join('');
+document.getElementById('research').innerHTML = RESEARCH.map(r => `<div class="card"><h3>${r.t}</h3><ul>${r.pts.map(p => `<li>${esc(p)}</li>`).join('')}</ul><code>research/${r.f}</code></div>`).join('');
+document.getElementById('drafts').innerHTML = DRAFTS.map(d => `<div class="card"><h3>${d.t}</h3><p style="color:var(--muted);font-size:.92rem">${esc(d.d)}</p><code>drafts/${d.f}</code></div>`).join('');
+document.getElementById('rules').innerHTML = RULES.map(r => `<li>${esc(r)}</li>`).join('');
+</script>

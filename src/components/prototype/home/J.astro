@@ -1,0 +1,74 @@
+---
+// PROTOTYPE J — Today on the coast: a small conditions card that explains how the
+// weather shapes the work. EXAMPLE DATA; the real one could read the National
+// Weather Service forecast at build time or in the browser.
+const TOWNS = {
+  'Lincoln City': { wind: 'NW 14 mph, gusts 22', sky: 'Fog until about 11, then sun', temp: '54°F → 63°F' },
+  Newport: { wind: 'NW 16 mph, gusts 25', sky: 'Morning fog, bright afternoon', temp: '53°F → 61°F' },
+  Yachats: { wind: 'NNW 12 mph, gusts 18', sky: 'Sun breaks', temp: '55°F → 62°F' },
+};
+---
+
+<section class="coast">
+  <header>
+    <p class="eyebrow">Balloons, built for the coast</p>
+    <h1>Today on the coast</h1>
+  </header>
+  <div class="card">
+    <div class="towns" role="tablist" aria-label="Town">
+      {Object.keys(TOWNS).map((t, i) => (
+        <button type="button" role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-town={t}>{t}</button>
+      ))}
+    </div>
+    {Object.entries(TOWNS).map(([t, w], i) => (
+      <dl class="conditions" data-for={t} hidden={i !== 0}>
+        <div><dt>Wind</dt><dd>{w.wind}</dd></div>
+        <div><dt>Sky</dt><dd>{w.sky}</dd></div>
+        <div><dt>Temperature</dt><dd>{w.temp}</dd></div>
+      </dl>
+    ))}
+    <p class="sample">Example conditions, not a live forecast.</p>
+  </div>
+  <div class="means">
+    <h2>What that means for your installation</h2>
+    <ul>
+      <li><strong>Anchored, always.</strong> Gusts over 20 mph mean heavier bases and lower shapes outdoors.</li>
+      <li><strong>Air, not helium.</strong> Fog and damp shorten helium float time; air-filled garlands don't mind.</li>
+      <li><strong>Cold mornings, warm afternoons.</strong> Balloons look softer at 8am and fill out by noon. That's normal.</li>
+      <li><strong>Or skip the weather.</strong> The 20×40 tent keeps a whole party out of the wind.</li>
+    </ul>
+    <a class="button" href="/enquire">Plan around your date</a>
+  </div>
+</section>
+
+<script>
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.towns button')];
+  tabs.forEach((b) =>
+    b.addEventListener('click', () => {
+      tabs.forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+      document.querySelectorAll<HTMLElement>('.conditions').forEach((d) => (d.hidden = d.dataset.for !== b.dataset.town));
+    }),
+  );
+</script>
+
+<style>
+  .coast { padding: 48px max(16px, env(safe-area-inset-left, 0px)) 140px; max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px 40px; align-items: start; }
+  header { grid-column: 1 / -1; }
+  header h1, header p { margin: 0; }
+  .card { background: var(--surface); border: 1px solid var(--line); padding: 20px; display: grid; gap: 16px; }
+  .towns { display: flex; flex-wrap: wrap; gap: 6px; }
+  .towns button { font: inherit; font-size: 0.85rem; padding: 6px 12px; border: 1px solid var(--line); background: var(--ground); color: var(--ink); border-radius: 999px; cursor: pointer; }
+  .towns button[aria-selected='true'] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .conditions { margin: 0; display: grid; gap: 12px; }
+  .conditions[hidden] { display: none; }
+  .conditions div { display: grid; gap: 2px; }
+  dt { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); }
+  dd { margin: 0; font-family: var(--font-display); font-size: 1.35rem; }
+  .sample { margin: 0; font-size: 0.8rem; color: var(--ink-muted); }
+  .means { display: grid; gap: 12px; }
+  .means h2 { margin: 0; font-size: var(--step-1); }
+  .means ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--ink-muted); }
+  .means strong { color: var(--ink); }
+  .button { justify-self: start; }
+  @media (max-width: 720px) { .coast { grid-template-columns: 1fr; } }
+</style>

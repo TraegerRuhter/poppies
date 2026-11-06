@@ -1,0 +1,50 @@
+---
+// PROTOTYPE — throwaway. A floating bar to flip between variants: arrows or ←/→.
+interface Props {
+  variants: { key: string; name: string }[];
+  current: string;
+}
+const { variants, current } = Astro.props;
+const idx = variants.findIndex((v) => v.key === current);
+const here = variants[idx];
+---
+
+<nav class="proto-switcher" aria-label="Prototype variants" data-keys={variants.map((v) => v.key).join(',')} data-current={current}>
+  <button type="button" data-step="-1" aria-label="Previous variant">←</button>
+  <span>{here.key} — {here.name} <small>({idx + 1}/{variants.length})</small></span>
+  <button type="button" data-step="1" aria-label="Next variant">→</button>
+</nav>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('.proto-switcher')!;
+  const keys = bar.dataset.keys!.split(',');
+  const go = (step: number) => {
+    const i = keys.indexOf(bar.dataset.current!);
+    const next = keys[(i + step + keys.length) % keys.length];
+    const url = new URL(location.href);
+    url.searchParams.set('variant', next);
+    location.assign(url);
+  };
+  bar.querySelectorAll<HTMLButtonElement>('button').forEach((b) => b.addEventListener('click', () => go(Number(b.dataset.step))));
+  document.addEventListener('keydown', (e) => {
+    const t = e.target as HTMLElement;
+    if (t.closest('input, textarea, select, [contenteditable]')) return;
+    if (e.key === 'ArrowLeft') go(-1);
+    if (e.key === 'ArrowRight') go(1);
+  });
+</script>
+
+<style>
+  .proto-switcher {
+    position: fixed; left: 50%; transform: translateX(-50%);
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    display: flex; align-items: center; gap: 4px; padding: 6px;
+    background: #1d1b19; color: #f6f2ec; border-radius: 999px; z-index: 100;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3); font: 500 14px/1 system-ui, sans-serif;
+    max-width: calc(100vw - 32px);
+  }
+  .proto-switcher span { padding: 0 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .proto-switcher small { opacity: 0.6; }
+  .proto-switcher button { background: transparent; color: inherit; border: 0; font: inherit; padding: 10px 14px; border-radius: 999px; cursor: pointer; }
+  .proto-switcher button:hover, .proto-switcher button:focus-visible { background: rgba(255, 255, 255, 0.15); outline: none; }
+</style>

@@ -89,6 +89,26 @@ on the site.
 - **Tagline:** avoid "A pop of colour…". **A POP OF COLOR** is a filed mark
   for balloon design services.
 
+### 4. Ideas — 131 triaged ideas from overnight market research
+
+`ideas/` — **start at `ideas/ideas.md`** (top ten up front, tier index,
+progress). It's also a filterable page: https://claude.ai/artifact/J3XxwNaYN31tysYFjM5QRk
+(private).
+
+- Six cited research streams under `ideas/research/`: balloon innovators,
+  adjacent niches, the Oregon coast market, reviews and local marketing,
+  customer questions, and gaps and regulation.
+- **Headline:** no balloon *installation* studio is based on the central coast
+  (Float Balloon Bar LC in Lincoln City sells bouquets and garlands as a gift
+  shop; confirm it's open). The
+  nearest serious competitor drives in from Salem and asks for two weeks'
+  notice.
+- **Ready-to-use drafts** in `ideas/drafts/`: four explainers, the review kit,
+  a Google profile checklist, partner outreach emails, and two product
+  concepts (The Arrival, The Pavilion). Policies are marked `[her call]`.
+- Research input was added to tent ticket 07 (`offering-model/issues/07`)
+  without resolving it.
+
 ## A caveat that applies to all the research here
 
 Every research file in this directory rests on **search-result snippets**. The

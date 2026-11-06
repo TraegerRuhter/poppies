@@ -1,0 +1,58 @@
+---
+// PROTOTYPE H — The postcard: the enquiry written as a sentence on a postcard from
+// the coast. It's a real form: it posts to the same /api/enquiry as the main one.
+import { HONEYPOT } from '../../../lib/enquiry';
+import { PATHS } from '../../../lib/paths';
+---
+
+<section class="postcard-wrap">
+  <p class="eyebrow">Write to us</p>
+  <form class="postcard" method="post" action="/api/enquiry">
+    <div class="stamp" aria-hidden="true"><span>Poppies</span><span>Oregon coast</span></div>
+    <p class="line">
+      Hello Poppies, we're planning
+      <label class="sr" for="h-type">What you're planning</label>
+      <select id="h-type" name="eventType" required>
+        <option value="">something</option>
+        {Object.entries(PATHS).map(([value, p]) => <option value={value}>{p.enquiryLabel.toLowerCase()}</option>)}
+        <option value="other">something else</option>
+      </select>
+      in
+      <label class="sr" for="h-town">Town or venue</label>
+      <input id="h-town" name="town" placeholder="town or venue" required size="14" />
+      on
+      <label class="sr" for="h-date">Date</label>
+      <input id="h-date" name="date" type="date" required />.
+      We're imagining
+      <label class="sr" for="h-scale">Roughly how big</label>
+      <input id="h-scale" name="scale" placeholder="an arch for the ceremony" size="22" />
+      in
+      <label class="sr" for="h-colours">Colours</label>
+      <input id="h-colours" name="colours" placeholder="sage and cream" size="14" />.
+    </p>
+    <p class="line sign">
+      Warmly,
+      <label class="sr" for="h-name">Your name</label>
+      <input id="h-name" name="name" autocomplete="name" placeholder="your name" required size="14" />
+      <label class="sr" for="h-email">Email</label>
+      <input id="h-email" name="email" type="email" autocomplete="email" placeholder="email to reply to" required size="20" />
+    </p>
+    <div class="hp" aria-hidden="true"><input name={HONEYPOT} tabindex="-1" autocomplete="off" /></div>
+    <button class="button" type="submit">Send the postcard</button>
+  </form>
+</section>
+
+<style>
+  .postcard-wrap { padding: 48px max(16px, env(safe-area-inset-left, 0px)) 140px; max-width: 880px; margin: 0 auto; display: grid; gap: 16px; }
+  .postcard { position: relative; background: var(--surface); border: 1px solid var(--line); padding: clamp(24px, 5vw, 48px); padding-right: clamp(24px, 14vw, 140px); box-shadow: 0 20px 40px -28px rgba(42, 38, 34, 0.4); display: grid; gap: 18px; }
+  .stamp { position: absolute; top: 20px; right: 20px; width: 84px; height: 100px; border: 2px dashed var(--accent); display: grid; place-content: center; text-align: center; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); transform: rotate(3deg); }
+  .line { margin: 0; font-family: var(--font-display); font-size: clamp(1.15rem, 2.6vw, 1.6rem); line-height: 2.1; }
+  .line input, .line select { font: inherit; font-size: 0.85em; color: var(--ink); background: transparent; border: 0; border-bottom: 1.5px solid var(--support); padding: 0 4px; max-width: 100%; }
+  .line input::placeholder { color: var(--ink-muted); opacity: 0.8; }
+  .line input:focus-visible, .line select:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .sign { font-size: clamp(1rem, 2.2vw, 1.3rem); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .hp { position: absolute; left: -10000px; }
+  .button { justify-self: start; }
+  @media (max-width: 560px) { .stamp { width: 64px; height: 76px; font-size: 0.55rem; } .postcard { padding-top: 104px; } }
+</style>
