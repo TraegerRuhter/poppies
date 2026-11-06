@@ -1,6 +1,7 @@
 ---
 // PROTOTYPE — throwaway. Ten homepage sketches on one route, switchable with
-// ?variant=A…J, the arrow keys, or the floating bar. Dev only: production gets a 404.
+// ?variant=A…J, the arrow keys, or the floating bar. Visible in dev and on Vercel
+// preview deployments (so it can be reviewed on a phone); production gets a 404.
 import Base from '../../layouts/Base.astro';
 import PrototypeSwitcher from '../../components/prototype/PrototypeSwitcher.astro';
 import A from '../../components/prototype/home/A.astro';
@@ -15,7 +16,8 @@ import I from '../../components/prototype/home/I.astro';
 import J from '../../components/prototype/home/J.astro';
 
 export const prerender = false;
-if (!import.meta.env.DEV) return new Response(null, { status: 404 });
+const visible = import.meta.env.DEV || process.env.VERCEL_ENV === 'preview';
+if (!visible) return new Response(null, { status: 404 });
 
 const VARIANTS = [
   { key: 'A', name: 'Gallery wall', C: A },

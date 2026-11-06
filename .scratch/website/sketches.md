@@ -5,8 +5,9 @@ ideas for making the homepage unique and fun *and* useful, built on the real sit
 with real content.
 
 **See them:** run `pnpm dev`, open `/prototype/home`, and flip with the floating
-bar, the ← → keys, or `?variant=A`…`J`. The route returns a 404 in production
-builds. Code is in `src/components/prototype/` and `src/pages/prototype/home.astro`.
+bar, the ← → keys, or `?variant=A`…`J`. It also opens on this branch's Vercel
+**preview** deployment at `/prototype/home`, so it can be reviewed on a phone.
+Production returns a 404. Code is in `src/components/prototype/` and `src/pages/prototype/home.astro`.
 
 There are no photos yet, so the sketches draw their colour from seeded,
 procedurally generated organic garlands (`src/components/prototype/garland.ts`).
