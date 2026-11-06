@@ -28,3 +28,12 @@
 - Oregon Pacific Bank: grand openings/ribbon cuttings in Medford/Eugene (businesswire).
 - Dealers: Newport Chevrolet GMC 1422 Coast Hwy; Power Ford 1107 N Coast Hwy; Toyota of Newport 3234 S Coast Hwy; Power Auto Group incl Lincoln City.
 - Samaritan: no Samaritan latex policy found; hospitals generally ban latex, allow foil (WPR, FindLaw). PCHD Foundation gala Dec 13 2025 at Samaritan Center for Health Education (samhealth.org/PCHDFGala); gala for treatment/recovery raised $146k (NNT 2025).
+- Siletz: Nesika Illahee Pow-Wow 2nd weekend Aug (Aug 7-9 2026, Siletz); Restoration Pow-Wow Nov, at Chinook Winds; 49th listed 14 Nov 2026 (ctsi.nsn.us, visittheoregoncoast).
+- Blessing of the Fleet / Loyalty Days & Sea Fair, early May, Newport Fishermen's Wives, Port Dock 5/7, International Terminal (Lincoln Chronicle).
+- OCCC Pearls of Wisdom gala 14 Mar 2026, record $102k; 2025 $74k (NNT/News Guard); commencement mid-June at Newport PAC (Lincoln Chronicle).
+- Hatfield Marine Science Day Sat 11 Apr 2026 free (OSU Today).
+- LCCC Culture, of Course! Starlight Gala (lincolncity-culturalcenter.org; OC Today); Newport Chamber dinner/auction (newportchamber.org/?p=60104).
+- Meetings: Explore Lincoln City RFP form; Surftides 50-165; Devil's Lake retreat; Discover Newport staff retreats; Driftwood Shores (Florence) 5-100.
+- Senior living: Oceanview (Newport, Westmont Living), Lakeview Senior Living, Hillside Place (LC).
+- Wine: Depoe Bay Winery, Flying Dutchman (Otter Rock), Noble Estate Bayfront 2015, Northwest Wine Co LC, Lushington Wines LC, Anne Amie store LC.
+- Breweries: Wolf Tree (Seal Rock), Yachats Brewing + Farmstore; Black Squid Beerhouse ribbon cutting (LC homepage); LC Chamber info@lcchamber.com.

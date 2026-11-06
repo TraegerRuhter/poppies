@@ -44,7 +44,7 @@ Files go in `research/`, cited, with confidence per claim, like wave 1.
       casino, wineries and breweries, real estate (open houses, brokerages),
       car dealers, banks, retail, schools, nonprofits and civic events: who
       buys decor, when, and how to reach them.
-- [ ] **12 Craft, credentials and community.** Certified Balloon Artist and
+- [x] **12 Craft, credentials and community.** Certified Balloon Artist and
       manufacturer education, conventions, online communities, mentorship,
       and case studies of balloon artists who grew on Instagram or TikTok.
 
