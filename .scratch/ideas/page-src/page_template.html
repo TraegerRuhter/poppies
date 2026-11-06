@@ -85,9 +85,9 @@
 
 <div class="wrap">
   <header>
-    <p class="eyebrow"><span class="dot"></span>Poppies · overnight research · 6 November 2026</p>
+    <p class="eyebrow"><span class="dot"></span>Poppies · market research · November 2026</p>
     <h1>What Poppies could do next</h1>
-    <p class="lede">Six research streams on balloon innovators, adjacent niches, the Oregon coast, reviews, customer questions and regulation, turned into a triaged idea list and ready-to-use drafts. Nothing here is decided; it's a menu for the owner.</p>
+    <p class="lede">Twelve research streams, from balloon innovators and the Oregon coast to pricing, competitors and business buyers, turned into a triaged idea list and ready-to-use drafts. Nothing here is decided; it's a menu for the owner.</p>
     <div class="stats" id="stats"></div>
   </header>
 
@@ -163,12 +163,23 @@ const RESEARCH = [
   {t: "Reviews and local marketing", f: "04-reviews-and-local-marketing.md", pts: ["Google has a “Balloon artist” category; set up as a service-area business with towns listed.", "Google replaced public Q&A with an AI “Ask” button that answers from the site and reviews.", "Paid Knot or WeddingWire listings look poor value in year one; take the free storefronts.", "No current wedding show runs on the Oregon coast."]},
   {t: "Customer questions", f: "05-explainers-and-customer-questions.md", pts: ["“Biodegradable” balloons stayed intact after 16 weeks in a peer-reviewed study.", "Price is couples’ first filter, and “what drives the cost” is the most-searched topic.", "Honest longevity favours air-filled designs and the tent.", "No free customer-facing garland estimator with a preview turned up anywhere."]},
   {t: "Gaps and regulation", f: "06-gaps-regulation-sustainability.md", pts: ["Oregon has no statewide release ban; HB 2592 died in committee in June 2025.", "Helium supply was reportedly cut by about a third in 2026, so air-filled work is an advantage.", "No US latex recycling programme serves decorators.", "A tent over 400 sq ft generally needs a fire permit and an NFPA 701 certificate."]},
+  {t: "Pricing and unit economics", f: "07-pricing-and-unit-economics.md", pts: ["Organic garland centres on $25\u201335/ft nationally; $28 is the most common middle figure.", "Materials are under 10% of price; the cost is her time and the drive.", "A $560 Newport garland with same-day teardown pays about $43 an hour before overhead.", "Portland rents a 20\u00d740 tent for $750\u2013850, before delivery to the coast."]},
+  {t: "Competitors", f: "08-competitor-teardown.md", pts: ["No installation studio is based on the central coast; Float Balloon Bar LC in Lincoln City is a gift and bouquet shop.", "The real rivals are 1.5\u20132.5 hours away; Magic Balloons PDX is the style rival.", "Salem Balloons and Flowers wants two weeks\u2019 notice and is closed weekends.", "Most rivals have fewer than 5 reviews."]},
+  {t: "Operations", f: "09-operations-suppliers-tools.md", pts: ["No balloon supplier on the coast: keep safety stock and two suppliers.", "A starter kit costs about $750 (lean) to $3,100.", "Build in 4\u20136 ft sections; an SUV carries about 8 ft.", "Airtable plus Square or Stripe until about 2 bookings a month."]},
+  {t: "Oregon business setup", f: "10-oregon-business-setup.md", pts: ["State filings are cheap: an LLC is $100 plus $100 a year; an assumed business name is $50 every 2 years.", "Lincoln City, Depoe Bay, Toledo and Newport each license out-of-town businesses.", "The 800 sq ft tent needs a fire permit every time it goes up.", "General information, not legal or tax advice."]},
+  {t: "Business buyers", f: "11-coast-b2b-buyers.md", pts: ["Real estate agents for small, frequent \u201cJust Listed\u201d kits.", "Hotel ballrooms, the outlet mall and a bank with a party habit.", "Galas fall in March and December; holiday decor is decided in September.", "B2B peaks in Oct\u2013Dec and Mar\u2013May, around wedding season."]},
+  {t: "Craft and community", f: "12-craft-credentials-community.md", pts: ["Certification: free QBN membership, three online exams, then a practical; Qualatex suggests about 2 years first.", "A Portland artist\u2019s vacant-storefront pop-up got OPB coverage.", "Organic, double-stuffed, muted palettes and sculpture suit the brand.", "Oregon Wedding Day, Junebug and The Knot\u2019s badge are the first press wins."]},
 ];
 const DRAFTS = [
   {t: "Four explainers", f: "explainer-*.md", d: "How long balloons last on the coast; balloons and the coast (responsible use, no “biodegradable”); what drives the price; safety for children, pets and allergies."},
   {t: "Review kit", f: "review-kit.md", d: "The card left at installs, the photos message, one reminder, the wedding follow-up and review replies, all within Google’s and the FTC’s rules."},
   {t: "Google profile checklist", f: "google-business-profile-setup.md", d: "Category, service area, description, photos, review link and a five-minute monthly routine."},
   {t: "Partner outreach", f: "partner-outreach.md", d: "First-contact emails for property managers, coast venues, elopement photographers and the chambers, with named targets."},
+  {t: "Pricing proposal", f: "pricing-proposal.md", d: "A starting price card and fee terms: per-foot tiers, a minimum that rises with distance, separate travel and teardown fees. Input to the pricing ticket, not a decision."},
+  {t: "Competitive position", f: "competitive-position.md", d: "The position in one line, the five moves that matter most, and what to check by phone."},
+  {t: "Startup checklist", f: "startup-checklist.md", d: "Everything before the first paid job, in order: about $1,750\u20135,600 before a vehicle."},
+  {t: "12-month calendar", f: "twelve-month-calendar.md", d: "The coast\u2019s seasons mapped to outreach, content and launches."},
+  {t: "Break-even model", f: "../model/poppies-break-even.xlsx", d: "A spreadsheet with live formulas: change prices and bookings, see profit and the jobs needed to break even."},
 ];
 const RULES = [
   "Never release balloons, anywhere. Put a no-release clause in the contract.",
@@ -191,7 +202,7 @@ document.getElementById('headline').textContent = DATA.headline.charAt(0).toUppe
 const ideas = DATA.ideas.map(i => ({...i, wk: whoKey(i.who), th: shortTheme(i.theme), ef: i.effort.startsWith('S') ? 'S' : i.effort}));
 const devCount = ideas.filter(i => i.wk !== 'her').length;
 document.getElementById('stats').innerHTML = [
-  [ideas.length, 'ideas'], [ideas.filter(i => i.tier === 'Do now').length, 'to do now'], [devCount, 'the developer can start'], [DATA.parked.length, 'parked'], [6, 'research streams']
+  [ideas.length, 'ideas'], [ideas.filter(i => i.tier === 'Do now').length, 'to do now'], [devCount, 'the developer can start'], [DATA.parked.length, 'parked'], [12, 'research streams']
 ].map(([n, l]) => `<span><b>${n}</b>${l}</span>`).join('');
 
 document.getElementById('topten').innerHTML = DATA.topten.map(t => `<li><div><h3>${md(t.title)}</h3><p>${md(t.text)}</p></div></li>`).join('');

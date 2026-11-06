@@ -36,9 +36,11 @@ pat = re.compile(r'^(\d+)\. \*\*(.+?)\*\*(.*?)^\s+`(.+?)`\s*$', re.S | re.M)
 for m in pat.finditer(body):
     n = int(m.group(1))
     parts = [x.strip() for x in m.group(4).split('·')]
+    explicit = next((x[5:].strip() for x in parts if x.startswith('tier ')), None)
+    parts = [x for x in parts if not x.startswith('tier ')]
     ideas.append({
         'n': n, 'title': clean(m.group(2)), 'text': clean(m.group(3)),
-        'theme': theme_at(m.start()), 'tier': tier(n),
+        'theme': theme_at(m.start()), 'tier': explicit or tier(n),
         'fit': parts[0].replace('fit', '').strip(), 'effort': parts[1],
         'payoff': parts[2], 'who': parts[3],
         'src': parts[4].replace('src', '').strip() if len(parts) > 4 else '',

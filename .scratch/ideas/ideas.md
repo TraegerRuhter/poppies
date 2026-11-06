@@ -1,7 +1,7 @@
-# Poppies: 131 ideas, triaged (plus 12 parked)
+# Poppies: 172 ideas, triaged (plus 13 parked)
 
-2026-11-06. Merged and de-duplicated from the six research streams
-(`research/01`–`06`) and the unfiltered brainstorm (`brainstorm.md`). **Nothing
+2026-11-06. Merged and de-duplicated from twelve research streams
+(`research/01`–`12`) and the unfiltered brainstorm (`brainstorm.md`). **Nothing
 here is decided.** It's a menu for the owner and for the offering-model map.
 
 ## How to read each line
@@ -42,14 +42,17 @@ facts) · **Parked** (off-brand, premature or poor value, with the reason).
 
 The sections below group ideas by theme. Each idea's tier:
 
-- **Do now (28):** 1–20, 60–63, 70–73. Cheap, safe, unblocked or nearly so.
-- **Next (78):** 21–53, 64–66, 74–95, 121–140. High value, needs a decision
-  or some build work.
-- **Explore (25):** 96–120. Promising, but needs testing, facts or a later
-  stage.
-- **Parked (12):** listed at the end, each with the reason.
+- **Do now (40):** 1–20, 60–63, 70–73, and the wave 2 ideas tagged
+  `tier Do now`. Cheap, safe, unblocked or nearly so.
+- **Next (93):** 21–53, 64–66, 74–95, 121–140, and the wave 2 ideas tagged
+  `tier Next`. High value, needs a decision or some build work.
+- **Explore (39):** 96–120, and the wave 2 ideas tagged `tier Explore`.
+  Promising, but needs testing, facts or a later stage.
+- **Parked (13):** listed at the end, each with the reason.
 
-Numbers skip 54–59 and 67–69, left as gaps between themes.
+Numbers skip 54–59 and 67–69, left as gaps between themes. Ideas 141–181
+come from the second research wave, and each carries its tier in its tag
+line.
 
 ---
 
@@ -617,6 +620,166 @@ Promising, but needs testing, facts, or a later stage.
 
 ---
 
+## Wave 2 additions
+
+From the second research wave (`research/07`–`12`). These carry their tier in
+the tag line rather than by number range.
+
+### Business buyers
+
+141. **A "Just Listed" kit for real estate agents:** a modular half-arch or
+     column pair at the front door, a small garland on the sign post, in the
+     brokerage's colours, with same-day pickup. *Agents buy year-round and
+     repeat.*
+     `fit ●● · M · recurring · her · 11 pkg 1, 11#1 · tier Next`
+142. **An open-house porch piece:** a reusable frame with refreshed balloons
+     that stays through a weekend. Air-filled and weighted.
+     `fit ●● · M · recurring · her · 11 pkg 2 · tier Explore`
+143. **Sell holiday lobby installs in September.** Hotels, banks and the outlet
+     mall decide holiday decor in early autumn; install in November, strike in
+     January, one mid-season refresh.
+     `fit ●●● · M · off-season · her · 11#6, 11 pkg 6 · tier Next`
+144. **A New Year's Eve package** for resorts and restaurants: ceiling
+     clusters, a "2027" sculpture, a countdown photo wall.
+     `fit ●● · M · off-season · her · 11#7 · tier Next`
+145. **Gala decor sold as a sponsor tier,** plus one donated gala a year
+     (choose the room with the most business owners) and an auction item.
+     *Galas fall in March and December.*
+     `fit ●●● · M · reach · her · 11#8, 11#9, 11 pkg 8 · tier Next`
+146. **A conference and retreat kit**, with a one-page "coast decor menu"
+     emailed to Portland destination planners (Viva! Events, Global Sessions,
+     SHW). *They plan coast retreats with no local decor partner.*
+     `fit ●●● · M · price · her · 11#16, 11 pkg 9 · tier Next`
+147. **A sponsor lounge in the tent** at Seafood & Wine, the kite festivals or
+     Beach, Bacon & Brews, sold to the sponsor (a bank, dealer or brewery),
+     not the festival.
+     `fit ●● · L · price · her · 11#12, 11 pkg 10 · tier Explore`
+148. **A district window programme** with Club Nye Beach for the Holiday Sip &
+     Shop: one look across several shops, priced per window, one shared
+     install day.
+     `fit ●●● · M · off-season · her · 11#17 · tier Next`
+149. **A photo-op sculpture for Lincoln City Outlets** at Halloween or the
+     holidays. Offer the first one free for credit, then sell the season.
+     `fit ●● · M · reach · her · 11#22, 11 pkg 12 · tier Explore`
+150. **A senior-living monthly subscription:** a birthday-of-the-month
+     garland plus two holiday installs a year, with a latex-free option.
+     `fit ●● · M · recurring · her · 11#21, 11 pkg 13 · tier Explore`
+151. **A list of coast businesses' founding dates,** pitching 60–90 days
+     before round-number anniversaries (Pelican's 30th shows the format).
+     `fit ●●● · S · bookings · dev · 11#19 · tier Do now`
+152. **Follow Bayfront turnover:** Claim 52 took Rogue's pub, and the Port is
+     finding a tenant for the South Beach building. New operators hold
+     openings.
+     `fit ●●● · S · bookings · her · 11#10 · tier Do now`
+153. **Pitch Oregon Coast Bank first among banks.** It has a documented habit
+     of community parties for new offices and anniversaries.
+     `fit ●●● · S · bookings · her · 11#11 · tier Next`
+154. **Host a Business After Hours** at a client's site, decorated by Poppies:
+     a live demo to the business community.
+     `fit ●●● · M · reach · her · 11#4 · tier Explore`
+155. **A procurement kit, ready now:** a capabilities one-pager, an insurance
+     certificate with quick additional-insured turnaround, a W-9 and net-30
+     terms. *Banks, cities, the college and Chinook Winds will all ask.*
+     `fit ●●● · S · bookings · both · 11#14, 12#20 · tier Do now`
+156. **Register as a supplier** with Explore Lincoln City and Discover
+     Newport's meetings teams, so incoming planners find a local decor option.
+     `fit ●●● · S · reach · her · 11#15 · tier Do now`
+157. **Decide the auto-dealer question on purpose.** Dealers pay reliably but
+     want loud colour and helium: offer a refined "new model reveal", or
+     decline to protect the brand.
+     `fit ● · S · price · her (decision) · 11#18 · tier Do now`
+
+### Positioning and operations
+
+158. **Adopt the pricing proposal's fee structure:** zoned travel, teardown as
+     its own fee, a minimum that rises with distance. *A $560 Newport garland
+     pays about $43 an hour without them.*
+     `fit ●●● · S · price · her (decision) · 07 §6, drafts/pricing-proposal.md · tier Next`
+159. **"Booked in a week, not two":** 7-day standard booking, with 72-hour
+     express for small pieces. *Salem's main rival asks for 2+ weeks;
+     visitors book late.*
+     `fit ●●● · S · bookings · her · 08#2 · tier Next`
+160. **Answer on weekends.** The main rival's office and the coast rental firm
+     are closed then, and weekend deciders book whoever replies.
+     `fit ●●● · S · bookings · her · 08#4 · tier Do now`
+161. **Headline the geography:** "Free installation from Lincoln City to
+     Yachats." Depends on the travel zones (#158).
+     `fit ●●● · S · bookings · both · 08#3 · tier Next`
+162. **One service page per town** (Lincoln City, Depoe Bay, Newport, Waldport,
+     Yachats, Florence), before an out-of-state lead-gen site claims those
+     searches.
+     `fit ●●● · M · reach · dev + her · 08#8 · tier Next`
+163. **Coastal safety stock and a two-supplier rule:** hold twice the next
+     job's core neutrals; one California wholesaler for speed and one
+     multi-brand store for colour gaps; a trade account (retail latex costs
+     about twice trade).
+     `fit ●●● · S · price · her · 09#1, 09#2, 07#17 · tier Do now`
+164. **"Built in sections" as a selling point:** 4–6 ft modules that reach
+     remote rental houses and go up beach stairs.
+     `fit ●●● · S · bookings · her · 09#4 · tier Next`
+165. **A coast-proof install standard:** an anchor every 2–3 ft, a wind-check
+     photo, and a published weather-call policy.
+     `fit ●●● · S · trust · her · 09#5 · tier Do now`
+166. **Time the first ten builds** (feet per hour, balloons per foot) and feed
+     the numbers back into the prices. *The 16.5 min/ft figure is an
+     assumption.*
+     `fit ●●● · S · price · her · 09#15, 07 gaps · tier Do now`
+167. **Damp-proof storage:** an interior room, dated bins, first-in first-out,
+     a dehumidifier. *A coastal garage is damp, and latex lasts 1–2 years when
+     stored cool and dark.*
+     `fit ●●● · S · price · her · 09#13 · tier Do now`
+168. **An Airtable "Jobs" base with a pull sheet** (balloons by size and colour
+     per job), generated from the quote.
+     `fit ●●● · M · price · dev · 09#11 · tier Explore`
+169. **A portable power station:** "we can install anywhere, even a beach with
+     no outlet."
+     `fit ●● · S · bookings · her · 09#16 · tier Explore`
+170. **Bilingual service and quinceañeras.** A Salem studio shows it works, and
+     no coast vendor offers it.
+     `fit ●● · M · bookings · her · 08#14 · tier Explore`
+171. **Partner with Float Balloon Bar LC** for bouquets and walk-in demand, if
+     it's open, rather than treating it as a rival.
+     `fit ●● · S · bookings · her · 08 §3.1 · tier Explore`
+
+### Craft, credibility and press
+
+172. **"QBN-trained" now, Certified Balloon Artist from year 2.** The online
+     exams are cheap structured fundamentals; Qualatex suggests about 2
+     years' experience before the certification.
+     `fit ●●● · M · trust · her · 12#5 · tier Next`
+173. **A monthly coastal-creature study:** jellyfish, octopus, puffin,
+     Dungeness crab. Skill, portfolio and a recognisable series at once.
+     `fit ●●● · M · reach · her · 12#4 · tier Next`
+174. **A hero sculpture upgrade on any job:** one sea creature or local bird
+     alongside the garland.
+     `fit ●●● · S · price · her · 12#3 · tier Next`
+175. **A studio swatch wall** of double-stuffed colourways, for consultations
+     and as a content series. Extends the Coast Palette (#95).
+     `fit ●●● · S · trust · her · 12#1, 12#2 · tier Explore`
+176. **Submit weddings to Oregon Wedding Day as standard practice,** with a
+     one-page photo credit and usage agreement sent to photographers before
+     every wedding.
+     `fit ●●● · S · reach · her · 12#12, 12#14 · tier Do now`
+177. **Scale and placement in every post:** one frame with a person or
+     furniture for size, and the town plus booking link in every caption and
+     the bio. *Viral reach is mostly not local.*
+     `fit ●●● · S · bookings · her · 12#16, 12#19 · tier Do now`
+178. **Host an "Oregon Coast Balloon Jam":** Portland and Seattle artists
+     build one large piece for a coast venue or festival.
+     `fit ●●● · L · reach · her · 12#8 · tier Explore`
+179. **A vacant-storefront pop-up** in the off-season, pitched to OPB and the
+     local papers. *A Portland artist's "Joy Store" got this exact
+     coverage.* Strengthens #92.
+     `fit ●●● · L · reach · her · 12#9 · tier Explore`
+180. **One convention a year** (Twist & Shout or Ballooniversity), chosen for
+     its classes, with a competition piece from year 2.
+     `fit ●● · M · trust · her · 12#7 · tier Explore`
+181. **Assist a Portland installer on a large job** to learn large-scale
+     rigging.
+     `fit ●●● · M · trust · her · 12#23 · tier Explore`
+
+---
+
 ## Parked, with the reason
 
 - **Marquee and mosaic numbers.** Commoditised (about $25 DIY frames) and
@@ -630,6 +793,8 @@ Promising, but needs testing, facts, or a later stage.
 - **Bark.** Expensive credits and heavy complaints. *(04 §4)*
 - **A shipped national DIY kit.** "Hundreds" of kit shops now exist; only
   curation could set one apart, and it's a different business. *(01#11, 02#26)*
+- **Arguing about prices in public videos.** Publish starting prices on the
+  site instead; a balloon artist's pricing video drew a backlash. *(12#18)*
 - **Licensing the format** to other towns. Premature until packages exist.
   *(01#27, 02#28)*
 - **Teaching a business-starter course.** It trains her own competitors, and
