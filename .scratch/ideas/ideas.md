@@ -55,9 +55,13 @@ Numbers skip 54–59 and 67–69, left as gaps between themes.
 
 ## If you read nothing else: the ten that matter most
 
-**The headline from the local research:** no balloon-decor specialist is based
-in Lincoln County. The nearest serious competitor, Salem Balloons and Flowers,
-drives in from the valley and asks for two weeks' notice. Lincoln County has
+**The headline from the local research:** no balloon *installation* studio is
+based on the central coast. The one local balloon shop, Float Balloon Bar LC in
+Lincoln City, looks like a gift-and-bouquet bar, and a listing showed it
+"closed"; confirm in person. The nearest real installation rivals are 1.5–2.5
+hours away. Salem Balloons and Flowers asks for two weeks' notice, and Magic
+Balloons PDX does the same organic style and names the coast as a service area
+(`research/08`). Lincoln County has
 about 51,000 residents but around $600M a year in visitor spending, and
 roughly half of visitors come from Portland and the Willamette Valley. Most
 customers will book remotely, so a fast, visual, quote-friendly site matters

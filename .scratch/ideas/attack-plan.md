@@ -28,14 +28,14 @@ Files go in `research/`, cited, with confidence per claim, like wave 1.
       proposals, rental surprise setups, subscriptions, the tent). Material
       cost per foot, labour hours, margins, deposits and minimums. → Input to
       offering-model ticket 05.
-- [ ] **08 Competitor teardown.** Salem Balloons and Flowers, Bouquets &
+- [x] **08 Competitor teardown.** Salem Balloons and Flowers, Bouquets &
       Balloons, Pop & Go, Balloon Artisan, Portland Balloon Decor, Balloon
       Theories, plus coast rental and decor companies. Offerings, prices,
       service area, reviews, positioning and gaps.
 - [ ] **09 Operations: suppliers, equipment and software.** Wholesale latex in
       the Pacific Northwest, inflators, frames, transport, storage, and
       quoting, CRM, contracts and payment tools for small event vendors.
-- [ ] **10 Business setup in Oregon.** Assumed business name, city and county
+- [x] **10 Business setup in Oregon.** Assumed business name, city and county
       licences, liability insurance for balloon and decor artists (providers,
       costs, certificates), contracts and standard clauses, deposits, taxes
       (Oregon has no sales tax; the Corporate Activity Tax threshold), tent

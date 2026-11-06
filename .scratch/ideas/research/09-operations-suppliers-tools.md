@@ -1,7 +1,7 @@
 # 09 — Operations: suppliers, equipment, transport, software
 
 Date: 2026-11-07
-Status: in progress (sections 2–5 pending).
+Status: complete first pass (snippet-based).
 
 **Sourcing caveat.** Built from web-search result snippets only. Direct page fetches were blocked in this session (us.qualatex.com and sempertexusbetallic.com would not resolve), so supplier distributor lists, price tables and shipping policies were **not** read in full. Prices are snapshots of whatever a search snippet showed, are often retail rather than trade, and change by colour and season. Confidence: **H** = primary source (manufacturer, supplier or tool's own page, or a government page), **M** = reputable secondary or several sources agreeing, **L** = single snippet, directory, marketing blog or inference.
 
@@ -260,3 +260,109 @@ Why: the costs are near zero until there's revenue, the setup reuses what's alre
 16. **Portable power station** marketed as "we can install anywhere, even beaches with no outlet".
 
 ---
+
+## Sources
+
+All accessed 2026-11-06 via search snippets only; pages were not fetched in full.
+
+**Brands and distributors**
+- [Q1] Qualatex US — distributor network page: https://us.qualatex.com/en-us/purchase-qualatex-balloons/qualatex-balloon-network-distributors
+- [Q2] Qualatex 2017 Everyday Catalog (distributor phone): https://issuu.com/pioneer1/docs/2017_us-everyday-catalog-web/8
+- [S1] Sempertex/Betallic US distributors: https://sempertexusbetallic.com/pages/distributors
+- [S2] balloons.online Sempertex page (US restriction note): https://balloons.online/brands/sempertex-balloons/
+- [T1] Tuftex distributors: https://www.tuftexballoons.com/distributors/
+- [W1] Balloon Warehouse / IE Balloons: https://balloonwarehouse.com/
+- [W2] Instaballoons: https://www.instaballoons.com/
+- [W3] Thingtesting — Instaballoons Wholesale listing: https://thingtesting.com/brands/instaballoons-wholesale
+- [W4] Bargain Balloons: https://bargainballoons.com/ ; About: https://bargainballoons.com/pages/about-us
+- [W5] Bargain Balloons Canada shipping: https://support.bargainballoons.ca/support/solutions/articles/27000056933-what-are-shipping-times-and-shipping-costs-to-canada-
+- [W6] Balloons Direct: https://balloonsdirect.com/latex-balloons
+- [W7] burton+BURTON help / terms: https://www.burtonandburton.com/customer-service/help.aspx ; new customer form: https://www.burtonandburton.com/customer-service/New-Customer-Multi-State-Form.pdf
+- [W8] burton+BURTON Qualatex listings: https://www.burtonandburton.com/balloons/qualatex.aspx?page=2
+- [W9] Balloons2Go: https://www.balloons2go.net/
+- [W10] Brody's Wholesale: https://reseller.thesagenext.com/chapter/brodys-wholesale-balloons-event-supplies
+
+**Regional stores and businesses**
+- [R1] BBB WA novelty balloons (MSR Wholesale): https://www.bbb.org/us/wa/category/novelty-balloons
+- [R2] The Lippman Company: https://www.mapquest.com/us/oregon/the-lippman-company-12389737
+- [R3] Boom Boom Balloons: https://startpage.mapquest.com/us/oregon/boom-boom-balloons-24301835
+- [R4] Party Mart Salem / Party City Beaverton: https://aptraining.csc.com/party-stores-in-salem-oregon ; https://stores.partycity.com/us/or/beaverton/
+- [R5] Coastal Cards & Gifts, Newport: https://visittheoregoncoast.com/cities/newport/activities/coastal-cards-gifts/
+- [R6] BBB Lincoln City party supplies: https://bbb.org/us/or/lincoln-city/category/party-supplies
+
+**Oregon tax**
+- [O1] Oregon DOR — Sales tax: https://www.oregon.gov/dor/programs/businesses/Pages/Sales-tax.aspx
+- [O2] Oregon Business Registry Resale Certificate summary: https://www.bizreport.com/business-registry-resale-certificate-oregon
+- [O3] Closo — Oregon resale certificate guide: https://closo.co/blogs/legal-compliance/oregon-resale-certificate-guide
+
+**Prices**
+- [P1] eBay Sempertex Merlot 100ct: https://www.ebay.com/itm/285655339311
+- [P2] Walmart Sempertex listings: https://www.walmart.com/browse/party-occasions/balloons/sempertex/2637_1042319_1212898_3956207/YnJhbmQ6U2VtcGVydGV4
+- [P3] Toy World Inc.: https://toyworldinc.co/products/11-inch-sempertex-fashion-red-latex-balloons-100ct ; https://toyworldinc.co/products/qualatex-11in-navy-latex-100ct ; https://toyworldinc.co/products/qualatex-pastel-assortment-latex-11in-100ct
+- [P4] Faire (Party Expo): https://www.faire.com/product/p_bwpjh2z8ay
+- [P5] Fiesta Warehouse Tuftex: https://reach.dog/shop/fiesta-warehouse/products/11-blossom-tuftex-latex-balloons-100-per-bag
+
+**Equipment**
+- [E1] Balloon Time inflator (Walmart Business): https://business.walmart.com/ip/Air-Inflator/14161966232
+- [E2] Conwin Air Force 4 (Toy World): https://toyworldinc.co/products/conwin-air-force-4 ; Irish Party Supplies Conwin range: https://www.irishpartysupplies.ie/products/duplicator-2-with-foot-pedal ; LA Rocks 60/40: https://larocks.com/60-40-dual-sizer-duplicator-2-helium-air-inflator-p/1397536310.htm
+- [E3] burton+BURTON inflator guide: https://www.burtonandburton.com/blog/balloon-inflators.aspx ; Funny Balloons USA pro inflator guide: https://funnyballoonsusa.com/blogs/news/professional-balloon-inflator-guide-2026
+- [E4] The Very Best Balloon Blog — Conwin: https://theverybestballoonblog.blogspot.com/search/label/Conwin
+- [E5] Sizer listings (Walmart; Go International Qualatex sizer): https://www.walmart.com/ip/18915450328 ; https://gointernational.co.uk/balloon-accessories/qualatex-very-best-balloon-sizer
+- [E6] Balloon Decoration Guide — sizer: https://www.balloon-decoration-guide.com/balloon-sizer.html
+- [E7] Decorating strip (Party City CA; Target): https://www.partycity.ca/en/pdp/balloon-arch-decorating-strip-50-ft-8424311p.html ; https://www.target.com/p/50-ft-balloon-decorating-strip/-/A-1007964423
+- [E8] Glue dots: https://www.thepartyroom.co.nz/products/balloon-glue-dots
+- [E9] The Very Best Balloon Blog — what tools to take: https://theverybestballoonblog.blogspot.com/2016/11/so-what-tools-should-i-take-with-me.html
+- [E10] BalloonHQ — tools of the trade: https://balloonhq.com/?p=855
+- [E11] Arch frames and bases (Walmart): https://www.walmart.com/ip/18172568942 ; https://www.walmart.com/c/kp/arch-kit ; https://www.walmart.com/ip/9374515834
+- [E12] Helium rental (Surprize Enterprize; HowMuchIsIt): https://www.surprize-enterprize.com/us/helium/helium-tank-rental.html ; https://www.howmuchisit.org/?p=1765
+- [E13] UChicago Airgas contract: https://psdlbc.uchicago.edu/payments-procurement/airgas-contract
+
+**Handling and storage**
+- [H1] Shimmer & Confetti — transporting a garland: https://shimmerandconfetti.ca/blogs/the-shimmer-and-confetti-blog/how-to-transport-a-balloon-garland
+- [H2] Girl Friday garland vehicle guidance: https://girlfriday.squarespace.com/balloons/balloon-garland
+- [H3] ItemFits — vehicle floor lengths: https://itemfits.com/fit/vehicle/best-vehicles-for-moving-furniture
+- [H4] eHow — transporting balloons: https://ehow.com/how_7503516_transport-balloons.html
+- [H5] Balloon Decoration Guide — outdoor heat: https://www.balloon-decoration-guide.com/how-to-prevent-balloon-decor-from-popping-in-outdoors-heat.html
+- [H6] Bargain Balloons — latex storage and shelf life: https://support.bargainballoons.ca/support/solutions/articles/27000057425--how-to-store-latex-balloons-and-what-is-their-shelf-life-
+- [H7] Toy World — making balloons last: https://toyworldinc.co/blogs/news/how-to-make-balloons-last-longer-at-your-next-event
+- [H8] Globos Europe — storage guidance: https://globoseurope.com/?p=256934
+
+**Software**
+- [SW1] Capterra — HoneyBook: https://www.capterra.com/p/162588/HoneyBook/reviews/6321686/
+- [SW2] Taskip — HoneyBook pricing: https://taskip.net/honeybook-pricing/
+- [SW3] Dupple — HoneyBook alternatives: https://dupple.com/learn/cheaper-honeybook-alternatives
+- [SW4] Agiled — HoneyBook pricing: https://agiled.app/blog/honeybook-pricing
+- [SW5] Shimmer & Confetti — HoneyBook vs 17hats for balloon artists: https://shimmerandconfetti.ca/blogs/the-shimmer-and-confetti-blog/honeybook-vs-17hats-the-best-crm-for-balloon-artists-2026
+- [SW6] Agiled — Dubsado pricing: https://agiled.app/blog/dubsado-pricing
+- [SW7] CostBench — Dubsado: https://costbench.com/software/invoicing/dubsado/
+- [SW8] Agiled — 17hats pricing: https://agiled.app/blog/17hats-pricing
+- [SW9] Assembly — Bonsai pricing: https://assembly.com/blog/hello-bonsai-pricing ; Bonsai help on fees: https://help.hellobonsai.com/en/articles/452273-what-does-it-cost-to-get-paid-via-bonsai
+- [SW10] Square Invoices (Capterra; CostBench): https://www.capterra.com/p/255193/Square-Invoices/pricing/ ; https://costbench.com/software/invoicing/square-invoices/
+- [SW11] Stripe Invoicing (Capterra): https://www.capterra.com/p/10003759/Stripe-Invoicing/
+- [SW12] Fanfaire features: https://www.fanfaire.io/features ; Pricing Wizard: https://www.fanfaire.io/blog/get-your-pricing-matrix-perfect-in-under-60-seconds-with-fanfaires-pricing-wizard
+- [SW13] Fanfaire vs HoneyBook (vendor): https://www.fanfaire.io/blog/why-balloon-artists-are-choosing-fanfaire-over-honeybook-its-not-about-features-its-about-what-your-clients-actually-feel
+- [SW14] ZipDo balloon software roundup: https://zipdo.co/best/balloon-software/
+- [SW15] Capterra — BalloonBuilder.com: https://www.capterra.com/p/10047852/BalloonBuilder-com/
+- [SW16] ArchCount (mwm.ai): https://mwm.ai/apps/archcount/6790233252
+- [SW17] Balloon Brain (App Store): https://apps.apple.com/app/id6764686900
+- [SW18] BalloonTools (App Store): https://apps.apple.com/ag/app/balloontools/id1406906441
+- [SW19] Pricing Calculator (App Store): https://apps.apple.com/us/app/-/id6483439628
+- [SW20] Etsy pricing spreadsheet: https://www.etsy.com/listing/4600784009
+- [SW21] Garland design app (App Store): https://apps.apple.com/app/id6469189292 ; mock-up offer example: https://daydreamwme.pages.dev/installations
+- [SW22] Venue Visualizer: https://www.producthunt.com/p/venue-visualizer
+- [SW23] Inflate Lab balloon artist bundles: https://inflatelabdesigns.gumroad.com/l/balloon-artist-bundles
+- [SW24] Jetadmin — Airtable pricing 2026: https://www.jetadmin.io/blog/airtable-pricing-in-2026-plans-real-costs-and-when-to-upgrade/
+
+**Benchmarks**
+- [B1] Lovely Lucky Life / DIY garland guides: https://www.lovelyluckylife.com/?p=7588 ; https://www.loveourreallife.com/balloon-garland-arch-last/
+- [B2] Garland pricing calculator example (16.5 min/ft): https://production.matthewmarks.com/?p=32056 (low-quality host; L)
+- [B3] ThePricer — balloon arch cost: https://www.thepricer.org/balloon-arch-cost/ ; LatestCost: https://latestcost.com/balloon-decoration-price-u-s-events-parties/
+- [B4] NJ installation cost 2026: https://daydreamwme.pages.dev/blog/balloon-installation-cost-nj-2026.html
+
+## Gaps to close by phone or email
+- Exact Qualatex, Sempertex and Tuftex authorised distributors serving Oregon (the locator pages couldn't be fetched).
+- Instaballoons and Bargain Balloons US account terms and free-shipping thresholds.
+- Whether Kalisan has a US distributor; I found no Kalisan prices.
+- Airgas, Matheson or Linde helium lease rates at the Newport or Salem branches.
+- Fanfaire and BalloonSuite pricing.
+- Any Newport or Lincoln City shop that sells pro latex (call Coastal Cards & Gifts and Pacific Event Rentals).

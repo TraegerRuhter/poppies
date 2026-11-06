@@ -98,7 +98,9 @@ progress). It's also a filterable page: https://claude.ai/artifact/J3XxwNaYN31ty
 - Six cited research streams under `ideas/research/`: balloon innovators,
   adjacent niches, the Oregon coast market, reviews and local marketing,
   customer questions, and gaps and regulation.
-- **Headline:** no balloon-decor specialist is based in Lincoln County. The
+- **Headline:** no balloon *installation* studio is based on the central coast
+  (Float Balloon Bar LC in Lincoln City sells bouquets and garlands as a gift
+  shop; confirm it's open). The
   nearest serious competitor drives in from Salem and asks for two weeks'
   notice.
 - **Ready-to-use drafts** in `ideas/drafts/`: four explainers, the review kit,

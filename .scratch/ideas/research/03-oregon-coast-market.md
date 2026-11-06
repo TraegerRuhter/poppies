@@ -119,6 +119,8 @@ Not confirmed from snippets but worth checking: Lincoln City's Finders Keepers g
 
 ## 5. Competitors (balloons, decor, event rentals)
 
+> **Correction (2026-11-06, from `08-competitor-teardown.md` §3.1):** there *is* a balloon shop in Lincoln County. **Float Balloon Bar LC** (2149 NW Hwy 101, Lincoln City) sells garlands and bouquets. It looks like a gift-bar shop rather than an installation studio, and a listing showed it "closed" (unclear whether for that hour or for good). Confirm by phone or a visit. The sentence below was written before that was found.
+
 **I found no balloon-decor specialist based in Lincoln County.** Searches for balloon decor in Newport and Lincoln City returned only Portland, Salem and Oregon City vendors [M] ([GigSalad Oregon balloon decor](https://www.gigsalad.com/Event-Services/Balloon-Decor/OR)). That fits the earlier finding that no coast balloon vendor publishes prices.
 
 **Valley and Portland balloon vendors that do or might travel:**
