@@ -1,4 +1,4 @@
-# Poppies: 120 ideas, triaged
+# Poppies: 140 ideas, triaged
 
 2026-11-06. Merged and de-duplicated from the six research streams
 (`research/01`–`06`) and the unfiltered brainstorm (`brainstorm.md`). **Nothing
@@ -26,6 +26,14 @@ facts) · **Parked** (off-brand, premature or poor value, with the reason).
 ---
 
 ## If you read nothing else: the ten that matter most
+
+**The headline from the local research:** no balloon-decor specialist is based
+in Lincoln County. The nearest serious competitor, Salem Balloons and Flowers,
+drives in from the valley and asks for two weeks' notice. Lincoln County has
+about 51,000 residents but around $600M a year in visitor spending, and
+roughly half of visitors come from Portland and the Willamette Valley. Most
+customers will book remotely, so a fast, visual, quote-friendly site matters
+a lot. (`research/03` §1–§5)
 
 1. **Become "the responsible balloon studio of the Oregon coast"** (#1–#6).
    Nothing is released, designs use air not helium, everything is collected,
@@ -397,6 +405,104 @@ reviews, no bursts. Details are in `drafts/review-kit.md`.
 95. **A seasonal Coast Palette colour story** ("Fog", "Kelp", "Driftwood")
     released each spring. *A named look can later be licensed or kitted.*
     `fit ●●● · S · reach · her · 02#25, B3`
+
+---
+
+## Local plays: named targets on the central coast
+
+From `research/03-oregon-coast-market.md`. Names, contacts and prices come
+from search snippets; **phone to confirm before acting on any of them.**
+
+121. **Preferred-vendor status at the resorts:** Salishan Coastal Lodge
+     (lawn for 300), Hallmark Resort Newport, Inn at Spanish Head, Surftides,
+     Adobe Resort (Yachats). Pitch with a mock-up on photos of their own
+     spaces.
+     `fit ●●● · M · bookings · her · 03#4, 04#22`
+122. **An Anchor Inn grotto partnership.** Its wedding package already
+     includes a 20×20 tent, so offer a decor upgrade, or the 20×40 for bigger
+     parties.
+     `fit ●●● · S · bookings · her · 03#5`
+123. **A Chinook Winds vendor relationship:** galas, conventions, the Angels
+     Ball, the largest room on the coast. *Off-season volume.*
+     `fit ●●● · M · off-season · her · 03#15, 03#33`
+124. **An annual holiday lobby installation at Chinook Winds.** A huge
+     audience, and it repeats every year.
+     `fit ●●● · M · recurring · her · 03#33`
+125. **Ocean sculptures for Oregon Coast Aquarium private events**:
+     jellyfish, octopus, kelp. *A niche that suits the brand.*
+     `fit ●●● · M · price · her · 03#21`
+126. **Kite festival pieces** for Explore Lincoln City: a giant kite or
+     windsock sculpture at the D River Wayside, plus a lit piece for the
+     Fall Festival night fly. Needs a sponsor and a permit.
+     `fit ●●● · M · reach · her · 03#16, B49`
+127. **Newport Seafood & Wine Festival** (17,000–25,000 visitors in late
+     February): join the vendor waitlist, or pitch the entrance and
+     sponsor-booth decor to the chamber. *Fills the quietest month.*
+     `fit ●●● · M · off-season · her · 03#17`
+128. **A ribbon-cutting package for both chambers:** a standard
+     grand-opening garland and an oversized ribbon at a flat price. *Chambers
+     run ribbon cuttings all year.*
+     `fit ●●● · S · recurring · her · 03#18, B46`
+129. **Prom, homecoming and graduation packages** for Newport, Taft, Toledo
+     and Waldport high schools (about 5,100 K-12 students in the county).
+     `fit ●● · M · bookings · her · 03#19, B14`
+130. **A holiday programme:** lighted boat parade decor, Nye Beach, Bayfront
+     and Taft storefronts, a photo spot at the aquarium's Sea of Lights.
+     `fit ●●● · M · off-season · her · 03#20, B13`
+131. **Pitch The Arrival to the named property managers:** Meredith Lodging,
+     iTrip Central Oregon Coast, Vacasa, Pacific Retreats, Fairly, Pacific
+     View Lodging, Bella Beach. Offer a 10–15% referral fee and a link in
+     their pre-arrival emails. **No one on the coast sells rental celebration
+     setups today.**
+     `fit ●●● · M · bookings · her · 03#9, 03#10, drafts/partner-outreach.md`
+132. **Hotel concierge cards** at Salishan, Inn at Spanish Head and Surfsand:
+     "Celebrating? We'll decorate your room."
+     `fit ●●● · S · bookings · her · 03#14`
+133. **An elopement backdrop kit sold through named photographers:** Rustic
+     Bloom (Lincoln City), Wandering Weddings, J Cobb, Alix Ann Loosle,
+     Celebrate Again. A packable, wind-rated frame that goes up in 20 minutes.
+     *Their packages run $1,700–6,600.*
+     `fit ●●● · M · bookings · her · 03#3, 02#11`
+134. **Proposal spots** (Road's End, Boiler Bay, Yaquina Head), checking each
+     site's permit rules, or in rentals, with a photographer partner.
+     `fit ●●● · M · price · her · 03#11, 02#4`
+135. **Florist co-packages:** Range Floral Design (Newport), Newport Florist
+     and Gifts, Kvetka. Fresh flowers tucked into garlands.
+     `fit ●●● · M · price · her · 03#30, 01#13`
+136. **A referral swap with Oregon Coast Event Rental and Newport Rental
+     Service.** They refer decor; Poppies refers tables, chairs and linens.
+     If their listed Mon–Thu hours are right, Poppies covers the weekend.
+     `fit ●●● · S · bookings · her · 03#29`
+137. **Rehearsal-dinner and welcome-party decor** at Pelican Brewing,
+     bayfront restaurants and rental houses. *Destination weddings mean
+     several events per weekend.*
+     `fit ●●● · S · bookings · her · 03#7`
+138. **An "Oregon Coast Wedding Weekend" bundle:** tent, decor, flowers,
+     photographer and a rental house through a property manager, as one
+     booking for out-of-town couples.
+     `fit ●●● · L · price · her · 03#32, 02#9`
+139. **Go to the valley bridal shows** (Salem, Corvallis, Eugene) as the
+     coast's local decor team. *The couples planning coast weddings live
+     there.*
+     `fit ●●● · M · reach · her · 03#34`
+140. **Say "Oregon Coast" in the brand line** ("Poppies, Oregon Coast").
+     *The other Oregon "Poppies" businesses sit in the valley, where coast
+     customers come from.* It also helps local search.
+     `fit ●●● · S · reach · her · 03#26`
+
+**Local facts that change other ideas:**
+
+- **Beach permits:** an OPRD special use permit is reportedly needed for 50+
+  guests or any structure (arches included). It costs $100, the application
+  is due 30 days ahead, decor must be freestanding, and nothing can be left
+  behind. That supports idea #41, the permit concierge.
+- **The coast's typical wedding is 25–165 guests,** held at resorts or at
+  non-venues: rental houses, beaches, lawns. No event barns turned up on the
+  central coast. That supports #40, The Pavilion.
+- **Wind** averages about 23 km/h in summer and 28–30 km/h in winter in
+  Newport, and stakes hold poorly in sand. That supports #43, the wind policy.
+- **The vacation-rental market** has 422 licences in unincorporated Lincoln
+  County alone (August 2026), plus city licences.
 
 ---
 
