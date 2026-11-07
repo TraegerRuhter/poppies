@@ -6,10 +6,11 @@ with real content.
 
 **See them:**
 
-- **On a phone or any browser:** open any Vercel **preview** deployment of
-  this repo and go to `/prototype/home`. Every branch push and pull request
-  gets one; Vercel's bot comment on the PR has the link. Production
-  (the live site) returns a 404 for this route on purpose.
+- **On the live site, for now:** https://poppies.vercel.app/prototype/home.
+  Pick a sketch from the dropdown in the bottom bar. It isn't linked from
+  anywhere, it's marked `noindex`, and it's left out of the sitemap. **Take it
+  down before launch:** delete the route, or restore the dev/preview-only
+  check in `src/pages/prototype/home.astro`.
 - **Locally:** run `pnpm dev` and open `/prototype/home`.
 
 Flip between sketches with the floating bar, the ← → keys, or
