@@ -4,10 +4,17 @@
 ideas for making the homepage unique and fun *and* useful, built on the real site
 with real content.
 
-**See them:** run `pnpm dev`, open `/prototype/home`, and flip with the floating
-bar, the ← → keys, or `?variant=A`…`J`. It also opens on this branch's Vercel
-**preview** deployment at `/prototype/home`, so it can be reviewed on a phone.
-Production returns a 404. Code is in `src/components/prototype/` and `src/pages/prototype/home.astro`.
+**See them:**
+
+- **On the live site, for now:** https://poppies.vercel.app/prototype/home.
+  Pick a sketch from the dropdown in the bottom bar. It isn't linked from
+  anywhere, it's marked `noindex`, and it's left out of the sitemap. **Take it
+  down before launch:** delete the route, or restore the dev/preview-only
+  check in `src/pages/prototype/home.astro`.
+- **Locally:** run `pnpm dev` and open `/prototype/home`.
+
+Flip between sketches with the floating bar, the ← → keys, or
+`?variant=A`…`J`. Code is in `src/components/prototype/` and `src/pages/prototype/home.astro`.
 
 There are no photos yet, so the sketches draw their colour from seeded,
 procedurally generated organic garlands (`src/components/prototype/garland.ts`).

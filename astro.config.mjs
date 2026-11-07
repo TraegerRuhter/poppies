@@ -19,7 +19,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // Working pages stay out of search.
-      filter: (page) => !/\/(shot-list|enquire\/(thanks|error))\/?$/.test(page),
+      filter: (page) => !/\/(shot-list|enquire\/(thanks|error)|prototype\/home)\/?$/.test(page),
     }),
   ],
   env: {
