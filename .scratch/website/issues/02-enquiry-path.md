@@ -46,7 +46,9 @@ faked. Ten tests cover:
   offers; other answers bounce back as missing
 - every answer is collapsed to one line and capped at 500 characters (the
   form sets the same `maxlength`)
-- a bounce carries back what was typed, and the form re-fills from it
+- a bounce re-renders the form with what was typed, by rewrite rather than
+  redirect, so personal details never go into a URL, history or request log
+  (an earlier draft used the query string; a Codex review caught it)
 - validation runs before the rate limiter, so correcting a form costs nothing;
   the limiter now forgets expired senders
 - the honeypot is renamed from `website`, which autofill could fill, to
@@ -54,8 +56,9 @@ faked. Ten tests cover:
 - falling back to Resend's test sender is logged on every send
 
 The form works without JavaScript. `/enquire` renders on request so it can read
-`?event=` (`celebration`, `wedding` or `other`) and `?missing=`. It posts to
-`/api/enquiry`, which redirects to `/enquire/thanks` or `/enquire/error`.
+`?event=` (`celebration`, `wedding` or `other`). It posts to `/api/enquiry`,
+which redirects to `/enquire/thanks` or `/enquire/error`, or, for a bounce,
+renders `/enquire` again in place (an Astro rewrite) with status 400.
 Checked by hand in a browser: pre-fill, the missing-fields notice, and that
 with no secrets set the form ends on the error page, never a false thank-you.
 

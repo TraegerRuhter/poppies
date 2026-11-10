@@ -2,9 +2,9 @@
 import Base from '../../layouts/Base.astro';
 import { EVENT_TYPES, FIELDS, HONEYPOT, MAX_FIELD_LENGTH } from '../../lib/enquiry';
 
-// On demand, so the paths can link in with ?event= and a bounced submission
-// can say what was missing and show what was typed, with no client-side
-// JavaScript.
+// On demand, so the paths can link in with ?event=, and so /api/enquiry can
+// render it again for a bounced submission (via a rewrite, never a redirect,
+// so nothing the visitor typed goes into a URL). No client-side JavaScript.
 export const prerender = false;
 
 // Where enquiries come from, so effort goes to the channels that book work.
@@ -25,10 +25,12 @@ const LABELS: Record<string, string> = Object.fromEntries(
 
 const params = Astro.url.searchParams;
 // What a bounced submission carried back, keyed by field; empty on a fresh visit.
-const typed = Object.fromEntries(FIELDS.map((f) => [f.key, params.get(f.key) ?? '']));
+const bounce = Astro.locals.enquiryBounce;
+if (bounce) Astro.response.status = 400;
+const typed: Record<string, string> = bounce?.enquiry ?? {};
 const event = typed.eventType || params.get('event');
 const preselected = EVENT_TYPES.some((t) => t.value === event) ? event : null;
-const missing = (params.get('missing') ?? '').split(',').filter((key) => key in LABELS);
+const missing = (bounce?.missing ?? []).filter((key) => key in LABELS);
 ---
 
 <Base

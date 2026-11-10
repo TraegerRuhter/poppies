@@ -11,7 +11,7 @@ const limiter = createRateLimiter({ limit: 5, windowMs: 60 * 60 * 1000 });
 
 const log = (message: string) => console.error(message);
 
-export const POST: APIRoute = ({ request }) =>
+export const POST: APIRoute = ({ request, locals, rewrite }) =>
   handleEnquiry(request, {
     recipients: (getSecret('ENQUIRY_TO') ?? '')
       .split(',')
@@ -26,5 +26,11 @@ export const POST: APIRoute = ({ request }) =>
     log,
     limiter,
     mailTimeoutMs: 8_000,
+    // Render /enquire in place of this response, handing it the bounce. A
+    // fresh GET, because Astro won't rewrite a request whose body was read.
+    bounce: (bounce) => {
+      locals.enquiryBounce = bounce;
+      return rewrite(new Request(new URL('/enquire', request.url)));
+    },
     mirrorTimeoutMs: 3_000,
   });

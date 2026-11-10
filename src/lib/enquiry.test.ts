@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { handleEnquiry, HONEYPOT, MAX_FIELD_LENGTH, type EnquiryDeps, type EnquiryEmail, type Enquiry } from './enquiry';
+import {
+  handleEnquiry,
+  HONEYPOT,
+  MAX_FIELD_LENGTH,
+  type Bounce,
+  type EnquiryDeps,
+  type EnquiryEmail,
+  type Enquiry,
+} from './enquiry';
 import { createRateLimiter } from './rate-limit';
 
 const OWNER = 'owner@example.com';
@@ -28,24 +36,16 @@ function submission(fields: Record<string, string> = {}, ip = '203.0.113.7') {
   });
 }
 
-/** Where a bounced visitor lands, and what the form is told to show again. */
-function bounce(response: Response) {
-  const url = new URL(response.headers.get('location')!, 'https://poppies.test');
-  return {
-    path: url.pathname,
-    missing: (url.searchParams.get('missing') ?? '').split(','),
-    value: (key: string) => url.searchParams.get(key),
-  };
-}
-
 function fakes() {
   const sent: EnquiryEmail[] = [];
   const rows: Enquiry[] = [];
   const logged: string[] = [];
+  const bounced: Bounce[] = [];
   return {
     sent,
     rows,
     logged,
+    bounced,
     deps: <EnquiryDeps>{
       recipients: [OWNER, DEVELOPER],
       mailer: { send: async (email: EnquiryEmail) => void sent.push(email) },
@@ -54,6 +54,10 @@ function fakes() {
       limiter: createRateLimiter({ limit: 100, windowMs: 60_000 }),
       mailTimeoutMs: 1_000,
       mirrorTimeoutMs: 1_000,
+      bounce: (b: Bounce) => {
+        bounced.push(b);
+        return new Response('the form again', { status: 400 });
+      },
     },
   };
 }
@@ -151,42 +155,47 @@ describe('handleEnquiry', () => {
   });
 
   it('returns the visitor to the form naming what is missing, and sends nothing', async () => {
-    const { sent, rows, deps } = fakes();
+    const { sent, rows, bounced, deps } = fakes();
 
     const response = await handleEnquiry(submission({ email: '', town: '  ' }), deps);
 
-    expect(bounce(response).path).toBe('/enquire');
-    expect(bounce(response).missing).toEqual(['email', 'town']);
+    expect(response.status).toBe(400);
+    expect(bounced[0].missing).toEqual(['email', 'town']);
     expect(sent).toHaveLength(0);
     expect(rows).toHaveLength(0);
   });
 
   it('hands a bounced visitor back what they already typed', async () => {
+    const { bounced, deps } = fakes();
+
+    await handleEnquiry(submission({ email: '', colours: 'Sage & cream' }), deps);
+
+    expect(bounced[0].enquiry).toMatchObject({ name: 'Rosa Diaz', colours: 'Sage & cream', eventType: 'wedding' });
+  });
+
+  it('never puts what the visitor typed into a URL', async () => {
     const { deps } = fakes();
 
-    const response = await handleEnquiry(submission({ email: '', colours: 'Sage & cream' }), deps);
+    const response = await handleEnquiry(submission({ email: '', latex: 'One guest is allergic' }), deps);
 
-    expect(bounce(response).value('name')).toBe('Rosa Diaz');
-    expect(bounce(response).value('colours')).toBe('Sage & cream');
-    expect(bounce(response).value('eventType')).toBe('wedding');
+    expect(response.headers.get('location')).toBeNull();
   });
 
   it('asks again for a date that is not a real calendar date', async () => {
-    const { sent, deps } = fakes();
+    const { sent, bounced, deps } = fakes();
 
-    for (const date of ['banana', '2027-02-30', '12/06/2027']) {
-      const response = await handleEnquiry(submission({ date }), deps);
-      expect(bounce(response).missing).toEqual(['date']);
-    }
+    for (const date of ['banana', '2027-02-30', '12/06/2027']) await handleEnquiry(submission({ date }), deps);
+
+    expect(bounced.map((b) => b.missing)).toEqual([['date'], ['date'], ['date']]);
     expect(sent).toHaveLength(0);
   });
 
   it('asks again for an event type the form does not offer', async () => {
-    const { sent, deps } = fakes();
+    const { sent, bounced, deps } = fakes();
 
-    const response = await handleEnquiry(submission({ eventType: 'zzz' }), deps);
+    await handleEnquiry(submission({ eventType: 'zzz' }), deps);
 
-    expect(bounce(response).missing).toEqual(['eventType']);
+    expect(bounced[0].missing).toEqual(['eventType']);
     expect(sent).toHaveLength(0);
   });
 
@@ -247,11 +256,11 @@ describe('handleEnquiry', () => {
   });
 
   it('treats an email address without an @ as missing, since replies would go nowhere', async () => {
-    const { sent, deps } = fakes();
+    const { sent, bounced, deps } = fakes();
 
-    const response = await handleEnquiry(submission({ email: 'rosa at example' }), deps);
+    await handleEnquiry(submission({ email: 'rosa at example' }), deps);
 
-    expect(bounce(response).missing).toEqual(['email']);
+    expect(bounced[0].missing).toEqual(['email']);
     expect(sent).toHaveLength(0);
   });
 

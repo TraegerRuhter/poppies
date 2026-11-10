@@ -41,6 +41,12 @@ export interface EnquiryEmail {
   text: string;
 }
 
+/** A submission that needs another go: what to ask for, and what was typed. */
+export interface Bounce {
+  missing: string[];
+  enquiry: Enquiry;
+}
+
 export interface EnquiryDeps {
   recipients: string[];
   mailer: { send(email: EnquiryEmail): Promise<void> };
@@ -51,6 +57,12 @@ export interface EnquiryDeps {
   mailTimeoutMs: number;
   /** How long the mirror may take before the visitor stops waiting for it. */
   mirrorTimeoutMs: number;
+  /**
+   * Shows the form again for a bounced submission. It renders rather than
+   * redirects, so what the visitor typed never lands in a URL, the browser's
+   * history or a request log.
+   */
+  bounce: (bounce: Bounce) => Response | Promise<Response>;
 }
 
 // Deliberately not a name a browser or password manager would autofill (the
@@ -85,13 +97,6 @@ function readEnquiry(form: FormData): Enquiry {
       String(form.get(f.key) ?? '').replace(/\s+/g, ' ').trim().slice(0, MAX_FIELD_LENGTH),
     ]),
   ) as Enquiry;
-}
-
-/** Back to the form, naming what is missing and carrying what was typed. */
-function bounceTo(enquiry: Enquiry, missing: string[]): string {
-  const params = new URLSearchParams({ missing: missing.join(',') });
-  for (const f of FIELDS) if (enquiry[f.key] !== '') params.set(f.key, enquiry[f.key]);
-  return `/enquire?${params}`;
 }
 
 function compose(enquiry: Enquiry, to: string[]): EnquiryEmail {
@@ -136,7 +141,7 @@ export async function handleEnquiry(request: Request, deps: EnquiryDeps): Promis
   // Validate before counting, so correcting a bounced form costs nothing.
   const enquiry = readEnquiry(form);
   const missing = missingFields(enquiry);
-  if (missing.length > 0) return redirect(bounceTo(enquiry, missing));
+  if (missing.length > 0) return deps.bounce({ missing, enquiry });
 
   const sender = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
   if (!deps.limiter.allow(sender)) {
