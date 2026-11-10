@@ -37,6 +37,22 @@ faked. Ten tests cover:
 - rate limiting: over the limit, per sender, window reset
 - missing required fields, with a malformed email counted as missing
 
+**Hardening after the whole-repo review (2026-11-10).** Nine more tests:
+
+- the email has an 8 s timeout, both in the handler and on the fetch, so a
+  stalled Resend lands on the error page rather than a platform timeout
+- a request that isn't a form submission gets a 400, not a bare 500
+- the date must be a real calendar date and the event type one the form
+  offers; other answers bounce back as missing
+- every answer is collapsed to one line and capped at 500 characters (the
+  form sets the same `maxlength`)
+- a bounce carries back what was typed, and the form re-fills from it
+- validation runs before the rate limiter, so correcting a form costs nothing;
+  the limiter now forgets expired senders
+- the honeypot is renamed from `website`, which autofill could fill, to
+  `enquiry_ref`, and a filled honeypot is logged
+- falling back to Resend's test sender is logged on every send
+
 The form works without JavaScript. `/enquire` renders on request so it can read
 `?event=` (`celebration`, `wedding` or `other`) and `?missing=`. It posts to
 `/api/enquiry`, which redirects to `/enquire/thanks` or `/enquire/error`.
@@ -56,7 +72,10 @@ up yet.** That's a dashboard step for a person.
 - Add the Vercel Firewall rate-limit rule on `/api/enquiry`.
 - **Sender verification:** until the domain exists and is verified in Resend,
   mail comes from Resend's test sender (`onboarding@resend.dev`) and may land
-  in spam. Set `ENQUIRY_FROM` once it's verified.
+  in spam. Set `ENQUIRY_FROM` once it's verified. **The test sender only
+  delivers to the address that owns the Resend account,** so until then
+  `ENQUIRY_TO` effectively reaches one person. Send a test enquiry and check
+  both inboxes.
 - `site.email` is unset, so the error page can't offer a direct address yet.
 - The budget bands on the form ($500 / $1,000 / $2,500) are invented. Only the
   $500 minimum comes from the pricing research. Revisit when the offering

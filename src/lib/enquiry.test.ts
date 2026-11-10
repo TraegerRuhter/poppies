@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { handleEnquiry, type EnquiryDeps, type EnquiryEmail, type Enquiry } from './enquiry';
+import { handleEnquiry, HONEYPOT, MAX_FIELD_LENGTH, type EnquiryDeps, type EnquiryEmail, type Enquiry } from './enquiry';
 import { createRateLimiter } from './rate-limit';
 
 const OWNER = 'owner@example.com';
@@ -15,7 +15,7 @@ function submission(fields: Record<string, string> = {}, ip = '203.0.113.7') {
     scale: 'Ceremony arch and a garland',
     colours: 'Sage and cream',
     budget: '',
-    website: '',
+    [HONEYPOT]: '',
     ...fields,
   });
   return new Request('https://poppies.test/api/enquiry', {
@@ -26,6 +26,16 @@ function submission(fields: Record<string, string> = {}, ip = '203.0.113.7') {
     },
     body,
   });
+}
+
+/** Where a bounced visitor lands, and what the form is told to show again. */
+function bounce(response: Response) {
+  const url = new URL(response.headers.get('location')!, 'https://poppies.test');
+  return {
+    path: url.pathname,
+    missing: (url.searchParams.get('missing') ?? '').split(','),
+    value: (key: string) => url.searchParams.get(key),
+  };
 }
 
 function fakes() {
@@ -42,6 +52,7 @@ function fakes() {
       mirror: { append: async (enquiry: Enquiry) => void rows.push(enquiry) },
       log: (message: string) => void logged.push(message),
       limiter: createRateLimiter({ limit: 100, windowMs: 60_000 }),
+      mailTimeoutMs: 1_000,
       mirrorTimeoutMs: 1_000,
     },
   };
@@ -132,7 +143,7 @@ describe('handleEnquiry', () => {
   it('quietly drops a submission whose honeypot is filled, showing the bot the thank-you page', async () => {
     const { sent, rows, deps } = fakes();
 
-    const response = await handleEnquiry(submission({ website: 'https://spam.example' }), deps);
+    const response = await handleEnquiry(submission({ [HONEYPOT]: 'https://spam.example' }), deps);
 
     expect(response.headers.get('location')).toBe('/enquire/thanks');
     expect(sent).toHaveLength(0);
@@ -144,9 +155,95 @@ describe('handleEnquiry', () => {
 
     const response = await handleEnquiry(submission({ email: '', town: '  ' }), deps);
 
-    expect(response.headers.get('location')).toBe('/enquire?missing=email,town');
+    expect(bounce(response).path).toBe('/enquire');
+    expect(bounce(response).missing).toEqual(['email', 'town']);
     expect(sent).toHaveLength(0);
     expect(rows).toHaveLength(0);
+  });
+
+  it('hands a bounced visitor back what they already typed', async () => {
+    const { deps } = fakes();
+
+    const response = await handleEnquiry(submission({ email: '', colours: 'Sage & cream' }), deps);
+
+    expect(bounce(response).value('name')).toBe('Rosa Diaz');
+    expect(bounce(response).value('colours')).toBe('Sage & cream');
+    expect(bounce(response).value('eventType')).toBe('wedding');
+  });
+
+  it('asks again for a date that is not a real calendar date', async () => {
+    const { sent, deps } = fakes();
+
+    for (const date of ['banana', '2027-02-30', '12/06/2027']) {
+      const response = await handleEnquiry(submission({ date }), deps);
+      expect(bounce(response).missing).toEqual(['date']);
+    }
+    expect(sent).toHaveLength(0);
+  });
+
+  it('asks again for an event type the form does not offer', async () => {
+    const { sent, deps } = fakes();
+
+    const response = await handleEnquiry(submission({ eventType: 'zzz' }), deps);
+
+    expect(bounce(response).missing).toEqual(['eventType']);
+    expect(sent).toHaveLength(0);
+  });
+
+  it('accepts every event type the form offers', async () => {
+    const { sent, deps } = fakes();
+
+    for (const eventType of ['celebration', 'wedding', 'other']) {
+      await handleEnquiry(submission({ eventType }), deps);
+    }
+
+    expect(sent).toHaveLength(3);
+  });
+
+  it('keeps each answer on one line and within the length cap', async () => {
+    const { sent, rows, deps } = fakes();
+
+    await handleEnquiry(
+      submission({ town: 'Lincoln City\r\nBcc: someone@example.com', scale: 'x'.repeat(5_000) }),
+      deps,
+    );
+
+    expect(sent[0].subject).not.toMatch(/[\r\n]/);
+    expect(rows[0].town).toBe('Lincoln City Bcc: someone@example.com');
+    expect(rows[0].scale).toHaveLength(MAX_FIELD_LENGTH);
+  });
+
+  it('answers a request that is not a form submission with 400, and sends nothing', async () => {
+    const { sent, deps } = fakes();
+    const request = new Request('https://poppies.test/api/enquiry', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ name: 'Rosa' }),
+    });
+
+    const response = await handleEnquiry(request, deps);
+
+    expect(response.status).toBe(400);
+    expect(sent).toHaveLength(0);
+  });
+
+  it('sends the visitor to the error page when the email service never answers', async () => {
+    const { logged, deps } = fakes();
+    deps.mailTimeoutMs = 20;
+    deps.mailer.send = () => new Promise<void>(() => {});
+
+    const response = await handleEnquiry(submission(), deps);
+
+    expect(response.headers.get('location')).toBe('/enquire/error');
+    expect(logged.join('\n')).toContain('timed out');
+  });
+
+  it('leaves a trace in the log when the honeypot drops a submission', async () => {
+    const { logged, deps } = fakes();
+
+    await handleEnquiry(submission({ [HONEYPOT]: 'filled' }), deps);
+
+    expect(logged.join('\n')).toContain('honeypot');
   });
 
   it('treats an email address without an @ as missing, since replies would go nowhere', async () => {
@@ -154,7 +251,7 @@ describe('handleEnquiry', () => {
 
     const response = await handleEnquiry(submission({ email: 'rosa at example' }), deps);
 
-    expect(response.headers.get('location')).toBe('/enquire?missing=email');
+    expect(bounce(response).missing).toEqual(['email']);
     expect(sent).toHaveLength(0);
   });
 
@@ -177,6 +274,17 @@ describe('handleEnquiry', () => {
 
       expect(response.headers.get('location')).toBe('/enquire/error');
       expect(sent).toHaveLength(3);
+    });
+
+    it('does not count a bounced submission against the sender', async () => {
+      const { sent, deps } = fakes();
+      deps.limiter = limitedTo(1).limiter;
+
+      for (let i = 0; i < 3; i++) await handleEnquiry(submission({ town: '' }), deps);
+      const response = await handleEnquiry(submission(), deps);
+
+      expect(response.headers.get('location')).toBe('/enquire/thanks');
+      expect(sent).toHaveLength(1);
     });
 
     it('does not count one sender against another', async () => {

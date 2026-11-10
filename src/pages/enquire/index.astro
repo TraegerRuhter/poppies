@@ -1,16 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { FIELDS, HONEYPOT } from '../../lib/enquiry';
-import { PATHS } from '../../lib/paths';
+import { EVENT_TYPES, FIELDS, HONEYPOT, MAX_FIELD_LENGTH } from '../../lib/enquiry';
 
 // On demand, so the paths can link in with ?event= and a bounced submission
-// can say what was missing, with no client-side JavaScript.
+// can say what was missing and show what was typed, with no client-side
+// JavaScript.
 export const prerender = false;
 
-const EVENT_TYPES = [
-  ...Object.entries(PATHS).map(([value, path]) => ({ value, label: path.enquiryLabel })),
-  { value: 'other', label: 'Something else' },
-];
 // Where enquiries come from, so effort goes to the channels that book work.
 const SOURCES = [
   'Google',
@@ -28,7 +24,9 @@ const LABELS: Record<string, string> = Object.fromEntries(
 );
 
 const params = Astro.url.searchParams;
-const event = params.get('event');
+// What a bounced submission carried back, keyed by field; empty on a fresh visit.
+const typed = Object.fromEntries(FIELDS.map((f) => [f.key, params.get(f.key) ?? '']));
+const event = typed.eventType || params.get('event');
 const preselected = EVENT_TYPES.some((t) => t.value === event) ? event : null;
 const missing = (params.get('missing') ?? '').split(',').filter((key) => key in LABELS);
 ---
@@ -51,11 +49,11 @@ const missing = (params.get('missing') ?? '').split(',').filter((key) => key in 
     <form method="post" action="/api/enquiry">
       <label>
         Your name
-        <input name="name" autocomplete="name" required />
+        <input name="name" value={typed.name} maxlength={MAX_FIELD_LENGTH} autocomplete="name" required />
       </label>
       <label>
         Email
-        <input name="email" type="email" autocomplete="email" required />
+        <input name="email" value={typed.email} maxlength={MAX_FIELD_LENGTH} type="email" autocomplete="email" required />
       </label>
       <label>
         What are you planning?
@@ -69,39 +67,39 @@ const missing = (params.get('missing') ?? '').split(',').filter((key) => key in 
       <div class="pair">
         <label>
           Date
-          <input name="date" type="date" required />
+          <input name="date" value={typed.date} type="date" required />
           <small>So we can check we're free.</small>
         </label>
         <label>
           Town or venue
-          <input name="town" required />
+          <input name="town" value={typed.town} maxlength={MAX_FIELD_LENGTH} required />
           <small>Travel along the coast changes the quote.</small>
         </label>
       </div>
       <label>
         <span>Roughly how big? <span class="optional">optional</span></span>
-        <input name="scale" placeholder="A garland for the cake table, an arch for the ceremony…" />
+        <input name="scale" value={typed.scale} maxlength={MAX_FIELD_LENGTH} placeholder="A garland for the cake table, an arch for the ceremony…" />
       </label>
       <label>
         <span>Colours <span class="optional">optional</span></span>
-        <input name="colours" placeholder="Sage and cream, or “not sure yet”" />
+        <input name="colours" value={typed.colours} maxlength={MAX_FIELD_LENGTH} placeholder="Sage and cream, or “not sure yet”" />
         <small>We'll suggest palettes if you're not sure.</small>
       </label>
       <label>
         <span>Budget, if you have one in mind <span class="optional">optional</span></span>
-        <input name="budget" placeholder="A rough figure or range is plenty" />
+        <input name="budget" value={typed.budget} maxlength={MAX_FIELD_LENGTH} placeholder="A rough figure or range is plenty" />
         <small>It helps us suggest something that fits, rather than start too big.</small>
       </label>
       <label>
         <span>Anyone with a latex allergy? <span class="optional">optional</span></span>
-        <input name="latex" placeholder="Leave blank if not" />
+        <input name="latex" value={typed.latex} maxlength={MAX_FIELD_LENGTH} placeholder="Leave blank if not" />
         <small>Most balloons are natural latex. Tell us and we'll plan around it.</small>
       </label>
       <label>
         <span>How did you hear about us? <span class="optional">optional</span></span>
         <select name="source">
           <option value="">Choose one</option>
-          {SOURCES.map((s) => <option>{s}</option>)}
+          {SOURCES.map((s) => <option selected={s === typed.source}>{s}</option>)}
         </select>
       </label>
 
