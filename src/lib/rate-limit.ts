@@ -20,8 +20,13 @@ export function createRateLimiter({
   return {
     allow(key) {
       const t = now();
+      // Forget senders whose window has passed, so the map cannot grow forever.
+      for (const [sender, window] of windows) {
+        if (t - window.start > windowMs) windows.delete(sender);
+      }
+
       const current = windows.get(key);
-      if (!current || t - current.start > windowMs) {
+      if (!current) {
         windows.set(key, { start: t, count: 1 });
         return true;
       }

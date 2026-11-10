@@ -3,17 +3,27 @@
 
 import { FIELDS, type Enquiry, type EnquiryEmail } from './enquiry';
 
-// Resend's shared test sender works before the domain exists, but mail from it
-// can land in spam. Set ENQUIRY_FROM once the domain is verified in Resend.
+// Resend's shared test sender works before the domain exists, but it only
+// delivers to the address that owns the Resend account, and can land in spam.
+// Set ENQUIRY_FROM once the domain is verified in Resend.
 const TEST_SENDER = 'onboarding@resend.dev';
 
-export function resendMailer(apiKey: string | undefined, from: string | undefined) {
+export function resendMailer(
+  apiKey: string | undefined,
+  from: string | undefined,
+  log: (message: string) => void,
+) {
   return {
     async send(email: EnquiryEmail) {
       if (!apiKey) throw new Error('RESEND_API_KEY is not set');
+      if (!from) {
+        log(`ENQUIRY_FROM is not set: sending from Resend's test sender, ${TEST_SENDER}`);
+      }
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: { authorization: `Bearer ${apiKey}`, 'content-type': 'application/json' },
+        // Abandon the request itself, not just the wait, if Resend stalls.
+        signal: AbortSignal.timeout(8_000),
         body: JSON.stringify({
           from: from || TEST_SENDER,
           to: email.to,

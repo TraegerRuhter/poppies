@@ -1,6 +1,7 @@
 // The enquiry path (website ticket 02). Email is the source of truth; external
 // services are passed in so tests can stand in for them at the boundary.
 
+import { PATHS } from './paths';
 import type { RateLimiter } from './rate-limit';
 
 // Every enquiry field in one place: its form name, its label in the email, its
@@ -20,6 +21,17 @@ export const FIELDS = [
   { key: 'source', label: 'Heard about us', column: 'Heard about us', missing: null, blank: 'not given' },
 ] as const;
 
+// What the form offers under "What are you planning?", and so the only event
+// types the server accepts.
+export const EVENT_TYPES = [
+  ...Object.entries(PATHS).map(([value, path]) => ({ value, label: path.enquiryLabel })),
+  { value: 'other', label: 'Something else' },
+];
+
+// Every answer is one line of at most this many characters. The form sets the
+// same cap, so only a hand-built request is ever cut short.
+export const MAX_FIELD_LENGTH = 500;
+
 export type Enquiry = Record<(typeof FIELDS)[number]['key'], string>;
 
 export interface EnquiryEmail {
@@ -29,27 +41,61 @@ export interface EnquiryEmail {
   text: string;
 }
 
+/** A submission that needs another go: what to ask for, and what was typed. */
+export interface Bounce {
+  missing: string[];
+  enquiry: Enquiry;
+}
+
 export interface EnquiryDeps {
   recipients: string[];
   mailer: { send(email: EnquiryEmail): Promise<void> };
   mirror: { append(enquiry: Enquiry): Promise<void> };
   log: (message: string) => void;
   limiter: RateLimiter;
+  /** How long the email may take before the visitor is told it failed. */
+  mailTimeoutMs: number;
   /** How long the mirror may take before the visitor stops waiting for it. */
   mirrorTimeoutMs: number;
+  /**
+   * Shows the form again for a bounced submission. It renders rather than
+   * redirects, so what the visitor typed never lands in a URL, the browser's
+   * history or a request log.
+   */
+  bounce: (bounce: Bounce) => Response | Promise<Response>;
 }
 
-export const HONEYPOT = 'website';
+// Deliberately not a name a browser or password manager would autofill (the
+// old name, "website", was): a filled honeypot drops the enquiry silently.
+export const HONEYPOT = 'enquiry_ref';
 
+function isCalendarDate(value: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const date = new Date(`${value}T00:00:00Z`);
+  // An impossible date such as 30 February either fails to parse or rolls over.
+  return !Number.isNaN(date.getTime()) && date.toISOString().startsWith(value);
+}
+
+// Required fields with a shape of their own; the rest only need an answer.
+const VALID: Partial<Record<keyof Enquiry, (value: string) => boolean>> = {
+  email: (value) => /^[^\s@]+@[^\s@]+$/.test(value),
+  date: isCalendarDate,
+  eventType: (value) => EVENT_TYPES.some((t) => t.value === value),
+};
+
+/** Required fields that are blank or unusable, which the form asks for again. */
 function missingFields(enquiry: Enquiry): string[] {
   return FIELDS.filter((f) => f.missing !== null)
-    .filter((f) => (f.key === 'email' ? !/^[^\s@]+@[^\s@]+$/.test(enquiry.email) : enquiry[f.key] === ''))
+    .filter((f) => !(VALID[f.key]?.(enquiry[f.key]) ?? enquiry[f.key] !== ''))
     .map((f) => f.key);
 }
 
 function readEnquiry(form: FormData): Enquiry {
   return Object.fromEntries(
-    FIELDS.map((f) => [f.key, String(form.get(f.key) ?? '').trim()]),
+    FIELDS.map((f) => [
+      f.key,
+      String(form.get(f.key) ?? '').replace(/\s+/g, ' ').trim().slice(0, MAX_FIELD_LENGTH),
+    ]),
   ) as Enquiry;
 }
 
@@ -77,11 +123,25 @@ const redirect = (location: string) =>
   new Response(null, { status: 303, headers: { location } });
 
 export async function handleEnquiry(request: Request, deps: EnquiryDeps): Promise<Response> {
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await request.formData();
+  } catch {
+    return new Response('Expected a form submission.', { status: 400 });
+  }
 
   // A hidden field no person sees. Bots fill it; they get the same thank-you
-  // page as everyone else, so there is nothing to learn from probing.
-  if (String(form.get(HONEYPOT) ?? '') !== '') return redirect('/enquire/thanks');
+  // page as everyone else, so there is nothing to learn from probing. Logged,
+  // so a real enquiry dropped this way leaves a trace.
+  if (String(form.get(HONEYPOT) ?? '') !== '') {
+    deps.log('Enquiry dropped: the honeypot field was filled');
+    return redirect('/enquire/thanks');
+  }
+
+  // Validate before counting, so correcting a bounced form costs nothing.
+  const enquiry = readEnquiry(form);
+  const missing = missingFields(enquiry);
+  if (missing.length > 0) return deps.bounce({ missing, enquiry });
 
   const sender = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'unknown';
   if (!deps.limiter.allow(sender)) {
@@ -89,15 +149,11 @@ export async function handleEnquiry(request: Request, deps: EnquiryDeps): Promis
     return redirect('/enquire/error');
   }
 
-  const enquiry = readEnquiry(form);
-  const missing = missingFields(enquiry);
-  if (missing.length > 0) return redirect(`/enquire?missing=${missing.join(',')}`);
-
   // The email and the mirror run independently (decisions §6): the mirror still
   // records an enquiry whose email failed, and a slow or failing mirror is
   // logged and swallowed, never allowed to block or undo the email.
   const [sent] = await Promise.allSettled([
-    deps.mailer.send(compose(enquiry, deps.recipients)),
+    withTimeout(deps.mailer.send(compose(enquiry, deps.recipients)), deps.mailTimeoutMs),
     withTimeout(deps.mirror.append(enquiry), deps.mirrorTimeoutMs).catch((error) =>
       deps.log(`Enquiry mirror failed: ${describe(error)}`),
     ),
