@@ -1,0 +1,584 @@
+<title>The Poppies Plan</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<style>
+  /* Layout: one reading column in the site's own identity; tables and the menu grid widen to a second measure. */
+  :root {
+    --ground: #f6f2ec; --surface: #fffdf9; --ink: #2a2622; --ink-muted: #6f675e;
+    --line: #e2dbd1; --support: #8a7d6c; --accent: #d2452f; --wash: #efe8dd;
+    --good: #3f7a55;
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Inter', system-ui, sans-serif;
+    --read: 41rem; --wide: 62rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #1d1a17; --surface: #272320; --ink: #f0e9df; --ink-muted: #b0a698;
+      --line: #3b352f; --support: #b3a591; --accent: #ee6a52; --wash: #2f2a25;
+      --good: #7fc09a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #1d1a17; --surface: #272320; --ink: #f0e9df; --ink-muted: #b0a698;
+    --line: #3b352f; --support: #b3a591; --accent: #ee6a52; --wash: #2f2a25;
+    --good: #7fc09a; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--ground); color: var(--ink);
+    font: 400 1.0625rem/1.6 var(--body);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 2.5rem 5rem;
+  }
+  .read { max-width: var(--read); margin-inline: auto; }
+  .wide { max-width: var(--wide); margin-inline: auto; }
+  section { margin-top: 4.5rem; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 500; text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.3rem, 7vw, 4rem); line-height: 1.04; }
+  h2 { font-size: clamp(1.7rem, 4.5vw, 2.4rem); line-height: 1.12; margin-bottom: 1rem; }
+  h3 { font-size: 1.3rem; line-height: 1.2; }
+  p { margin: 0 0 1rem; }
+  .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 1rem; }
+  .lede { font-size: 1.2rem; color: var(--ink-muted); }
+  .muted { color: var(--ink-muted); }
+  .small { font-size: 0.9rem; }
+  strong { font-weight: 600; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+
+  /* header */
+  header .garland { display: block; width: 100%; max-width: 30rem; height: auto; margin-bottom: 2rem; }
+  header blockquote { margin: 2rem 0 0; padding-left: 1.25rem; border-left: 3px solid var(--accent); font: 500 1.35rem/1.4 var(--display); }
+  nav.jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  nav.jump a { text-decoration: none; font-size: 0.88rem; font-weight: 500; padding: 0.4rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+  nav.jump a:hover { border-color: var(--support); }
+
+  /* reasons */
+  ol.reasons { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1.25rem; counter-reset: r; }
+  ol.reasons li { display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.75rem; counter-increment: r; }
+  ol.reasons li::before { content: counter(r); font: 500 1.6rem/1.1 var(--display); color: var(--accent); }
+  ol.reasons p { margin: 0; }
+
+  /* menu */
+  .menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 1.5rem; }
+  .piece { background: var(--surface); padding: 1.4rem 1.3rem; display: grid; gap: 0.5rem; align-content: start; min-width: 0; }
+  .piece .for { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .piece p { margin: 0; font-size: 0.95rem; color: var(--ink-muted); }
+  .piece .price { font: 500 1.15rem/1.2 var(--display); color: var(--ink); margin-top: 0.3rem; }
+  .rules { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; margin-top: 1.25rem; font-size: 0.92rem; color: var(--ink-muted); padding: 0; list-style: none; }
+  .rules li::before { content: "●"; color: var(--accent); font-size: 0.6em; vertical-align: 0.25em; margin-right: 0.5em; }
+
+  /* engines */
+  .engines { display: grid; gap: 2rem; margin-top: 1.5rem; }
+  .engine { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+  .engine .when { font-size: 0.85rem; color: var(--ink-muted); margin-top: 0.4rem; }
+  .engine p { margin: 0 0 0.6rem; }
+  .engine .goal { font-size: 0.92rem; font-weight: 500; }
+  @media (max-width: 640px) { .engine { grid-template-columns: 1fr; gap: 0.6rem; } }
+
+  /* tables */
+  .scroll { overflow-x: auto; margin-top: 1.5rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.93rem; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; vertical-align: top; padding: 0.7rem 0.9rem 0.7rem 0; border-bottom: 1px solid var(--line); }
+  th { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
+  td.n, th.n { text-align: right; padding-right: 0; padding-left: 0.9rem; white-space: nowrap; }
+  tr.total td { font-weight: 600; border-bottom: 0; }
+  table.year td:first-child { white-space: nowrap; font-weight: 600; }
+  table.year { min-width: 40rem; }
+
+  /* seasons */
+  .seasons { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+  .season { border-top: 3px solid var(--ink); padding-top: 0.9rem; min-width: 0; }
+  .season .span { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .season h3 { margin: 0.3rem 0 0.5rem; }
+  .season p { font-size: 0.93rem; color: var(--ink-muted); margin: 0; }
+
+  /* money */
+  .scenarios { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 1.5rem; }
+  .scenario { background: var(--surface); padding: 1.4rem 1.3rem; min-width: 0; }
+  .scenario.target { background: var(--wash); }
+  .scenario .name { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .scenario .take { font: 500 2.3rem/1.1 var(--display); margin: 0.4rem 0 0.1rem; font-variant-numeric: tabular-nums; }
+  .scenario dl { margin: 1rem 0 0; display: grid; grid-template-columns: 1fr auto; gap: 0.3rem 1rem; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+  .scenario dt { color: var(--ink-muted); } .scenario dd { margin: 0; text-align: right; }
+  .scenario p { font-size: 0.9rem; color: var(--ink-muted); margin: 1rem 0 0; }
+
+  figure { margin: 2.5rem 0 0; }
+  figcaption { font-size: 0.9rem; color: var(--ink-muted); margin-top: 0.9rem; }
+  .chart-title { font: 500 1.2rem/1.3 var(--display); margin-bottom: 1rem; }
+  .bars { position: relative; display: grid; gap: 0.6rem; }
+  .bar-row { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) 3.2rem; align-items: center; gap: 0.75rem; font-size: 0.92rem; }
+  .bar-row .lab { min-width: 0; }
+  .bar-row .track { position: relative; height: 1.1rem; }
+  .bar-row .fill { position: absolute; inset: 0 auto 0 0; background: var(--support); border-radius: 0 4px 4px 0; }
+  .bar-row .val { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .bar-row:hover .fill { background: var(--ink); }
+  .target-line { position: absolute; top: 0; bottom: 0; width: 0; border-left: 1.5px dashed var(--accent); pointer-events: none; }
+  .target-line span { position: absolute; top: 0; left: 0.4rem; font-size: 0.78rem; line-height: 1.2rem; color: var(--ink-muted); white-space: nowrap; }
+  .bars { padding-top: 1.6rem; }
+  @media (max-width: 480px) { .bar-row { grid-template-columns: 6.6rem minmax(0, 1fr) 2.8rem; gap: 0.5rem; font-size: 0.85rem; } }
+
+  /* 90 days */
+  .phase { border-top: 1px solid var(--line); padding-top: 1.4rem; margin-top: 1.6rem; }
+  .phase .span { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); }
+  .phase h3 { margin: 0.25rem 0 0.9rem; }
+  .ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.15rem; }
+  .ticks label { display: grid; grid-template-columns: 1.4rem 1fr; gap: 0.7rem; align-items: start; padding: 0.45rem 0; cursor: pointer; }
+  .ticks input { width: 1.15rem; height: 1.15rem; margin: 0.25rem 0 0; accent-color: var(--accent); }
+  .ticks input:checked + span { color: var(--ink-muted); text-decoration: line-through; text-decoration-color: var(--line); }
+  .ticks .star { color: var(--accent); font-weight: 600; }
+  .who { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); border: 1px solid var(--line); border-radius: 3px; padding: 0.05rem 0.35rem; margin-left: 0.4rem; white-space: nowrap; }
+  .progress { font-size: 0.9rem; color: var(--ink-muted); margin-top: 0.5rem; }
+
+  /* calls */
+  .status { font-size: 0.9rem; padding: 0.7rem 0.9rem; border: 1px solid var(--line); background: var(--surface); border-radius: 4px; margin: 1.25rem 0 0; display: flex; gap: 0.6rem; align-items: baseline; }
+  .status .dot { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--support); flex: none; transform: translateY(-0.05rem); }
+  .status.shared .dot { background: var(--good); }
+  .call { border-top: 1px solid var(--line); padding-top: 1.5rem; margin-top: 1.75rem; }
+  .call .num { font: 500 1rem var(--display); color: var(--accent); }
+  .call h3 { margin: 0.15rem 0 0.75rem; }
+  .call .rec { background: var(--wash); padding: 0.85rem 1rem; border-radius: 4px; }
+  .call .rec p { margin: 0; }
+  .call .rec .why { color: var(--ink-muted); font-size: 0.94rem; margin-top: 0.35rem; }
+  .choices { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.9rem; }
+  .choices button { font: 500 0.92rem var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0.5rem 1rem; cursor: pointer; }
+  .choices button:hover { border-color: var(--support); }
+  .choices button[aria-pressed="true"] { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  textarea { width: 100%; margin-top: 0.7rem; font: 400 0.95rem/1.5 var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 0.6rem 0.75rem; resize: vertical; min-height: 2.8rem; }
+  textarea::placeholder { color: var(--ink-muted); }
+  .fact label { display: block; font-weight: 500; }
+  .fact { margin-top: 1.5rem; }
+  .send { margin-top: 2.5rem; padding: 1.4rem 1.3rem; border: 1px solid var(--line); background: var(--surface); border-radius: 4px; }
+  .send p { margin: 0 0 0.9rem; }
+  .btn { font: 600 0.95rem var(--body); color: var(--ground); background: var(--ink); border: 0; border-radius: 999px; padding: 0.7rem 1.3rem; cursor: pointer; }
+  #copy-out { margin-top: 1rem; min-height: 12rem; font-size: 0.85rem; }
+
+  footer { margin-top: 5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.9rem; color: var(--ink-muted); }
+  @media (prefers-reduced-motion: no-preference) { .choices button, nav.jump a, .bar-row .fill { transition: background-color 150ms, border-color 150ms, color 150ms; } }
+</style>
+
+<header class="read">
+  <svg class="garland" viewBox="0 0 480 84" role="img" aria-label="A garland of balloons">
+    <g fill="var(--support)" opacity="0.38">
+      <circle cx="30" cy="46" r="20"/><circle cx="92" cy="34" r="17"/><circle cx="150" cy="50" r="24"/>
+      <circle cx="222" cy="36" r="19"/><circle cx="286" cy="50" r="22"/><circle cx="352" cy="36" r="18"/><circle cx="420" cy="46" r="24"/>
+    </g>
+    <g fill="var(--line)">
+      <circle cx="62" cy="58" r="14"/><circle cx="122" cy="26" r="11"/><circle cx="188" cy="60" r="15"/>
+      <circle cx="254" cy="64" r="12"/><circle cx="320" cy="24" r="13"/><circle cx="386" cy="62" r="13"/><circle cx="456" cy="28" r="11"/>
+    </g>
+    <g fill="var(--accent)"><circle cx="186" cy="30" r="9"/><circle cx="388" cy="30" r="7"/></g>
+  </svg>
+  <p class="eyebrow">A plan for Poppies · November 2026</p>
+  <h1>The balloon studio that lives on the coast.</h1>
+  <p class="lede" style="margin-top:1.5rem">This is one plan for the whole business: what Poppies sells, what it charges, how the first year goes, and what it earns. It's built from twelve rounds of market research and 172 ideas. The research laid out options. This picks.</p>
+  <p>Every pick is a recommendation, and you can overrule any of them. Twelve of them are yours alone to make. They're at the end, and you can answer them right on this page.</p>
+  <blockquote>Poppies is the balloon installation studio that lives on the central Oregon coast: built with air, nothing released, everything collected, and booked in a week.</blockquote>
+  <nav class="jump" aria-label="Sections">
+    <a href="#why">Why it works</a><a href="#menu">The menu</a><a href="#engines">Three engines</a><a href="#year">The year</a><a href="#money">The money</a><a href="#ninety">First 90 days</a><a href="#calls">Your twelve calls</a>
+  </nav>
+</header>
+
+<section id="why" class="read">
+  <p class="eyebrow">Why it can work</p>
+  <h2>Five things the research found.</h2>
+  <ol class="reasons">
+    <li><p><strong>Nobody local does it.</strong> Every installation rival drives in from Salem or Portland, 1½ to 2½ hours away. The nearest asks for two weeks' notice. The one local balloon shop sells gift bouquets.</p></li>
+    <li><p><strong>The money is visitors.</strong> Lincoln County has about 51,000 residents and about $600 million a year in visitor spending. People come to the coast to celebrate.</p></li>
+    <li><p><strong>Nobody publishes a price.</strong> Not one coast vendor. Price is the first thing a couple filters on, so the first studio to say "from $500" gets the enquiry.</p></li>
+    <li><p><strong>The coast has few venues, and you have a tent.</strong> Coast weddings happen at resorts, on lawns and at rental houses. A 20×40 tent with the decor and the permit handled is a venue you can bring with you.</p></li>
+    <li><p><strong>Balloons are cheap. Your time is the product.</strong> Materials are under a tenth of a garland's price. So the whole plan is built around what an hour of your time earns.</p></li>
+  </ol>
+</section>
+
+<section id="menu" class="wide">
+  <div class="read" style="margin-inline:0">
+    <p class="eyebrow">What Poppies sells</p>
+    <h2>Nine pieces, each with a name and a price.</h2>
+    <p>Named for the coast, so a customer can point at one and say "that". Every piece pays you $45 an hour or more once the building, the driving and the teardown are counted.</p>
+  </div>
+  <div class="menu">
+    <div class="piece"><span class="for">Celebrations</span><h3>The Tideline</h3><p>An organic garland, built for the room: along a mantel, up a stair rail, over the cake table.</p><span class="price">$28 a foot · from $500</span></div>
+    <div class="piece"><span class="for">Celebrations</span><h3>The Headland</h3><p>A freestanding 8 to 10 foot arch for the entrance or the ceremony, weighted for coast wind.</p><span class="price">$550</span></div>
+    <div class="piece"><span class="for">Celebrations</span><h3>The Arrival</h3><p>The celebration is already in the rental house when they open the door. Collected after checkout.</p><span class="price">$395</span></div>
+    <div class="piece"><span class="for">Celebrations</span><h3>The Question</h3><p>A proposal setup: one sculptural piece, in place an hour before, gone an hour after.</p><span class="price">from $750</span></div>
+    <div class="piece"><span class="for">Celebrations</span><h3>Collected</h3><p>A ready-made 8 foot garland, made that morning. They pick it up and hang it themselves.</p><span class="price">$136</span></div>
+    <div class="piece"><span class="for">Weddings</span><h3>The Cloud</h3><p>Balloons overhead: above a dance floor, a long table, or the length of the tent.</p><span class="price">from $450</span></div>
+    <div class="piece"><span class="for">Weddings</span><h3>The Pavilion</h3><p>The tent on their lawn, dressed, with the fire permit and insurance handled. A venue that comes to them.</p><span class="price">from $3,000</span></div>
+    <div class="piece"><span class="for">Art</span><h3>The Commission</h3><p>A sculpture made once: an octopus for an aquarium evening, a heron for a gallery opening. With a title card.</p><span class="price">from $250</span></div>
+    <div class="piece"><span class="for">Coast businesses</span><h3>The Standing Order</h3><p>A fresh piece in a shop, gallery or inn window every month, changed with the coast's calendar.</p><span class="price">$240 a month</span></div>
+  </div>
+  <ul class="rules">
+    <li>Built with air, not helium</li><li>Nothing is ever released</li><li>Everything is collected</li><li>Free travel from Lincoln City to Yachats</li><li>Half to hold the date</li>
+  </ul>
+</section>
+
+<section id="engines" class="read">
+  <p class="eyebrow">The order of things</p>
+  <h2>Three engines, started one at a time.</h2>
+  <p>The 172 ideas sort into three lines of work. They start at different speeds, so the plan runs them in sequence.</p>
+  <div class="engines">
+    <div class="engine">
+      <div><h3>Celebrations</h3><p class="when">Starts first · from January</p></div>
+      <div><p>The Arrival, The Tideline, The Headland and The Question, sold to visitors and locals. The channel is <strong>property managers</strong>, who already email every guest before they arrive. Short lead times, work all year, and every job is a photograph and a review.</p><p class="goal">Year-one goal: 30 Arrivals and 36 garlands.</p></div>
+    </div>
+    <div class="engine">
+      <div><h3>Standing work</h3><p class="when">Carries winter · sold in August</p></div>
+      <div><p>The Standing Order, holiday lobbies and windows, ribbon cuttings. Sold to coast shops, inns, hotels and the casino. It repeats, it fills October to March, and one route day covers several shops.</p><p class="goal">Year-one goal: four shops on order by autumn, and two holiday lobbies.</p></div>
+    </div>
+    <div class="engine">
+      <div><h3>Weddings and The Pavilion</h3><p class="when">Pays most · planted now, harvested next year</p></div>
+      <div><p>Couples book 6 to 12 months ahead and want proof. So year one plants: a styled shoot in March, a kit for venues, photographers as partners, and a gathering of coast wedding professionals in the tent. The Pavilion earns about twice what anything else does per hour.</p><p class="goal">Year-one goal: three Pavilions, five weddings, and next summer half booked by December.</p></div>
+    </div>
+  </div>
+  <p style="margin-top:2rem"><strong>Your sculpture runs through all three.</strong> It's the one thing no rival can copy. One public piece each season, at a kite festival, the aquarium or a library, keeps Poppies in front of the whole coast for the price of a day's work.</p>
+</section>
+
+<section id="year" class="wide">
+  <div class="read" style="margin-inline:0">
+    <p class="eyebrow">The year</p>
+    <h2>Sell each season three months before it arrives.</h2>
+  </div>
+  <div class="seasons">
+    <div class="season"><span class="span">Now to February</span><h3>Get legal, get photographed, get found</h3><p>Name cleared, registered, insured. 30 photographs. Prices on the site. First 5 paid jobs and 5 reviews.</p></div>
+    <div class="season"><span class="span">March to May</span><h3>Open the first engine</h3><p>Three property managers signed. The styled shoot. Proms and graduations. The wedding gathering in the tent.</p></div>
+    <div class="season"><span class="span">June to September</span><h3>Harvest, and sell winter</h3><p>Two to three installs a week. The first Pavilions. Holiday lobbies and shop orders sold by the end of September.</p></div>
+    <div class="season"><span class="span">October to December</span><h3>Standing work, and next year</h3><p>Four shops on order, two lobbies in. More than 30 reviews. Next summer half booked.</p></div>
+  </div>
+  <div class="scroll">
+    <table class="year">
+      <thead><tr><th>Month</th><th>Launch</th><th>Sell ahead</th><th class="n">Jobs</th><th class="n">Shops</th></tr></thead>
+      <tbody>
+        <tr><td>Dec 2026</td><td>Three portfolio pieces; the contract</td><td>Valentine's, to friends and family</td><td class="n">1</td><td class="n">0</td></tr>
+        <tr><td>January</td><td>Site with prices; Google profile</td><td>The Arrival, to property managers</td><td class="n">2</td><td class="n">0</td></tr>
+        <tr><td>February</td><td>The Arrival and The Question, for Valentine's</td><td>A kite festival piece</td><td class="n">4</td><td class="n">0</td></tr>
+        <tr><td>March</td><td>The styled shoot. The Standing Order</td><td>Proms and graduations</td><td class="n">5</td><td class="n">2</td></tr>
+        <tr><td>April</td><td>Wedding pages. The gathering in the tent</td><td>Summer weddings, last call</td><td class="n">7</td><td class="n">2</td></tr>
+        <tr><td>May</td><td>Collected, on Fridays and Saturdays</td><td>Hotel concierge cards</td><td class="n">9</td><td class="n">3</td></tr>
+        <tr><td>June</td><td>The Pavilion. The kite festival piece</td><td>Reunions in rental houses</td><td class="n">12</td><td class="n">3</td></tr>
+        <tr><td>July</td><td>Stories of the best installs</td><td>Nothing new. Reply fast, collect reviews</td><td class="n">14</td><td class="n">3</td></tr>
+        <tr><td>August</td><td>The kit for business buyers</td><td>Holiday lobbies and windows</td><td class="n">14</td><td class="n">3</td></tr>
+        <tr><td>September</td><td>A lit piece for the Fall Kite Festival</td><td>Holiday windows, street by street</td><td class="n">11</td><td class="n">4</td></tr>
+        <tr><td>October</td><td>Proposal pages, one per town</td><td>Engagement season; next summer</td><td class="n">7</td><td class="n">5</td></tr>
+        <tr><td>November</td><td>Holiday lobbies go in. Gift certificates</td><td>New Year's Eve</td><td class="n">6</td><td class="n">5</td></tr>
+        <tr><td>Dec 2027</td><td>The year's note: balloons used, none released</td><td>Next year's venue visits</td><td class="n">8</td><td class="n">6</td></tr>
+        <tr class="total"><td>The year</td><td></td><td></td><td class="n">100</td><td class="n">36 visits</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted" style="margin-top:0.9rem">Job counts are the expected scenario below. "Shops" is how many are on a Standing Order that month.</p>
+</section>
+
+<section id="money" class="wide">
+  <div class="read" style="margin-inline:0">
+    <p class="eyebrow">The money</p>
+    <h2>Three versions of the first year.</h2>
+    <p>These are worked examples, not promises. Each uses the menu prices, about $4,000 a year in fixed costs, and 27.5% of profit set aside for tax. The big number is what you'd keep.</p>
+  </div>
+  <div class="scenarios">
+    <div class="scenario"><span class="name">Careful</span><div class="take">$15,100</div><span class="small muted">kept, after the tax set-aside</span>
+      <dl><dt>Jobs</dt><dd>53, about one a week</dd><dt>Shop visits</dt><dd>12</dd><dt>Revenue</dt><dd>$32,400</dd><dt>Hours a week</dt><dd>14</dd></dl>
+      <p>A realistic first year from a standing start. About a dozen jobs cover the year's fixed costs.</p></div>
+    <div class="scenario target"><span class="name">Expected · the target</span><div class="take">$34,900</div><span class="small muted">kept, after the tax set-aside</span>
+      <dl><dt>Jobs</dt><dd>100, about two a week</dd><dt>Shop visits</dt><dd>36</dd><dt>Revenue</dt><dd>$67,900</dd><dt>Hours a week</dt><dd>23</dd></dl>
+      <p>The property managers are sending Arrivals, and four shops are on order.</p></div>
+    <div class="scenario"><span class="name">Strong</span><div class="take">$62,600</div><span class="small muted">kept, after the tax set-aside</span>
+      <dl><dt>Jobs</dt><dd>165, about three a week</dd><dt>Shop visits</dt><dd>72</dd><dt>Revenue</dt><dd>$118,100</dd><dt>Hours a week</dt><dd>35</dd></dl>
+      <p>The ceiling for one person, and the point to bring in a helper. More likely year two.</p></div>
+  </div>
+  <div class="read" style="margin-inline:0">
+    <figure>
+      <div class="chart-title">What an hour of your time earns, by piece</div>
+      <div class="bars" id="bars" role="img" aria-label="Dollars earned per hour for each piece, against a 45 dollar target"></div>
+      <figcaption>Per hour of building, installing, taking down and driving, after materials, mileage and card fees. Based on a 25 mile drive each way. Hover or tap a row for the working.</figcaption>
+    </figure>
+    <p style="margin-top:1.5rem"><strong>To start:</strong> about $1,750 done leanly, up to $3,500 with a fuller kit. The first four jobs pay back the lean version.</p>
+    <p><strong>Three ways to earn more without working more:</strong> put two jobs in one town on one day; sell Collected, which has no drive at all; and say yes to The Pavilion, where one tent weekend earns what five garlands do.</p>
+  </div>
+</section>
+
+<section id="ninety" class="read">
+  <p class="eyebrow">The first 90 days</p>
+  <h2>From today to Valentine's weekend.</h2>
+  <p>The order is deliberate. Nothing is bought under the name until it's checked. Nothing is sold until you're insured. Nothing is pitched until there are photographs. Tick things off as they're done.</p>
+  <p class="progress" id="progress"></p>
+  <div id="phases"></div>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>By day 90</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Name cleared, registered, insured</td><td>Venues and property managers will ask</td></tr>
+        <tr><td>30 photographs on the site</td><td>Everything else waits on photographs</td></tr>
+        <tr><td>Prices published</td><td>No coast rival has done it</td></tr>
+        <tr><td>5 Google reviews</td><td>Most rivals have fewer than 5 in total</td></tr>
+        <tr><td>3 property managers saying yes</td><td>The first engine's channel</td></tr>
+        <tr><td>5 paid jobs, each timed</td><td>Real hours replace every estimate here</td></tr>
+        <tr><td>$2,500 taken</td><td>The lean start-up cost, paid back</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="calls" class="read">
+  <p class="eyebrow">Over to you</p>
+  <h2>Twelve calls that are yours.</h2>
+  <p>Everything else can move without you. These can't. Each has a recommendation and the reason for it, so you can disagree with the reasoning and not only the answer. Tap an answer, and add a note if you like.</p>
+  <div class="status" id="status" role="status"><span class="dot"></span><span id="status-text">Checking where your answers will be saved…</span></div>
+  <div id="call-list"></div>
+
+  <h2 style="margin-top:4rem">Four things only you know.</h2>
+  <p>These aren't decisions. They're facts the plan had to guess at.</p>
+  <div id="fact-list"></div>
+
+  <div class="send">
+    <p><strong>Send your answers.</strong> This gathers everything you've answered into one piece of text you can paste into a message.</p>
+    <button class="btn" id="copy-btn" type="button">Copy my answers</button>
+    <span class="small muted" id="copy-note" style="margin-left:0.6rem"></span>
+    <textarea id="copy-out" hidden readonly aria-label="Your answers as text"></textarea>
+  </div>
+</section>
+
+<section class="read">
+  <p class="eyebrow">What could go wrong</p>
+  <h2>Six risks, and what the plan does about each.</h2>
+  <div class="scroll">
+    <table>
+      <tbody>
+        <tr><td><strong>The name.</strong> POPPIE is reportedly a registered trademark for balloon design.</td><td>Check it this week, before the domain, signs or filings. A lawyer's hour if it's live. The website holds the name in one setting, so a change takes minutes.</td></tr>
+        <tr><td><strong>Wind and salt air.</strong></td><td>Air-filled, weighted designs. A stated wind speed above which a piece moves under cover. The tent as the fallback.</td></tr>
+        <tr><td><strong>Too much work for one person.</strong></td><td>No more than three installs a week, a minimum price, and prices that rise before hours do.</td></tr>
+        <tr><td><strong>A quiet winter.</strong></td><td>The standing-work engine exists for this. It's sold in August.</td></tr>
+        <tr><td><strong>A balloon ban or backlash.</strong></td><td>Nothing released, nothing called "biodegradable", everything collected. Oregon nearly banned releases in 2025. Poppies is already on the right side of it.</td></tr>
+        <tr><td><strong>The research is wrong somewhere.</strong></td><td>It was done from search results, not site visits. Local facts need a phone call before money rides on them. The careful version assumes the property managers are slow.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer class="read">
+  <p>The full plan, the menu wording, the week-by-week 90 days, the job routine and the script behind the numbers are in the project's <code>.scratch/plan/</code> folder. Setup costs and rules are general information, not legal or tax advice.</p>
+</footer>
+
+<script>
+(function () {
+  var PIECES = [
+    ['The Pavilion', 113, '$3,500 · keeps $2,831 · 25 hours'],
+    ['The Question', 80, '$750 · keeps $562 · 7 hours'],
+    ['The Tideline, 20 ft', 58, '$680 with teardown · keeps $540 · 9¼ hours'],
+    ['The Standing Order', 54, '$240 a month · keeps $189 · 3½ hours'],
+    ['The Arrival', 53, '$395 · keeps $267 · 5 hours'],
+    ['The Headland', 51, '$550 · keeps $398 · 7¾ hours'],
+    ['Collected', 47, '$136 · keeps $114 · 2½ hours']
+  ];
+  var MAX = 120, TARGET = 45;
+
+  var PHASES = [
+    ['11–24 November', 'Unblock', [
+      ['p1a', 'Check the name: look up POPPIE (serial 98162236) on the US trademark site, and search the Oregon business registry for "Poppies"', true],
+      ['p1b', 'Answer the twelve calls on this page'],
+      ['p1c', 'Book the free session at the community college\'s Small Business Development Center'],
+      ['p1d', 'Three phone calls: is Float Balloon Bar open; what a 20×40 tent rents for on the coast; what the Salem studio charges to drive over'],
+      ['p1e', 'Find the tent\'s flame-resistance certificate']
+    ]],
+    ['25 November–8 December', 'Make it official', [
+      ['p2a', 'Register: the business, the name, a tax number, a bank account', true],
+      ['p2b', 'Liability insurance, with the tent disclosed'],
+      ['p2c', 'Home-city business licence'],
+      ['p2d', 'Starter kit and a wholesale account, in one palette to begin'],
+      ['p2e', 'Time one build: a 10 foot garland at home, with a stopwatch']
+    ]],
+    ['9–29 December', 'Build the proof', [
+      ['p3a', 'Three pieces photographed in daylight: a shop\'s holiday window as a gift, an Arrival in a real rental house, and one ocean sculpture', true],
+      ['p3b', 'Work through the website\'s shot list to 30 usable photographs'],
+      ['p3c', 'Draft the contract and have an Oregon lawyer read it once'],
+      ['p3d', 'Set up card payments for deposits'],
+      ['p3e', 'Put the photographs, the menu and the prices on the site', false, 'dev']
+    ]],
+    ['30 December–19 January', 'Get found', [
+      ['p4a', 'Google Business Profile live, with all 30 photographs', true],
+      ['p4b', 'Buy the domain, in your name'],
+      ['p4c', 'Claim the free listings: The Knot, WeddingWire, Zola, Nextdoor'],
+      ['p4d', 'Tell everyone you know, with one photograph and the link'],
+      ['p4e', 'Pitch three property managers before spring-break bookings start'],
+      ['p4f', 'Publish the four guides, "how it works" and the questions page', false, 'dev']
+    ]],
+    ['20 January–14 February', 'First paid work', [
+      ['p5a', 'Sell Valentine\'s: The Arrival and The Question', true],
+      ['p5b', 'Ask every client for a review, the same way every time'],
+      ['p5c', 'Plan the March styled shoot: a photographer, a florist, a venue, a planner'],
+      ['p5d', 'Pitch one public piece for the June kite festival'],
+      ['p5e', 'Walk into ten shops with a mock-up of each one\'s window']
+    ]]
+  ];
+
+  var CALLS = [
+    ['c1', 'Do we keep the name if the POPPIE trademark turns out to be live?', 'Check first. Keep "Poppies" only if a lawyer says it\'s safe.', 'It covers the same services with a nearly identical word. A forced rename after signs and a domain costs far more than an hour of advice now.'],
+    ['c2', 'Alone, or with a helper?', 'Alone for year one, with a named helper on call for tent days.', 'The tent needs two people. Everything else on the menu is sized for one.'],
+    ['c3', 'Do we publish prices?', 'Yes, as "from" prices.', 'No coast rival does. It also filters out the $75 enquiries before they cost you an evening.'],
+    ['c4', 'Is $500 the minimum?', 'Yes inside Lincoln County, with The Arrival, Collected and The Standing Order as the lower-priced doors.', 'A coast job takes most of a day. Below $500 it pays less than $45 an hour.'],
+    ['c5', 'Do we sell The Arrival through property managers?', 'Yes. It\'s the first engine.', 'Nobody on the coast offers it, it sells all year, and the managers already reach every guest.'],
+    ['c6', 'What is the tent?', 'The Pavilion: always with decor, never rented bare.', 'Bare rental competes with established firms on price. Dressed, it\'s a venue only you can offer, and it earns about $113 an hour.'],
+    ['c7', 'Air only, nothing released, never "biodegradable"?', 'Yes, as a written pledge.', 'It\'s honest, the coast cares, and Oregon nearly banned releases in 2025.'],
+    ['c8', 'Sculpture: commissions, live twisting at parties, or both?', 'Commissions only. No live twisting, and no licensed characters as advertised work.', 'Twisting is a different trade at a different price, and it pulls the name toward children\'s parties.'],
+    ['c9', 'How many installs a week?', 'No more than three, with Sunday for teardowns.', 'Three a week is the strong version of the year. Past that, quality and replies slip.'],
+    ['c10', 'Where is home, and how far will you drive?', 'Free from Lincoln City to Yachats. Zones beyond that, up to Tillamook and Florence.', 'A zone reads better to a visitor than a per-mile charge, and it protects your day.'],
+    ['c11', 'Which work do we turn down?', 'Releases, bare tent rental, loud car-dealership work, and anything under the minimum.', 'Saying no in public is part of what Poppies stands for.'],
+    ['c12', 'When do weddings start?', 'Take them now if asked. Advertise them after the March styled shoot.', 'A wedding page with no wedding photographs costs credibility.']
+  ];
+  var CHOICES = [['agree', 'I agree'], ['no', 'No'], ['talk', 'Let\'s talk']];
+  var FACTS = [
+    ['f1', 'What have you made for paying customers, and which piece are you fastest at?'],
+    ['f2', 'What would you rather never make again?'],
+    ['f3', 'The tent: where is it, what condition is it in, and how long does it take two people to put up?'],
+    ['f4', 'How many hours a week do you want this to be?']
+  ];
+
+  var state = {};            // id -> { v, note }
+  var db = null, sharedOk = false;
+  var LS = 'poppies-plan-v1';
+  try { state = JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) { state = {}; }
+
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    for (var k in attrs || {}) { if (k === 'text') n.textContent = attrs[k]; else n.setAttribute(k, attrs[k]); }
+    (kids || []).forEach(function (c) { n.appendChild(c); });
+    return n;
+  }
+
+  // chart
+  var bars = document.getElementById('bars');
+  PIECES.forEach(function (p) {
+    var fill = el('div', { class: 'fill' }); fill.style.width = (p[1] / MAX * 100) + '%';
+    var row = el('div', { class: 'bar-row', title: p[0] + ': ' + p[2] + ' · $' + p[1] + ' an hour', tabindex: '0' }, [
+      el('span', { class: 'lab', text: p[0] }), el('div', { class: 'track' }, [fill]), el('span', { class: 'val', text: '$' + p[1] })
+    ]);
+    bars.appendChild(row);
+  });
+  (function () {
+    var line = el('div', { class: 'target-line' }, [el('span', { text: '$45 target' })]);
+    bars.appendChild(line);
+    function place() {
+      var t = bars.querySelector('.track'); if (!t) return;
+      var b = bars.getBoundingClientRect(), r = t.getBoundingClientRect();
+      line.style.left = (r.left - b.left + r.width * TARGET / MAX) + 'px';
+    }
+    place(); window.addEventListener('resize', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  })();
+
+  // 90 days
+  var phases = document.getElementById('phases'), tickIds = [];
+  PHASES.forEach(function (ph) {
+    var ul = el('ul', { class: 'ticks' });
+    ph[2].forEach(function (t) {
+      tickIds.push(t[0]);
+      var input = el('input', { type: 'checkbox', id: 'tick-' + t[0] });
+      input.addEventListener('change', function () { save(t[0], { v: input.checked }); });
+      var span = el('span');
+      if (t[2]) span.appendChild(el('span', { class: 'star', text: '★ ' }));
+      span.appendChild(document.createTextNode(t[1]));
+      if (t[3]) span.appendChild(el('span', { class: 'who', text: 'developer' }));
+      ul.appendChild(el('li', {}, [el('label', {}, [input, span])]));
+    });
+    phases.appendChild(el('div', { class: 'phase' }, [el('span', { class: 'span', text: ph[0] }), el('h3', { text: ph[1] }), ul]));
+  });
+
+  // calls
+  var callList = document.getElementById('call-list');
+  CALLS.forEach(function (c, i) {
+    var choices = el('div', { class: 'choices', role: 'group', 'aria-label': 'Your answer' });
+    CHOICES.forEach(function (ch) {
+      var b = el('button', { type: 'button', 'data-id': c[0], 'data-v': ch[0], 'aria-pressed': 'false', text: ch[1] });
+      b.addEventListener('click', function () {
+        var cur = (state[c[0]] || {}).v;
+        save(c[0], { v: cur === ch[0] ? '' : ch[0] });
+      });
+      choices.appendChild(b);
+    });
+    var note = el('textarea', { id: 'note-' + c[0], rows: '1', placeholder: 'A note, if you like', 'aria-label': 'Note for call ' + (i + 1) });
+    note.addEventListener('change', function () { save(c[0], { note: note.value.trim() }); });
+    callList.appendChild(el('div', { class: 'call' }, [
+      el('span', { class: 'num', text: String(i + 1) }), el('h3', { text: c[1] }),
+      el('div', { class: 'rec' }, [el('p', {}, [el('strong', { text: 'Recommended: ' }), document.createTextNode(c[2])]), el('p', { class: 'why', text: c[3] })]),
+      choices, note
+    ]));
+  });
+  var factList = document.getElementById('fact-list');
+  FACTS.forEach(function (f) {
+    var ta = el('textarea', { id: 'note-' + f[0], rows: '2', placeholder: 'Your answer' });
+    ta.addEventListener('change', function () { save(f[0], { note: ta.value.trim() }); });
+    factList.appendChild(el('div', { class: 'fact' }, [el('label', { for: 'note-' + f[0], text: f[1] }), ta]));
+  });
+
+  function apply() {
+    document.querySelectorAll('.choices button').forEach(function (b) {
+      var s = state[b.getAttribute('data-id')] || {};
+      b.setAttribute('aria-pressed', String(s.v === b.getAttribute('data-v')));
+    });
+    CALLS.concat(FACTS).forEach(function (c) {
+      var ta = document.getElementById('note-' + c[0]);
+      if (ta && document.activeElement !== ta) ta.value = (state[c[0]] || {}).note || '';
+    });
+    var done = 0;
+    tickIds.forEach(function (id) {
+      var on = !!(state[id] || {}).v; if (on) done++;
+      document.getElementById('tick-' + id).checked = on;
+    });
+    document.getElementById('progress').textContent = done + ' of ' + tickIds.length + ' done';
+  }
+
+  var queue = {};
+  function save(id, patch) {
+    var next = Object.assign({ v: '', note: '' }, state[id] || {}, patch);
+    state[id] = next;
+    try { localStorage.setItem(LS, JSON.stringify(state)); } catch (e) {}
+    apply();
+    if (!db) return;
+    var body = { v: next.v, note: next.note, at: new Date().toISOString() };
+    queue[id] = (queue[id] || Promise.resolve()).then(function () {
+      return db.doc('answers/' + id).set(body);
+    }).then(function () { setStatus(true); }, function () { db = null; setStatus(false); });
+  }
+
+  function setStatus(shared) {
+    sharedOk = shared;
+    var box = document.getElementById('status');
+    box.classList.toggle('shared', shared);
+    document.getElementById('status-text').textContent = shared
+      ? 'Your answers are saved to this page as you go, so the two of you see the same thing.'
+      : 'Your answers are kept on this device only. When you\'re done, use "Copy my answers" at the bottom to send them.';
+  }
+
+  document.getElementById('copy-btn').addEventListener('click', function () {
+    var lines = ['Poppies: my answers', ''];
+    CALLS.forEach(function (c, i) {
+      var s = state[c[0]] || {}, label = (CHOICES.filter(function (x) { return x[0] === s.v; })[0] || [0, 'Not answered'])[1];
+      lines.push((i + 1) + '. ' + c[1] + '\n   ' + label + (s.note ? ': ' + s.note : ''));
+    });
+    lines.push('');
+    FACTS.forEach(function (f) { lines.push(f[1] + '\n   ' + ((state[f[0]] || {}).note || 'Not answered')); });
+    var text = lines.join('\n'), out = document.getElementById('copy-out'), note = document.getElementById('copy-note');
+    function fallback() { out.value = text; out.hidden = false; out.focus(); out.select(); note.textContent = 'Select the text below and copy it.'; }
+    try { navigator.clipboard.writeText(text).then(function () { note.textContent = 'Copied. Paste it into a message.'; }, fallback); }
+    catch (e) { fallback(); }
+  });
+
+  apply();
+
+  var wait = setTimeout(function () { if (!sharedOk) setStatus(false); }, 10000);
+  var use = window.claude && window.claude.use ? window.claude.use('db') : Promise.resolve(null);
+  use.then(function (d) {
+    if (!d) { clearTimeout(wait); setStatus(false); return; }
+    db = d;
+    d.collection('answers').onSnapshot(function (snap) {
+      snap.docs.forEach(function (doc) {
+        var data = doc.data() || {};
+        state[doc.id] = { v: data.v === undefined ? '' : data.v, note: data.note || '' };
+      });
+      if (!snap.metadata.fromCache) { clearTimeout(wait); setStatus(true); }
+      apply();
+    }, function () { clearTimeout(wait); db = null; setStatus(false); });
+  }, function () { clearTimeout(wait); setStatus(false); });
+})();
+</script>

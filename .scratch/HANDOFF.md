@@ -38,6 +38,22 @@ open in GitHub: PR #9 was the last, and it is merged.
     `home.astro`.
   - Details are in `.scratch/website/sketches.md`.
 
+## The plan (2026-11-11)
+
+`.scratch/plan/` turns the research and the 172 ideas into **one business
+plan that picks**: a nine-piece menu with prices, three engines in order
+(celebrations, standing work, weddings and The Pavilion), the year month by
+month, three money scenarios, the first 90 days and a job playbook. Start at
+`plan/the-plan.md`.
+
+- **For the owner:** https://claude.ai/artifact/PXZzmcLdKAataVnnqv1Ku9
+  (private until shared). Her twelve calls are on the page as tap-to-answer
+  questions, saved to the page's database (collection `answers`). Read them
+  back with the artifact's data tools.
+- **Numbers:** `plan/numbers.py`. The arch moved from $450 to $550 because
+  the model showed $450 pays under $45 an hour.
+- **Website ticket 05 stays blocked** until she agrees the menu.
+
 ## Waiting on a decision
 
 1. **Homepage sketches.** Which of A–J to pursue, if any. No verdict yet.
