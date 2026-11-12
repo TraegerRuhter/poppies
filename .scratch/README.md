@@ -89,6 +89,12 @@ on the site.
 - **Tagline:** avoid "A pop of colour…". **A POP OF COLOR** is a filed mark
   for balloon design services.
 
+### 5. The plan — one business plan that picks
+
+`plan/` — **start at `plan/the-plan.md`**. Built from everything below. The
+owner's twelve calls are in `plan/decisions-for-her.md`, and on the plan page
+(see `HANDOFF.md`).
+
 ### 4. Ideas — 131 triaged ideas from overnight market research
 
 `ideas/` — **start at `ideas/ideas.md`** (top ten up front, tier index,
